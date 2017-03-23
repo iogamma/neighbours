@@ -1,0 +1,2 @@
+class PollUser < ApplicationRecord
+end
