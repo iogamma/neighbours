@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20171024175352) do
   end
 
   create_table "documents", force: :cascade do |t|
-    t.string   "link",       null: false
+    t.string   "location",   null: false
     t.string   "name",       null: false
     t.integer  "meeting_id", null: false
     t.datetime "created_at", null: false
@@ -158,8 +158,8 @@ ActiveRecord::Schema.define(version: 20171024175352) do
   end
 
   create_table "videos", force: :cascade do |t|
+    t.string   "location",   null: false
     t.string   "name",       null: false
-    t.string   "link",       null: false
     t.integer  "meeting_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
