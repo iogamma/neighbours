@@ -10,6 +10,7 @@ Getting started for development:
         * SECRET_TOKEN=<your key token>
         * SECRET_KEY_BASE=<your key base>
     * Create database called 'neighbourhood_development'
-    * Run 'bin/rake db:migrate RAILS_ENV=development'
+    * Set 'bin/rails db:environment:set RAILS_ENV=development'
+    * Run 'bin/rake db:migrate
 
 
