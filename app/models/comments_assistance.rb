@@ -1,0 +1,2 @@
+class CommentsAssistance < ApplicationRecord
+end
