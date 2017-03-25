@@ -21,25 +21,25 @@ end
 
 # Let's do this ...
 
-## STRATA
+## NEIGHBOURHOOD
 
 puts "Finding or Creating Neighbourhood ..."
 
-neigh1 = Stratum.find_or_create_by! strata_title: 'test_neighbourhood'
+neigh1 = Neighbourhood.find_or_create_by! strata_title: 'test_neighbourhood'
 
 ## BUILDINGS
-0
+
 puts "Re-creating Buildings ..."
 
 Building.destroy_all
 
-neigh1 = strat1.buildings.create!({
-  name:  'Tower1',
+build1 = neigh1.buildings.create!({
+  name: 'Tower1',
   address: Faker::Address.street_address
 })
 
-neigh2 = strat1.buildings.create!({
-  name:  'Tower2',
+build2 = neigh1.buildings.create!({
+  name: 'Tower2',
   address: Faker::Address.street_address
 })
 
@@ -68,7 +68,7 @@ User.destroy_all
 user1 = unit1.users.create!({
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
-  email: Faker::Internet.email,
+  email: 'admin@test.com',
   password: '12345678',
   resident_code: '111',
   on_council: true
@@ -89,20 +89,23 @@ puts "Re-creating Polls ..."
 
 Poll.destroy_all
 
-user1.polls.create!({
-  stratum_id: 1,
+neigh1.polls.create!({
+  user_id: 1,
+  email: email: 'admin@test.com',
   title: Faker::Hipster.sentence,
   description: Faker::Lorem.paragraph(2)
 })
 
-user1.polls.create!({
-  stratum_id: 1,
+neigh1.polls.create!({
+  user_id: 1,
+  email: email: 'admin@test.com',
   title: Faker::Hipster.sentence,
   description: Faker::Lorem.paragraph(2)
 })
 
-user1.polls.create!({
-  stratum_id: 1,
+neigh1.polls.create!({
+  user_id: 1,
+  email: email: 'admin@test.com',
   title: Faker::Hipster.sentence,
   description: Faker::Lorem.paragraph(2)
 })
@@ -116,19 +119,22 @@ Event.destroy_all
 user1.events.create!({
   title: Faker::Hipster.sentence,
   description: Faker::Lorem.paragraph(2),
-  date: Faker::Date.forward(60)
+  date: Faker::Date.forward(60),
+  location:'Front yard'
 })
 
 user2.events.create!({
   title: Faker::Hipster.sentence,
   description: Faker::Lorem.paragraph(2),
-  date: Faker::Date.forward(60)
+  date: Faker::Date.forward(60),
+  location: 'TBA'
 })
 
 user2.events.create!({
   title: Faker::Hipster.sentence,
   description: Faker::Lorem.paragraph(2),
-  date: Faker::Date.forward(60)
+  date: Faker::Date.forward(60),
+  location: 'Basement'
 })
 
 ## ASSISTANCES
@@ -155,35 +161,68 @@ user2.assistances.create!({
   date: Faker::Date.forward(60)
 })
 
+## NOTICES
+
+puts "Re-creating Notices ..."
+
+Notice.destroy_all
+
+neigh1.notices.create!({
+  user_id: 1,
+  email: 'admin@test.com',
+  title: Faker::Hipster.sentence,
+  description: Faker::Lorem.paragraph(2),
+  date: Faker::Date.forward(60) 
+})
+
+neigh1.notices.create!({
+  user_id: 1,
+  email: 'admin@test.com',
+  title: Faker::Hipster.sentence,
+  description: Faker::Lorem.paragraph(2),
+  date: Faker::Date.forward(60)
+})
+
+neigh1.notices.create!({
+  user_id: 1,
+  email: 'admin@test.com',
+  title: Faker::Hipster.sentence,
+  description: Faker::Lorem.paragraph(2),
+  date: Faker::Date.forward(60)
+})
+
 ## MEETINGS
 
 puts "Re-creating Meetings ..."
 
 Meeting.destroy_all
 
-meet1 = user1.meetings.create!({
+meet1 = neigh1.meetings.create!({
+  user_id: 1,
+  email: 'admin@test.com',
   date: Faker::Date.forward(60),
   location: 'Basement',
-  title: 'First Meeting',
-  neighbourhood_id: 1
+  title: 'First Meeting'
 })
 
 ## VIDEOS
+puts "Re-creating Videos ..."
 
 Video.destroy_all
 
 meet1.vidoes.create! ({
-  location: open_asset('vidoe.mp4')
-  title: 'First Meeting Vid'
+  location: open_asset('video.mp4'),
+  name: 'First Meeting Vid'
 })
 
 ## DOCUMENTS
+puts "Re-creating documents ..."
 
 Document.destroy_all
 
 meet1.documents.create! ({
-  location: open_asset('document.pdf')
-  title: 'First Meeting Doc'
+  location: open_asset('document.pdf'),
+  name: 'First Meeting Doc'
 })
 
 ## COMMENTS EVENTS
@@ -237,5 +276,47 @@ user1.comments_assistances.create! ({
   content: Faker::Hipster.sentence,
   event_id: 2
 })
+
+# ## EVENTS USERS
+
+# puts "Re-creating Events Users ..."
+
+# Event_User.destroy_all
+
+# user1.events_users.create! ({
+#   attend: "yes",
+#   event_id: 1
+# })
+
+# user2.events_users.create! ({
+#   attend: "no",
+#   event_id: 1
+# })
+
+# user2.events_users.create! ({
+#   attend: "yes",
+#   event_id: 2
+# })
+
+# ## POLLS USERS
+
+# puts "Re-creating Polls Users ..."
+
+# Poll_User.destroy_all
+
+# user1.polls_users.create! ({
+#   attend: "yes",
+#   event_id: 1
+# })
+
+# user2.polls_users.create! ({
+#   attend: "no",
+#   event_id: 1
+# })
+
+# user2.polls_users.create! ({
+#   attend: "yes",
+#   event_id: 2
+# })
 
 puts "DONE!"
