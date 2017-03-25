@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171024175352) do
+ActiveRecord::Schema.define(version: 20171024175355) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 20171024175352) do
   end
 
   create_table "events_users", force: :cascade do |t|
-    t.integer  "attend",     null: false
+    t.string   "attend",     null: false
     t.integer  "event_id",   null: false
     t.integer  "user_id",    null: false
     t.datetime "created_at", null: false
@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(version: 20171024175352) do
     t.integer  "user_id",          null: false
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.string   "email"
     t.index ["neighbourhood_id"], name: "index_meetings_on_neighbourhood_id", using: :btree
     t.index ["user_id"], name: "index_meetings_on_user_id", using: :btree
   end
@@ -110,6 +111,7 @@ ActiveRecord::Schema.define(version: 20171024175352) do
     t.integer  "user_id",          null: false
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.string   "email"
     t.index ["neighbourhood_id"], name: "index_notices_on_neighbourhood_id", using: :btree
     t.index ["user_id"], name: "index_notices_on_user_id", using: :btree
   end
@@ -121,12 +123,13 @@ ActiveRecord::Schema.define(version: 20171024175352) do
     t.integer  "user_id",          null: false
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.string   "email"
     t.index ["neighbourhood_id"], name: "index_polls_on_neighbourhood_id", using: :btree
     t.index ["user_id"], name: "index_polls_on_user_id", using: :btree
   end
 
   create_table "polls_users", force: :cascade do |t|
-    t.integer  "vote",       null: false
+    t.string   "vote",       null: false
     t.integer  "poll_id",    null: false
     t.integer  "user_id",    null: false
     t.datetime "created_at", null: false
@@ -177,11 +180,8 @@ ActiveRecord::Schema.define(version: 20171024175352) do
   add_foreign_key "events_users", "events"
   add_foreign_key "events_users", "users"
   add_foreign_key "meetings", "neighbourhoods"
-  add_foreign_key "meetings", "users"
   add_foreign_key "notices", "neighbourhoods"
-  add_foreign_key "notices", "users"
   add_foreign_key "polls", "neighbourhoods"
-  add_foreign_key "polls", "users"
   add_foreign_key "polls_users", "polls"
   add_foreign_key "polls_users", "users"
   add_foreign_key "units", "buildings"
