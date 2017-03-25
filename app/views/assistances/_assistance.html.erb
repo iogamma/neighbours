@@ -1,5 +1,8 @@
 <article class="assistance">
   <header>
-test
+      <% link_to [assistance.neighbourhood, assistance] do %>
+      <h3><%= assistance.title %></h3>
+      submitted on date <%= assistance.date %> by <%= assistance.user_id %>
+      <% end %>
   </header>
 </article>
