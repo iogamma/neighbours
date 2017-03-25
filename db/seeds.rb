@@ -117,6 +117,7 @@ puts "Re-creating Events ..."
 Event.destroy_all
 
 user1.events.create!({
+  neighbourhood_id: 1,
   title: Faker::Hipster.sentence,
   description: Faker::Lorem.paragraph(2),
   date: Faker::Date.forward(60),
@@ -124,6 +125,7 @@ user1.events.create!({
 })
 
 user2.events.create!({
+  neighbourhood_id: 1,
   title: Faker::Hipster.sentence,
   description: Faker::Lorem.paragraph(2),
   date: Faker::Date.forward(60),
@@ -131,6 +133,7 @@ user2.events.create!({
 })
 
 user2.events.create!({
+  neighbourhood_id: 1,
   title: Faker::Hipster.sentence,
   description: Faker::Lorem.paragraph(2),
   date: Faker::Date.forward(60),
@@ -144,18 +147,21 @@ puts "Re-creating Assistances ..."
 Assistance.destroy_all
 
 user1.assistances.create!({
+  neighbourhood_id: 1,
   title: Faker::Hipster.sentence,
   description: Faker::Lorem.paragraph(2),
   date: Faker::Date.forward(60)
 })
 
 user2.assistances.create!({
+  neighbourhood_id: 1,
   title: Faker::Hipster.sentence,
   description: Faker::Lorem.paragraph(2),
   date: Faker::Date.forward(60)
 })
 
 user2.assistances.create!({
+  neighbourhood_id: 1,
   title: Faker::Hipster.sentence,
   description: Faker::Lorem.paragraph(2),
   date: Faker::Date.forward(60)

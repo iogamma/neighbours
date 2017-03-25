@@ -10,18 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171024175356) do
+ActiveRecord::Schema.define(version: 20171024175358) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "assistances", force: :cascade do |t|
-    t.date     "date",        null: false
-    t.text     "description", null: false
-    t.string   "title",       null: false
-    t.integer  "user_id",     null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.date     "date",             null: false
+    t.text     "description",      null: false
+    t.string   "title",            null: false
+    t.integer  "user_id",          null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "neighbourhood_id"
     t.index ["user_id"], name: "index_assistances_on_user_id", using: :btree
   end
 
@@ -64,13 +65,14 @@ ActiveRecord::Schema.define(version: 20171024175356) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.date     "date",        null: false
-    t.text     "description", null: false
-    t.string   "location",    null: false
-    t.string   "title",       null: false
-    t.integer  "user_id",     null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.date     "date",             null: false
+    t.text     "description",      null: false
+    t.string   "location",         null: false
+    t.string   "title",            null: false
+    t.integer  "user_id",          null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "neighbourhood_id"
     t.index ["user_id"], name: "index_events_on_user_id", using: :btree
   end
 
@@ -169,6 +171,7 @@ ActiveRecord::Schema.define(version: 20171024175356) do
     t.index ["meeting_id"], name: "index_videos_on_meeting_id", using: :btree
   end
 
+  add_foreign_key "assistances", "neighbourhoods"
   add_foreign_key "assistances", "users"
   add_foreign_key "buildings", "neighbourhoods"
   add_foreign_key "comments_assistances", "assistances"
@@ -176,6 +179,7 @@ ActiveRecord::Schema.define(version: 20171024175356) do
   add_foreign_key "comments_events", "events"
   add_foreign_key "comments_events", "users"
   add_foreign_key "documents", "meetings"
+  add_foreign_key "events", "neighbourhoods"
   add_foreign_key "events", "users"
   add_foreign_key "events_users", "events"
   add_foreign_key "events_users", "users"

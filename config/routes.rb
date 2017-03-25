@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'neighbourhoods#index'
 
   resources :neighbourhoods, only: [:index, :show] do
-    resources :event, except: [:index] do
+    resources :events, except: [:index] do
       resources :comments, only: [:create, :destroy]
     end
     resources :assistances do
