@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :event, except: [:index] do
       resources :comment, only: [:create, :destroy]
     end
-    resources :assistance, except: [:index] do
+    resources :assistance do
       resources :comment, only: [:create, :destroy]
     end
     resources :meeting
