@@ -69,7 +69,7 @@ user1 = unit1.users.create!({
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
   email: 'admin@test.com',
-  password: '12345678',
+  password_digest: '12345678',
   resident_code: '111',
   on_council: true
 })
@@ -78,7 +78,7 @@ user2 = unit1.users.create!({
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
   email: Faker::Internet.email,
-  password: '12345678',
+  password_digest: '12345678',
   resident_code: '222',
   on_council: false
 })
@@ -91,21 +91,21 @@ Poll.destroy_all
 
 neigh1.polls.create!({
   user_id: 1,
-  email: email: 'admin@test.com',
+  email: 'admin@test.com',
   title: Faker::Hipster.sentence,
   description: Faker::Lorem.paragraph(2)
 })
 
 neigh1.polls.create!({
   user_id: 1,
-  email: email: 'admin@test.com',
+  email: 'admin@test.com',
   title: Faker::Hipster.sentence,
   description: Faker::Lorem.paragraph(2)
 })
 
 neigh1.polls.create!({
   user_id: 1,
-  email: email: 'admin@test.com',
+  email: 'admin@test.com',
   title: Faker::Hipster.sentence,
   description: Faker::Lorem.paragraph(2)
 })
@@ -210,7 +210,7 @@ puts "Re-creating Videos ..."
 
 Video.destroy_all
 
-meet1.vidoes.create! ({
+meet1.videos.create! ({
   location: open_asset('video.mp4'),
   name: 'First Meeting Vid'
 })
@@ -225,63 +225,63 @@ meet1.documents.create! ({
   name: 'First Meeting Doc'
 })
 
-## COMMENTS EVENTS
+# ## COMMENTS EVENTS
 
-puts "Re-creating Comments Events ..."
+# puts "Re-creating Comments Events ..."
 
-Comment_Event.destroy_all
+# Comments_Event.destroy_all
 
-user1.comments_events.create! ({
-  content: Faker::Hipster.sentence,
-  event_id: 1
-})
+# user1.comments_events.create! ({
+#   content: Faker::Hipster.sentence,
+#   event_id: 1
+# })
 
-user2.comments_events.create! ({
-  content: Faker::Hipster.sentence,
-  event_id: 1
-})
+# user2.comments_events.create! ({
+#   content: Faker::Hipster.sentence,
+#   event_id: 1
+# })
 
-user1.comments_events.create! ({
-  content: Faker::Hipster.sentence,
-  event_id: 2
-})
+# user1.comments_events.create! ({
+#   content: Faker::Hipster.sentence,
+#   event_id: 2
+# })
 
-user1.comments_events.create! ({
-  content: Faker::Hipster.sentence,
-  event_id: 2
-})
+# user1.comments_events.create! ({
+#   content: Faker::Hipster.sentence,
+#   event_id: 2
+# })
 
-## COMMENTS ASSISTANCES
+# ## COMMENTS ASSISTANCES
 
-puts "Re-creating Comments Assistances ..."
+# puts "Re-creating Comments Assistances ..."
 
-Comment_Assistance.destroy_all
+# Comments_Assistance.destroy_all
 
-user1.comments_assistances.create! ({
-  content: Faker::Hipster.sentence,
-  event_id: 1
-})
+# user1.comments_assistances.create! ({
+#   content: Faker::Hipster.sentence,
+#   event_id: 1
+# })
 
-user2.comments_assistances.create! ({
-  content: Faker::Hipster.sentence,
-  event_id: 1
-})
+# user2.comments_assistances.create! ({
+#   content: Faker::Hipster.sentence,
+#   event_id: 1
+# })
 
-user1.comments_assistances.create! ({
-  content: Faker::Hipster.sentence,
-  event_id: 2
-})
+# user1.comments_assistances.create! ({
+#   content: Faker::Hipster.sentence,
+#   event_id: 2
+# })
 
-user1.comments_assistances.create! ({
-  content: Faker::Hipster.sentence,
-  event_id: 2
-})
+# user1.comments_assistances.create! ({
+#   content: Faker::Hipster.sentence,
+#   event_id: 2
+# })
 
 # ## EVENTS USERS
 
 # puts "Re-creating Events Users ..."
 
-# Event_User.destroy_all
+# Events_User.destroy_all
 
 # user1.events_users.create! ({
 #   attend: "yes",
@@ -302,7 +302,7 @@ user1.comments_assistances.create! ({
 
 # puts "Re-creating Polls Users ..."
 
-# Poll_User.destroy_all
+# Polls_User.destroy_all
 
 # user1.polls_users.create! ({
 #   attend: "yes",
