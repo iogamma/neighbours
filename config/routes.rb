@@ -1,16 +1,16 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root to: 'neighbourhood#index'
+  root to: 'neighbourhoods#index'
 
-  resources :neighbourhood, only: [:index, :show] do
+  resources :neighbourhoods, only: [:index, :show] do
     resources :event, except: [:index] do
-      resources :comment, only: [:create, :destroy]
+      resources :comments, only: [:create, :destroy]
     end
-    resources :assistance do
-      resources :comment, only: [:create, :destroy]
+    resources :assistances do
+      resources :comments, only: [:create, :destroy]
     end
-    resources :meeting
-    resources :notice
+    resources :meetings
+    resources :notices
   end
 
   # resources :user, only: [:new, :create] do
@@ -25,8 +25,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: 'dashboard#show'
-    resources :user, only: [:edit, :destroy]
-    resources :poll, only: [:create, :edit, :destroy]
+    resources :users, only: [:edit, :destroy]
+    resources :polls, only: [:create, :edit, :destroy]
   end
 
 end
