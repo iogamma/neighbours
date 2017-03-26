@@ -13,6 +13,7 @@ class NeighbourhoodsController < ApplicationController
     @polls = Poll.where(neighbourhood_id: params[:id]).sort_by(&:created_at).reverse
 
     @events = Event.where(neighbourhood_id: params[:id]).sort_by(&:created_at).reverse
+
     @neighbourhoods = Neighbourhood.all
   end
 end
