@@ -3,9 +3,21 @@
   <header class="page-header">
     <h1>Notice</h1>
   </header>
+    <% if current_user  %>
+      <% if current_user.on_council == true %>
+        <div class="well">
+          <%= link_to 'Click here to create new notices', new_neighbourhood_notice_path, class: 'btn btn-info' %>
+        </div>
+      <% end %>
+    <% end %>
 
   <div class="notice">
-    render @notices
+  <%= render @notices %>
   </div>
 
 </section>
+
+
+
+
+

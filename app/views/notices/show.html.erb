@@ -1,7 +1,19 @@
 <section class="notices-show">
   <header class="page-header">
-    IMPORTANT!
+    <h2><%= @notice.title %></h2>
+    <small>
+      <em>
+      submitted on date <%= @notice.created_at %> by <%= @notice.user_id %>
+      </em>
+    </small>
+    <% if current_user %>
+      <% if @notice.user_id == current_user.id  %>
+        <%= link_to fa_icon('trash'), [@neighbourhood, :notice], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+      <% end %>
+    <% end %>
   </header>
   <article class="notice-detail">
+    Date of Notice: <%= @notice.date  %>
+    <%= @notice.description %>
   </article>
 </section>

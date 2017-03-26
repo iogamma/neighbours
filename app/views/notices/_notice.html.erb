@@ -1,0 +1,19 @@
+<article class="notice">
+  <header>
+    <div class="alert alert-dismissible alert-info">
+      <h3>
+        <%= link_to notice.title,  [@neighbourhood, notice] %>
+      </h3>
+      <small>
+        <em>
+          submitted on date <%= notice.created_at %> by <%= notice.user_id %>
+        </em>
+      </small>
+      <% if current_user %>
+        <% if notice.user_id == current_user.id  %>
+          <%= link_to fa_icon('trash'), [@neighbourhood, notice], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+        <% end %>
+      <% end %>
+    </div>
+  </header>
+</article>
