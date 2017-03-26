@@ -24,9 +24,10 @@ Rails.application.routes.draw do
   delete :logout, to: 'sessions#destroy'
 
   namespace :admin do
-    root to: 'dashboard#show'
+    root to: 'dashboard#index'
     resources :users, only: [:edit, :destroy]
     resources :polls, only: [:create, :edit, :destroy]
+    resources :units, only: [:update]
   end
 
 end

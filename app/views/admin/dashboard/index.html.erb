@@ -1,0 +1,5 @@
+<%= form_for [:admin, @unit], remote: false do |f| %>
+  <%= f.label :unit_number %>
+  <%= f.text_field :unit_number %>
+  <%= f.submit("Generate") %>
+<% end %>
