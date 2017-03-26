@@ -1,27 +1,41 @@
 class AssistancesController < ApplicationController
 
   def index
-    @assistances = Assistance.all.order(date: :desc)
     @neighbourhood = Neighbourhood.find params[:neighbourhood_id]
+    @assistances = Assistance.all.where(neighbourhood_id: params[:neighbourhood_id]).order(date: :desc)
+
   end
 
   def show
-    @assistance = Assistance.find params[:id]
     @neighbourhood = Neighbourhood.find params[:neighbourhood_id]
+    @assistance = Assistance.find params[:id]
   end
 
   def new
-    @assistance = Assistances.new
+    @assistance = Assistance.new
   end
 
   def create
     @neighbourhood = Neighbourhood.find params[:neighbourhood_id]
-    @assistance = @neighbourhood.assistances.create(assistance_params)
-    @assistance.save
+    @assistance = Assistance.new(assistance_params)
+
+    if @assistance.save
+      redirect_to [:neighbourhood, :assistance], notice: 'Assistance created'
+    else
+      render :new
+    end
   end
 
+  private
+
   def assistance_params
-    params.require(:assistance).permit(:neighbourhood_id, :user_id, :title, :description, :date)
+    params.require(:assistance).permit(
+      :neighbourhood_id,
+      :user_id,
+      :title,
+      :description,
+      :date
+    )
   end
 
 end
