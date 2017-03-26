@@ -1,5 +1,6 @@
 class NeighbourhoodsController < ApplicationController
   def index
+
     render 'index'
   end
 
@@ -12,5 +13,6 @@ class NeighbourhoodsController < ApplicationController
     @polls = Poll.where(neighbourhood_id: params[:id]).sort_by(&:created_at).reverse
 
     @events = Event.where(neighbourhood_id: params[:id]).sort_by(&:created_at).reverse
+    @neighbourhoods = Neighbourhood.all
   end
 end
