@@ -1,5 +1,5 @@
 class Admin::DashboardController < ApplicationController
   def index
-    @building = Buildings.new
+    @unit = Unit.find(1)
   end
 end
