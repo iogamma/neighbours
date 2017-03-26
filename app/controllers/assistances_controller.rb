@@ -23,4 +23,5 @@ class AssistancesController < ApplicationController
   def assistance_params
     params.require(:assistance).permit(:neighbourhood_id, :user_id, :title, :description, :date)
   end
+
 end

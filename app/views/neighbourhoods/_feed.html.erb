@@ -1,3 +1,4 @@
   <a href="#" class="list-group-item">
-    <h4 class="list-group-item-heading">feed.title</h4>
+    <h4 class="list-group-item-heading"><%= "#{feed.class.table_name.titleize.singularize}: #{feed.title}" %></h4>
+    <p class="list-group-item-text"><%= "Submitted on #{feed.created_at} by User" %></p>
   </a>
