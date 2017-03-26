@@ -1,6 +1,16 @@
 <section class="assistances-show">
   <header class="page-header">
-    I need help
+    <h2><%= @assistance.title %></h2>
+    <small>
+      <em>
+      submitted on date <%= @assistance.date %> by <%= @assistance.id %>
+      </em>
+    </small>
+    <div>
+    <%= @assistance.description %>
+    </div>
+
+
   </header>
   <article class="assistance-detail">
   </article>

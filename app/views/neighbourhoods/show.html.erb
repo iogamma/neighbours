@@ -1,3 +1,17 @@
 <div class="list-group">
-  <%= render @feeds %>
+  <% @feeds.each do |feed| %>
+    <%= render 'feed', feed: feed %>
+  <% end %>
+</div>
+
+<div class="list-group">
+  <% @polls.each do |poll| %>
+    <%= render 'poll', poll: poll %>
+  <% end %>
+</div>
+
+<div class="list-group">
+  <% @events.each do |event| %>
+    <%= render 'event', event: event %>
+  <% end %>
 </div>
