@@ -9,11 +9,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     #TODO: add on_council determination logic
-    @user.on_council = true;
+    @user.on_council = false
     #TODO: add unit_id determination logic
     @user.unit_id = 1
-    p "djfl;akdjf;lakdsjf;kjf;askdjfl;"
-    p @user
 
     respond_to do |format|
       if @user.save
