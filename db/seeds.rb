@@ -178,7 +178,7 @@ neigh1.notices.create!({
   email: 'admin@test.com',
   title: Faker::Hipster.sentence,
   description: Faker::Lorem.paragraph(2),
-  date: Faker::Date.forward(60) 
+  date: Faker::Date.forward(60)
 })
 
 neigh1.notices.create!({
