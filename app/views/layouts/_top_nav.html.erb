@@ -1,47 +1,57 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="false">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar" aria-expanded="false" aria-controls="navbar">
+
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Neighbours</a>
-      <% if current_user %>
-        <% if current_user.on_council == true %>
-          <ul class="nav navbar-nav">
-            <li><a href="/admin">Administrator</a></li>
-          </ul>
-        <% end %>
-      <% end %>
+      <%= link_to "Neighbours", root_path, class: "navbar-brand" %>
     </div>
-    <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-2" aria-expanded="false">
-      <% if current_user %>
+
+    <div class="navbar-collapse collapse" id="myNavbar">
+    <% if current_user %>
+
         <ul class="nav navbar-nav">
+          <% if current_user.on_council %>
+            <li><a href="/admin">Administrator</a></li>
+          <% end %>
           <li><a href="/neighbourhoods/:neighbourhood_id/events/new">Create Events</a></li>
           <li><a href="/neighbourhoods/:neighbourhood_id/assistances">Assistance</a></li>
           <li><a href="/neighbourhoods/:neighbourhood_id/notices">Notices</a></li>
           <li><a href="/neighbourhoods/:neighbourhood_id/meetings">Minutes</a></li>
         </ul>
+
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <%= link_to logout_path, confirm: 'Are you sure?', method: :delete do %>
-              <%= fa_icon "sign-out" %> Sign Out
+            <%= link_to logout_path, confirm: "Are you sure?", method: :delete do %>
+              Sign Out <%= fa_icon "sign-out" %>
             <% end %>
           </li>
         </ul>
-      <% else %>
-        <form class="navbar-form navbar-right" role="search">
+
+    <% else %>
+      <%= form_for @user, url: {controller: "sessions", action: "create"}, html: {
+                          class: "navbar-form navbar-right form-inline"} do |form| %>
+
+
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="email">
+            <%= form.label :email %>:
+            <%= form.email_field :email, class: "form-control input-sm" %>
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="password">
+            <%= form.label :password %>:
+            <%= form.password_field  :password, class: "form-control input-sm" %>
           </div>
-          <button type="submit" class="btn btn-default">login</button>
-        </form>
+          <div class="form-group">
+            <input type="submit" value="submit">
+          </div>
+
+
+
       <% end %>
-    </div>
+    <% end %>
   </div>
 </nav>
