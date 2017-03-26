@@ -37,4 +37,5 @@ class AssistancesController < ApplicationController
       :date
     )
   end
+
 end

@@ -121,7 +121,8 @@ user1.events.create!({
   title: Faker::Hipster.sentence,
   description: Faker::Lorem.paragraph(2),
   date: Faker::Date.forward(60),
-  location:'Front yard'
+  location:'Front yard',
+  image: open_asset('p1.jpg')
 })
 
 user2.events.create!({
@@ -129,7 +130,8 @@ user2.events.create!({
   title: Faker::Hipster.sentence,
   description: Faker::Lorem.paragraph(2),
   date: Faker::Date.forward(60),
-  location: 'TBA'
+  location: 'TBA',
+  image: open_asset('p2.jpg')
 })
 
 user2.events.create!({
@@ -137,7 +139,8 @@ user2.events.create!({
   title: Faker::Hipster.sentence,
   description: Faker::Lorem.paragraph(2),
   date: Faker::Date.forward(60),
-  location: 'Basement'
+  location: 'Basement',
+  image: open_asset('p3.jpg')
 })
 
 ## ASSISTANCES
@@ -304,7 +307,7 @@ meet1.documents.create! ({
 #   event_id: 2
 # })
 
-# ## POLLS USERS
+## POLLS USERS
 
 # puts "Re-creating Polls Users ..."
 
