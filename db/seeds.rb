@@ -152,22 +152,19 @@ Assistance.destroy_all
 user1.assistances.create!({
   neighbourhood_id: 1,
   title: Faker::Hipster.sentence,
-  description: Faker::Lorem.paragraph(2),
-  date: Faker::Date.forward(60)
+  description: Faker::Lorem.paragraph(2)
 })
 
 user2.assistances.create!({
   neighbourhood_id: 1,
   title: Faker::Hipster.sentence,
-  description: Faker::Lorem.paragraph(2),
-  date: Faker::Date.forward(60)
+  description: Faker::Lorem.paragraph(2)
 })
 
 user2.assistances.create!({
   neighbourhood_id: 1,
   title: Faker::Hipster.sentence,
-  description: Faker::Lorem.paragraph(2),
-  date: Faker::Date.forward(60)
+  description: Faker::Lorem.paragraph(2)
 })
 
 ## NOTICES
