@@ -1,0 +1,5 @@
+  <%= form_for @assistance do |f| %>
+    Title: <%= f.text :title %>
+    Description: <%= f.text_area :description %>
+    <%= f.submit "Submit Request" %>
+  <% end %>
