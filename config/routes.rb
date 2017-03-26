@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     root to: 'dashboard#show'
     resources :users, only: [:edit, :destroy]
     resources :polls, only: [:create, :edit, :destroy]
+    resources :buildings, only: [:edit]
   end
 
 end
