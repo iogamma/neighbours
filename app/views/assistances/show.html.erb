@@ -3,9 +3,14 @@
     <h2><%= @assistance.title %></h2>
     <small>
       <em>
-      submitted on date <%= @assistance.date %> by <%= @assistance.id %>
+      submitted on date <%= @assistance.created_at %> by <%= @assistance.user_id %>
       </em>
     </small>
+    <% if current_user %>
+      <% if @assistance.user_id == current_user.id  %>
+        <%= link_to fa_icon('trash'), [@neighbourhood, :assistance], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+      <% end %>
+    <% end %>
     <div>
     <%= @assistance.description %>
     </div>

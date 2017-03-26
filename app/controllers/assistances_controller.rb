@@ -16,21 +16,24 @@ class AssistancesController < ApplicationController
   end
 
   def create
+    @neighbourhood = Neighbourhood.find params[:neighbourhood_id]
     @assistance = Assistance.create(assistance_params)
     @assistance.user_id = current_user.id
     @assistance.neighbourhood_id = params[:neighbourhood_id]
 
     if @assistance.save
-      redirect_to [:neighbourhood, @assistances], notice: 'Assistance created'
+      redirect_to [@neighbourhood, :assistances], notice: 'Assistance created'
     else
       render :new
     end
   end
 
   def destroy
+    @neighbourhood = Neighbourhood.find params[:neighbourhood_id]
+    @assistance = Assistance.find params[:id]
     @assistance.destroy
     respond_to do |format|
-      format.html { redirect_to [:neighbourhood, @assistances], notice: 'assistance was successfully destroyed.' }
+      format.html { redirect_to [@neighbourhood, :assistances], notice: 'assistance was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

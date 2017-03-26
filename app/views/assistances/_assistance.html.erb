@@ -6,12 +6,12 @@
       </h3>
       <small>
         <em>
-          submitted on date <%= assistance.created_at %> by <%= assistance.id %>
+          submitted on date <%= assistance.created_at %> by <%= assistance.user_id %>
         </em>
       </small>
       <% if current_user %>
         <% if assistance.user_id == current_user.id  %>
-          <%= link_to fa_icon('trash'), [:assistance], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+          <%= link_to fa_icon('trash'), [@neighbourhood, assistance], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
         <% end %>
       <% end %>
     </div>
