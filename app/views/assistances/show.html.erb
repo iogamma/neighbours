@@ -11,12 +11,8 @@
         <%= link_to fa_icon('trash'), [@neighbourhood, :assistance], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
       <% end %>
     <% end %>
-    <div>
-    <%= @assistance.description %>
-    </div>
-
-
   </header>
   <article class="assistance-detail">
+    <%= @assistance.description %>
   </article>
 </section>
