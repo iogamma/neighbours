@@ -231,98 +231,98 @@ meet1.documents.create! ({
   name: 'First Meeting Doc'
 })
 
-# ## COMMENTS EVENTS
+# EVENTS COMMENTS
 
-# puts "Re-creating Comments Events ..."
+puts "Re-creating Events Comments..."
 
-# Comments_Event.destroy_all
+EventComment.destroy_all
 
-# user1.comments_events.create! ({
-#   content: Faker::Hipster.sentence,
-#   event_id: 1
-# })
+user1.event_comments.create! ({
+  content: Faker::Hipster.sentence,
+  event_id: 1
+})
 
-# user2.comments_events.create! ({
-#   content: Faker::Hipster.sentence,
-#   event_id: 1
-# })
+user2.event_comments.create! ({
+  content: Faker::Hipster.sentence,
+  event_id: 1
+})
 
-# user1.comments_events.create! ({
-#   content: Faker::Hipster.sentence,
-#   event_id: 2
-# })
+user1.event_comments.create! ({
+  content: Faker::Hipster.sentence,
+  event_id: 2
+})
 
-# user1.comments_events.create! ({
-#   content: Faker::Hipster.sentence,
-#   event_id: 2
-# })
+user1.event_comments.create! ({
+  content: Faker::Hipster.sentence,
+  event_id: 2
+})
 
-# ## COMMENTS ASSISTANCES
+## ASSISTANCES COMMENTS
 
-# puts "Re-creating Comments Assistances ..."
+puts "Re-creating Assistances Comments..."
 
-# Comments_Assistance.destroy_all
+AssistanceComment.destroy_all
 
-# user1.comments_assistances.create! ({
-#   content: Faker::Hipster.sentence,
-#   event_id: 1
-# })
+user1.assistance_comments.create! ({
+  content: Faker::Hipster.sentence,
+  assistance_id: 1
+})
 
-# user2.comments_assistances.create! ({
-#   content: Faker::Hipster.sentence,
-#   event_id: 1
-# })
+user2.assistance_comments.create! ({
+  content: Faker::Hipster.sentence,
+  assistance_id: 1
+})
 
-# user1.comments_assistances.create! ({
-#   content: Faker::Hipster.sentence,
-#   event_id: 2
-# })
+user1.assistance_comments.create! ({
+  content: Faker::Hipster.sentence,
+  assistance_id: 2
+})
 
-# user1.comments_assistances.create! ({
-#   content: Faker::Hipster.sentence,
-#   event_id: 2
-# })
+user1.assistance_comments.create! ({
+  content: Faker::Hipster.sentence,
+  assistance_id: 2
+})
 
-# ## EVENTS USERS
+## ATTENDEES
 
-# puts "Re-creating Events Users ..."
+puts "Re-creating Attendees ..."
 
-# Events_User.destroy_all
+Attendee.destroy_all
 
-# user1.events_users.create! ({
-#   attend: "yes",
-#   event_id: 1
-# })
+user1.attendees.create! ({
+  attend: "yes",
+  event_id: 1
+})
 
-# user2.events_users.create! ({
-#   attend: "no",
-#   event_id: 1
-# })
+user2.attendees.create! ({
+  attend: "no",
+  event_id: 1
+})
 
-# user2.events_users.create! ({
-#   attend: "yes",
-#   event_id: 2
-# })
+user2.attendees.create! ({
+  attend: "yes",
+  event_id: 2
+})
 
-## POLLS USERS
+# VOTES
 
-# puts "Re-creating Polls Users ..."
+puts "Re-creating Votes ..."
 
-# Polls_User.destroy_all
+Vote.destroy_all
 
-# user1.polls_users.create! ({
-#   attend: "yes",
-#   event_id: 1
-# })
+user1.votes.create! ({
+  vote: "yes",
+  poll_id: 1
+})
 
-# user2.polls_users.create! ({
-#   attend: "no",
-#   event_id: 1
-# })
+user2.votes.create! ({
+  vote: "no",
+  poll_id: 1
+})
 
-# user2.polls_users.create! ({
-#   attend: "yes",
-#   event_id: 2
-# })
+user2.votes.create! ({
+  vote: "yes",
+  poll_id: 2
+})
 
 puts "DONE!"
