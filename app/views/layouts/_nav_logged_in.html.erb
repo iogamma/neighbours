@@ -1,0 +1,19 @@
+<!-- partial navigation for logged in users -->
+
+  <ul class="nav navbar-nav">
+    <% if current_user.on_council %>
+      <li><a href="/admin">Administrator</a></li>
+    <% end %>
+    <li><a href="/neighbourhoods/:neighbourhood_id/events/new">Create Events</a></li>
+    <li><a href="/neighbourhoods/:neighbourhood_id/assistances">Assistance</a></li>
+    <li><a href="/neighbourhoods/:neighbourhood_id/notices">Notices</a></li>
+    <li><a href="/neighbourhoods/:neighbourhood_id/meetings">Minutes</a></li>
+  </ul>
+
+  <ul class="nav navbar-nav navbar-right">
+    <li>
+      <%= link_to logout_path, confirm: "Are you sure?", method: :delete do %>
+        Sign Out <%= fa_icon "sign-out" %>
+      <% end %>
+    </li>
+  </ul>

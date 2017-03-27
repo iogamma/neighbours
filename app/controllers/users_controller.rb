@@ -8,10 +8,13 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-    #TODO: add on_council determination logic
+    # Defaults to false. Set true by other council members
     @user.on_council = false
-    #TODO: add unit_id determination logic
-    @user.unit_id = 1
+    # Unit_id fetch logic
+    @user.unit_id ||= Unit.find_by_resident_code(user_params[:resident_code]).id;
+    unless @user.unit_id
+      # TODO: Error Logic
+    end
 
     respond_to do |format|
       if @user.save
