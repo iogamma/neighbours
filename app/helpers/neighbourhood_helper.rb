@@ -1,4 +1,5 @@
 module NeighbourhoodHelper
+
   def feed_link (table, feed)
     case table
       when 'notices'
@@ -9,4 +10,13 @@ module NeighbourhoodHelper
         @link = neighbourhood_path
     end
   end
+
+  def array_helper (array, key)
+    new_array = Array.new
+    array.each do |a|
+      new_array << a.key
+    end
+    new_array
+  end
+
 end

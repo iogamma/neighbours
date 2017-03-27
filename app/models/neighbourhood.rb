@@ -5,4 +5,5 @@ class Neighbourhood < ApplicationRecord
   has_many :notices
   has_many :polls
   has_many :users
+
 end

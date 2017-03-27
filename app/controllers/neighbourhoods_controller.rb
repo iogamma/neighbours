@@ -4,8 +4,7 @@ class NeighbourhoodsController < ApplicationController
     render 'index'
   end
 
-  def show
-    
+  def show  
     @notices = Notice.where(neighbourhood_id: params[:id])
     @assistances = Assistance.where(neighbourhood_id: params[:id])
     @feeds = (@assistances + @notices).sort_by(&:created_at).reverse
