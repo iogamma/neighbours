@@ -1,6 +1,14 @@
   <div href="#" class="list-group-item">
     <h4 class="list-group-item-heading"><%= poll.title %></h4>
     <p class="list-group-item-text"><%= "Submitted on #{poll.created_at} by User" %></p>
+    
+    <div class="progress">
+      <div class="progress-bar" style="width: 60%;"></div>
+    </div>
+    <div class="progress">
+      <div class="progress-bar progress-bar-danger" style="width: 80%"></div>
+    </div>
+    
     <a href="#" class="btn btn-default">Yes</a>
     <a href="#" class="btn btn-default">No</a>
   </div>
