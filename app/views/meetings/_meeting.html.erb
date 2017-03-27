@@ -1,0 +1,36 @@
+<article class="meeting">
+  <header>
+    <div class="alert alert-dismissible alert-info" id="accordion" role="tablist" aria-multiselectable="true">
+      <a role="button" data-toggle="collapse" href="#<%= meeting.id %>">
+        <h3>
+          <%= meeting.date %>
+          <%= meeting.title %>
+        </h3>
+      </a>
+      <small>
+        <em>
+          uploaded on date <%= meeting.created_at %> by <%= meeting.user_id %>
+        </em>
+      </small>
+      <% if current_user %>
+        <% if meeting.user_id == current_user.id  %>
+          <%= link_to fa_icon('trash'), [@neighbourhood, meeting], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+        <% end %>
+      <% end %>
+      <div id="<%= meeting.id %>" class="collapse">
+        <div class="panel-body">
+          <div>
+            Location: <%= meeting.location  %>
+          </div>
+            <%=  meeting.documents  %>
+            <%= meeting.videos %>
+        </div>
+      </div>
+    </div>
+  </header>
+</article>
+
+
+
+
+

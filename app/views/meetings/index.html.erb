@@ -1,11 +1,26 @@
 <section class="meetings-index">
 
   <header class="page-header">
-    <h1>Meeting</h1>
+    <% if current_user  %>
+      <% if current_user.on_council == true %>
+        <div class="well" id="accordion" role="tablist" aria-multiselectable="true">
+          <a role="button" class="btn btn-info" data-toggle="collapse" href="#new_meeting">
+          Post New Meeting Minutes
+          </a>
+          <div id="new_meeting" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+              <%= render 'form'  %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+    <h1>Past Meetings:</h1>
   </header>
-
   <div class="meeting">
-    render @meetings
+    <%= render @meetings %>
   </div>
 
 </section>
+
+

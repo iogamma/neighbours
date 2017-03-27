@@ -1,0 +1,86 @@
+<div class="row">
+  <div class="col-sm-1"></div>
+  <div class="col-sm-10">
+    <div class="alert alert-dismissible alert-info">
+      <fieldset>
+        <legend>Post Meeting</legend>
+        <%= form_for [:neighbourhood, @meeting] do |form| %>
+
+          <% if form.object.errors.any? %>
+            <div class="alert alert-danger">
+              <strong>The following errors prevented saving:</strong>
+              <ul>
+                <% form.object.errors.full_messages.each do |error| %>
+                  <li><%= error %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="form-horizontal">
+            <fieldset>
+
+              <div class="row">
+                <div class="form-group">
+                  <div class="col-sm-2">
+                    <%= form.label :Title, class: "control-label" %>
+                  </div>
+                  <div class="col-sm-10">
+                    <%= form.text_field :title, class: "form-control" %>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group">
+                  <div class="col-sm-2">
+                    <%= form.label :Location, class: "control-label" %>
+                  </div>
+                  <div class="col-sm-10">
+                    <%= form.text_field :location, class: "form-control" %>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group">
+                  <div class="col-sm-2">
+                    <%= form.label :Date, class: "control-label" %>
+                  </div>
+                  <div class="col-sm-10">
+                    <%= form.date_field :date, class: "form-control" %>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group">
+                  <div class="col-sm-2">
+                    <%= form.label :Document, class: "control-label" %>
+                  </div>
+                  <div class="col-sm-4">
+                    <%= file_field_tag :document, class: "form-control" %>
+                  </div>
+                  <div class="col-sm-2">
+                    <%= form.label :Video, class: "control-label" %>
+                  </div>
+                  <div class="col-sm-4">
+                    <%= file_field_tag :video, class: "form-control" %>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= form.submit "Post meeting", class: "btn btn-primary" %>
+              </div>
+
+            </fieldset>
+          </div>
+        <% end %>
+
+      </fieldset>
+    </div>
+  </div>
+  <div class="col-sm-1"></div>
+</div>
+

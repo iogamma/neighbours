@@ -28,6 +28,14 @@
 
 @import "bootstrap/bootstrap-rails-popover";
 
-.navbar-form {
-  color: white
+.navbar .login_form {
+  color: white;
+}
+
+.navbar .login_form .login_email {
+  padding: 8px;
+}
+
+.navbar .login_form .login_password {
+  padding: 8px;
 }
