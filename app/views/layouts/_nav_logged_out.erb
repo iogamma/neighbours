@@ -1,0 +1,23 @@
+<!-- partial navigation for logged in users -->
+
+  <%= form_for @user, url: login_path,
+                      html: {class: "form-inline login_form"} do |form| %>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="form-group login_email">
+        <%= form.label :email %>:
+        <%= form.email_field :email, class: "form-control input-sm" %>
+      </li>
+      <li class="form-group login_password">
+        <%= form.label :password %>:
+        <%= form.password_field  :password, class: "form-control input-sm" %>
+      </li>
+      <li class="form-group">
+        <%= link_to "", onclick: "$('.login_form').submit()" do %>
+           <%= fa_icon "sign-in" %> Sign In
+        <% end %>
+      </li>
+    </ul>
+  <% end %>
+
+
+
