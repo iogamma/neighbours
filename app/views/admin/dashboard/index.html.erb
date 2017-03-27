@@ -1,5 +1,13 @@
-<%= form_for [:admin, @unit], remote: false do |f| %>
-  <%= f.label :unit_number %>
-  <%= f.text_field :unit_number %>
-  <%= f.submit("Generate") %>
-<% end %>
+<div class="row">
+  <div class="col-sm-6">
+    <%= render partial: "admin/dashboard/neighbourhood_info" %>
+    <%= render partial: "admin/dashboard/chat_box" %>
+    <%= render partial: "admin/dashboard/polls_form" %>
+    <%= render partial: "admin/dashboard/polls_view" %>
+  </div>
+  <div class="col-sm-6">
+    <%= render partial: "admin/dashboard/alert_box" %>
+    <%= render partial: "admin/dashboard/code_generator" %>
+    <%= render partial: "admin/dashboard/user_search" %>
+  </div>
+</div>
