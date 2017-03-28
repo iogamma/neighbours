@@ -3,6 +3,8 @@ class SessionsController < ApplicationController
   def create
       if user = User.authenticate_with_credentials(user_params)
         session[:user_id] = user.id
+        # TODO: Assign signed cookie for admin only
+        cookies.signed[:user_id] = user.id
         flash[:notice] = "You are now logged in."
         redirect_to root_path
       else
@@ -15,6 +17,8 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
+    # TODO: Perform for admins
+    cookies.signed[:user_id] = nil
     flash[:notice] = "You have been logged out."
     redirect_to root_path
   end
