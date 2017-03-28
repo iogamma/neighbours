@@ -1,0 +1,24 @@
+<section class="events-show">
+  <header class="page-header">
+    <div class="well">
+      <%= link_to 'Create New Event', new_neighbourhood_event_path, class: 'btn btn-info' %>
+    </div>
+    <div class="image-container">  
+      <%= image_tag @event.image, alt: @event.title, class:"event-image img-responsive"%>
+    </div>
+    <h2><%= @event.title %></h2>
+    <small>
+      <em>
+      submitted on date <%= @event.created_at %> by <%= @event.user_id %>
+      </em>
+    </small>
+    <% if current_user %>
+      <% if @event.user_id == current_user.id  %>
+        <%= link_to fa_icon('trash'), [@neighbourhood, :assistance], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+      <% end %>
+    <% end %>
+  </header>
+  <article class="assistance-detail">
+    <%= @event.description %>
+  </article>
+</section>

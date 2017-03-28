@@ -10,17 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171024175361) do
+ActiveRecord::Schema.define(version: 20171024175364) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "alerts", force: :cascade do |t|
-    t.string   "email",      null: false
-    t.string   "first_name", null: false
-    t.text     "message",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "assistance_comments", force: :cascade do |t|
+    t.text     "content",       null: false
+    t.integer  "assistance_id", null: false
+    t.integer  "user_id",       null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["assistance_id"], name: "index_assistance_comments_on_assistance_id", using: :btree
+    t.index ["user_id"], name: "index_assistance_comments_on_user_id", using: :btree
+
   end
 
   create_table "assistances", force: :cascade do |t|
@@ -33,6 +36,16 @@ ActiveRecord::Schema.define(version: 20171024175361) do
     t.index ["user_id"], name: "index_assistances_on_user_id", using: :btree
   end
 
+  create_table "attendees", force: :cascade do |t|
+    t.string   "attend",     null: false
+    t.integer  "event_id",   null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_attendees_on_event_id", using: :btree
+    t.index ["user_id"], name: "index_attendees_on_user_id", using: :btree
+  end
+
   create_table "buildings", force: :cascade do |t|
     t.text     "address",          null: false
     t.string   "name",             null: false
@@ -42,26 +55,6 @@ ActiveRecord::Schema.define(version: 20171024175361) do
     t.index ["neighbourhood_id"], name: "index_buildings_on_neighbourhood_id", using: :btree
   end
 
-  create_table "comments_assistances", force: :cascade do |t|
-    t.text     "content",       null: false
-    t.integer  "assistance_id", null: false
-    t.integer  "user_id",       null: false
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["assistance_id"], name: "index_comments_assistances_on_assistance_id", using: :btree
-    t.index ["user_id"], name: "index_comments_assistances_on_user_id", using: :btree
-  end
-
-  create_table "comments_events", force: :cascade do |t|
-    t.text     "content",    null: false
-    t.integer  "event_id",   null: false
-    t.integer  "user_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_comments_events_on_event_id", using: :btree
-    t.index ["user_id"], name: "index_comments_events_on_user_id", using: :btree
-  end
-
   create_table "documents", force: :cascade do |t|
     t.string   "location",   null: false
     t.string   "name",       null: false
@@ -69,6 +62,16 @@ ActiveRecord::Schema.define(version: 20171024175361) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["meeting_id"], name: "index_documents_on_meeting_id", using: :btree
+  end
+
+  create_table "event_comments", force: :cascade do |t|
+    t.text     "content",    null: false
+    t.integer  "event_id",   null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_event_comments_on_event_id", using: :btree
+    t.index ["user_id"], name: "index_event_comments_on_user_id", using: :btree
   end
 
   create_table "events", force: :cascade do |t|
@@ -82,16 +85,6 @@ ActiveRecord::Schema.define(version: 20171024175361) do
     t.integer  "neighbourhood_id"
     t.string   "image"
     t.index ["user_id"], name: "index_events_on_user_id", using: :btree
-  end
-
-  create_table "events_users", force: :cascade do |t|
-    t.string   "attend",     null: false
-    t.integer  "event_id",   null: false
-    t.integer  "user_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_events_users_on_event_id", using: :btree
-    t.index ["user_id"], name: "index_events_users_on_user_id", using: :btree
   end
 
   create_table "meetings", force: :cascade do |t|
@@ -138,16 +131,6 @@ ActiveRecord::Schema.define(version: 20171024175361) do
     t.index ["user_id"], name: "index_polls_on_user_id", using: :btree
   end
 
-  create_table "polls_users", force: :cascade do |t|
-    t.string   "vote",       null: false
-    t.integer  "poll_id",    null: false
-    t.integer  "user_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["poll_id"], name: "index_polls_users_on_poll_id", using: :btree
-    t.index ["user_id"], name: "index_polls_users_on_user_id", using: :btree
-  end
-
   create_table "units", force: :cascade do |t|
     t.string   "resident_code", null: false
     t.string   "unit_number",   null: false
@@ -179,24 +162,34 @@ ActiveRecord::Schema.define(version: 20171024175361) do
     t.index ["meeting_id"], name: "index_videos_on_meeting_id", using: :btree
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.string   "vote",       null: false
+    t.integer  "poll_id",    null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["poll_id"], name: "index_votes_on_poll_id", using: :btree
+    t.index ["user_id"], name: "index_votes_on_user_id", using: :btree
+  end
+
+  add_foreign_key "assistance_comments", "assistances"
+  add_foreign_key "assistance_comments", "users"
   add_foreign_key "assistances", "neighbourhoods"
   add_foreign_key "assistances", "users"
+  add_foreign_key "attendees", "events"
+  add_foreign_key "attendees", "users"
   add_foreign_key "buildings", "neighbourhoods"
-  add_foreign_key "comments_assistances", "assistances"
-  add_foreign_key "comments_assistances", "users"
-  add_foreign_key "comments_events", "events"
-  add_foreign_key "comments_events", "users"
   add_foreign_key "documents", "meetings"
+  add_foreign_key "event_comments", "events"
+  add_foreign_key "event_comments", "users"
   add_foreign_key "events", "neighbourhoods"
   add_foreign_key "events", "users"
-  add_foreign_key "events_users", "events"
-  add_foreign_key "events_users", "users"
   add_foreign_key "meetings", "neighbourhoods"
   add_foreign_key "notices", "neighbourhoods"
   add_foreign_key "polls", "neighbourhoods"
-  add_foreign_key "polls_users", "polls"
-  add_foreign_key "polls_users", "users"
   add_foreign_key "units", "buildings"
   add_foreign_key "users", "units"
   add_foreign_key "videos", "meetings"
+  add_foreign_key "votes", "polls"
+  add_foreign_key "votes", "users"
 end

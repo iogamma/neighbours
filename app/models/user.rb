@@ -6,6 +6,10 @@ class User < ApplicationRecord
   has_many :notices
   has_many :events
   has_many :assistances
+  has_many :assistance_comments
+  has_many :attendees
+  has_many :event_comments
+  has_many :votes
 
   def self.authenticate_with_credentials(params)
     user = User.arel_table
