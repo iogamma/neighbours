@@ -1,5 +1,6 @@
  <section class="dashboard-show"> 
  
+ <div class="jumbotron">
    <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <% @events.each_with_index do |event, n| %>
@@ -26,16 +27,18 @@
       <span class="glyphicon glyphicon-chevron-right"></span>
     </a>
   </div>
+</div>
 
-  <div id="dashboard-feeds" class="list-group">
+  <div class="dashboard-feeds">
     <% @feeds.each do |feed| %>
       <%= render 'feed', feed: feed %>
     <% end %>
   </div>
-  <div id="dashboard-polls" class="list-group">
-    <% @polls.each do |poll| %>
-      <%= render 'poll', neighbourhood_id: @neighbourhood.id, poll: poll %>
-    <% end %>
-  </div>
+  
+    <div class="dashboard-polls">
+      <% @polls.each do |poll| %>
+        <%= render 'poll', neighbourhood_id: @neighbourhood.id, poll: poll %>
+      <% end %>
+    </div>
 
 </section>
