@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="row">
+      <div class="col-sm-12">
+        <h2>Alert Residents</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 pre-scrollable alert_feed">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <%= form_tag admin_alert_path, remote: true do %>
+          <%= text_field_tag 'message', nil, data: { behavior: "alert_speaker" } %>
+          <%= submit_tag 'alert' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

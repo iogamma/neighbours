@@ -26,6 +26,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: 'dashboard#index'
+    post :alert, to: 'dashboard#alert'
     resources :users, only: [:edit, :destroy]
     resources :polls, only: [:create, :edit, :destroy]
     resources :units, only: [:update]
