@@ -1,14 +1,17 @@
   <div href="#" class="list-group-item">
     <h4 class="list-group-item-heading"><%= poll.title %></h4>
     <p class="list-group-item-text"><%= "Submitted on #{poll.created_at} by User" %></p>
-    
     <div class="progress">
-      <div class="progress-bar" style="width: 60%;"></div>
+      <div class="progress-bar" style="width: <%= number_to_percentage(Vote.yes_calculation(poll.id), precision: 0)%>">Yes</div>
     </div>
     <div class="progress">
-      <div class="progress-bar progress-bar-danger" style="width: 80%"></div>
+      <div class="progress-bar progress-bar-danger" style="width: <%= number_to_percentage(Vote.no_calculation(poll.id), precision: 0)%>">No</div>
     </div>
-    
-    <a href="#" class="btn btn-default">Yes</a>
-    <a href="#" class="btn btn-default">No</a>
+
+    <% if !Vote.where(poll_id: poll.id, user_id: current_user.id).empty? %>
+      <h3>Thank you for voting!</h3>
+    <% else %>
+      <%= link_to "Yes", neighbourhood_poll_path(neighbourhood_id: neighbourhood_id, id: poll.id, vote: "yes", poll: poll.id), class: 'btn btn-default', method: 'put' %>
+      <%= link_to "No", neighbourhood_poll_path(neighbourhood_id: neighbourhood_id, id: poll, vote: "no", poll: poll.id), class: 'btn btn-default', method: 'put' %>
+    <% end %>
   </div>

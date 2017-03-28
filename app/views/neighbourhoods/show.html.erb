@@ -32,10 +32,9 @@
       <%= render 'feed', feed: feed %>
     <% end %>
   </div>
-
   <div id="dashboard-polls" class="list-group">
     <% @polls.each do |poll| %>
-      <%= render 'poll', poll: poll %>
+      <%= render 'poll', neighbourhood_id: @neighbourhood.id, poll: poll %>
     <% end %>
   </div>
 

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :assistances do
       resources :comments, only: [:create, :destroy]
     end
+    resources :polls, only: [:update]
     resources :meetings
     resources :notices
   end
