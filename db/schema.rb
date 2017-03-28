@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20171024175364) do
     t.datetime "updated_at",    null: false
     t.index ["assistance_id"], name: "index_assistance_comments_on_assistance_id", using: :btree
     t.index ["user_id"], name: "index_assistance_comments_on_user_id", using: :btree
+
   end
 
   create_table "assistances", force: :cascade do |t|
