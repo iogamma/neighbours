@@ -1,6 +1,6 @@
-  <div class="list-group-item">
-    <h4 class="list-group-item-heading">
+  <div class="well dashboard-feed">
+    <h4>
       <%= link_to "#{feed.class.table_name.titleize.singularize}: #{feed.title}", feed_link(feed.class.table_name, feed) %>
     </h4>
-    <p class="list-group-item-text"><%= "Submitted on #{feed.created_at} by User" %></p>
+    <h5><%= "Submitted on #{feed.created_at} by User" %></h5>
   </div>
