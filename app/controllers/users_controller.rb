@@ -20,7 +20,7 @@ class UsersController < ApplicationController
       if @user.save
         session[:user_id] = @user.id
         # TODO: Assign signed cookie for admin only
-        cookies.signed[:user_id] = user.id
+        cookies.signed[:user_id] = @user.id
         format.html { redirect_to root_path, notice: "Registration successful" }
         format.json { render :show, status: :created, location: @user }
       else

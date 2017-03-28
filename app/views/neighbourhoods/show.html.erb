@@ -11,11 +11,22 @@
     <div class="carousel-inner">
       <div class="item active">
         <%= image_tag @events.first.image, alt: @events.first.title, class: "d-block img-fluid" %>
-        <div class="carousel-caption d-none d-md-block"></div>
-      </div>
+            <div class="carousel-caption">
+                <h3><%= @events.first.title%></h3>
+                <p><%= "Location: #{@events.first.date}" %></p>
+                <p><%= "Location: #{@events.first.location}" %></p>
+                <a class="btn btn-default">Details</a>
+            </div>
+        </div>
       <% @events.drop(1).each do |event| %>
         <div class="item">
           <%= image_tag event.image, alt: event.title, class: "d-block img-fluid" %>
+            <div class="carousel-caption">
+              <h3><%= event.title%></h3>
+              <p><%= "Location: #{event.date}" %></p>
+              <p><%= "Location: #{event.location}" %></p>
+              <a class="btn btn-default">Details</a>
+            </div>
         </div>
       <% end %>
     </div>
@@ -29,11 +40,11 @@
   </div>
 </div>
 
-  <div class="dashboard-feeds">
-    <% @feeds.each do |feed| %>
-      <%= render 'feed', feed: feed %>
-    <% end %>
-  </div>
+    <div class="dashboard-feeds">
+      <% @feeds.each do |feed| %>
+        <%= render 'feed', feed: feed %>
+      <% end %>
+    </div>
   
     <div class="dashboard-polls">
       <% @polls.each do |poll| %>
