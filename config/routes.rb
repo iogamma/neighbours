@@ -9,8 +9,11 @@ Rails.application.routes.draw do
     resources :assistances do
       resources :comments, only: [:create, :destroy]
     end
-    resources :meetings
+    resources :meetings do
+      resources :videos
+    end
     resources :notices
+
   end
 
   # resources :user, only: [:new, :create] do

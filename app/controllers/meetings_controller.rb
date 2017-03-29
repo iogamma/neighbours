@@ -6,6 +6,7 @@ class MeetingsController < ApplicationController
     @meeting = Meeting.new
     @meeting.user_id = current_user.id
     @meeting.neighbourhood_id = params[:neighbourhood_id]
+    @video = Video.new
   end
 
   def create
@@ -21,9 +22,14 @@ class MeetingsController < ApplicationController
     end
   end
 
+  def update
+    @neighbourhood = Neighbourhood.find params[:neighbourhood_id]
+    @meetings = Meeting.all.where(neighbourhood_id: params[:neighbourhood_id]).order(created_at: :desc)
+  end
+
   def destroy
     @neighbourhood = Neighbourhood.find params[:neighbourhood_id]
-    @meeting = Assistance.find params[:id]
+    @meeting = Meeting.find params[:id]
     @meeting.destroy
     respond_to do |format|
       format.html { redirect_to [@neighbourhood, :meetings], notice: 'meeting was successfully destroyed.' }
@@ -40,5 +46,6 @@ class MeetingsController < ApplicationController
       :date
     )
   end
+
 
 end
