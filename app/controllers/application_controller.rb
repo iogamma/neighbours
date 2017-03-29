@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
 
   def users_building
     users_unit ||= Unit.find_by_resident_code(current_user.resident_code) if current_user
-    users_building ||= Building.find(users_unit[:building_id])
+    users_building ||= Building.find(users_unit.building_id)
   end
   helper_method :users_building
 
