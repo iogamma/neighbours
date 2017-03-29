@@ -10,8 +10,9 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
     end
     resources :meetings do
-      resources :videos
+      resources :videos, only: [:create, :destroy]
     end
+    resources :polls, only: [:update]
     resources :notices
 
   end
@@ -28,6 +29,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: 'dashboard#index'
+    post :alert, to: 'dashboard#alert'
     resources :users, only: [:edit, :destroy]
     resources :polls, only: [:create, :edit, :destroy]
     resources :units, only: [:update]

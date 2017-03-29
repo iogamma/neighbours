@@ -167,11 +167,101 @@ user2.assistances.create!({
   description: Faker::Lorem.paragraph(2)
 })
 
+user2.assistances.create!({
+  neighbourhood_id: 1,
+  title: Faker::Hipster.sentence,
+  description: Faker::Lorem.paragraph(2)
+})
+
+user2.assistances.create!({
+  neighbourhood_id: 1,
+  title: Faker::Hipster.sentence,
+  description: Faker::Lorem.paragraph(2)
+})
+
+user2.assistances.create!({
+  neighbourhood_id: 1,
+  title: Faker::Hipster.sentence,
+  description: Faker::Lorem.paragraph(2)
+})
+
+user2.assistances.create!({
+  neighbourhood_id: 1,
+  title: Faker::Hipster.sentence,
+  description: Faker::Lorem.paragraph(2)
+})
+
+user2.assistances.create!({
+  neighbourhood_id: 1,
+  title: Faker::Hipster.sentence,
+  description: Faker::Lorem.paragraph(2)
+})
+
+user2.assistances.create!({
+  neighbourhood_id: 1,
+  title: Faker::Hipster.sentence,
+  description: Faker::Lorem.paragraph(2)
+})
+
+user2.assistances.create!({
+  neighbourhood_id: 1,
+  title: Faker::Hipster.sentence,
+  description: Faker::Lorem.paragraph(2)
+})
+
 ## NOTICES
 
 puts "Re-creating Notices ..."
 
 Notice.destroy_all
+
+neigh1.notices.create!({
+  user_id: 1,
+  email: 'admin@test.com',
+  title: Faker::Hipster.sentence,
+  description: Faker::Lorem.paragraph(2),
+  date: Faker::Date.forward(60)
+})
+
+neigh1.notices.create!({
+  user_id: 1,
+  email: 'admin@test.com',
+  title: Faker::Hipster.sentence,
+  description: Faker::Lorem.paragraph(2),
+  date: Faker::Date.forward(60)
+})
+
+neigh1.notices.create!({
+  user_id: 1,
+  email: 'admin@test.com',
+  title: Faker::Hipster.sentence,
+  description: Faker::Lorem.paragraph(2),
+  date: Faker::Date.forward(60)
+})
+
+neigh1.notices.create!({
+  user_id: 1,
+  email: 'admin@test.com',
+  title: Faker::Hipster.sentence,
+  description: Faker::Lorem.paragraph(2),
+  date: Faker::Date.forward(60)
+})
+
+neigh1.notices.create!({
+  user_id: 1,
+  email: 'admin@test.com',
+  title: Faker::Hipster.sentence,
+  description: Faker::Lorem.paragraph(2),
+  date: Faker::Date.forward(60)
+})
+
+neigh1.notices.create!({
+  user_id: 1,
+  email: 'admin@test.com',
+  title: Faker::Hipster.sentence,
+  description: Faker::Lorem.paragraph(2),
+  date: Faker::Date.forward(60)
+})
 
 neigh1.notices.create!({
   user_id: 1,
