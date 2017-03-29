@@ -1,0 +1,7 @@
+$('#feeds').append('<% @feeds.each do |feed| %> <%= j render 'feed', feed: feed %><% end %>');
+<% if @feeds.next_page %>
+  $('.pagination').replaceWith('<%= j paginate @feeds %>')
+<% else %>
+  $('.pagination').remove()
+<% end %>
+
