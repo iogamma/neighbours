@@ -49,7 +49,6 @@
     <%= paginate @feeds %>
   </div>
 
-
     <div class="dashboard-polls">
       <% @polls.each do |poll| %>
         <%= render 'poll', neighbourhood_id: @neighbourhood.id, poll: poll %>
