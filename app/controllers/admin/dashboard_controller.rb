@@ -10,4 +10,7 @@ class Admin::DashboardController < ApplicationController
       format.js {}
     end
   end
+
+  def chat
+  end
 end
