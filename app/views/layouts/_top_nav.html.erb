@@ -1,6 +1,5 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
-
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#my_navbar" aria-expanded="false" aria-controls="navbar">
         <span class="sr-only">Toggle navigation</span>
@@ -10,12 +9,11 @@
       </button>
       <%= link_to "Neighbours", root_path, class: "navbar-brand" %>
     </div>
-
     <div class="navbar-collapse collapse" id="my_navbar">
-      <% if current_user %>
-        <%= render partial: "layouts/nav_logged_in" %>
-      <% else %>
+      <% unless current_user %>
         <%= render partial: "layouts/nav_logged_out" %>
+      <% else %>
+        <%= render partial: "layouts/nav_logged_in" %>
       <% end %>
     </div>
 

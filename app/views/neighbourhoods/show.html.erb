@@ -1,11 +1,11 @@
- <section class="dashboard-show"> 
- 
+<section class="dashboard-show">
+
  <div class="jumbotron">
    <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <% @events.each_with_index do |event, n| %>
         <li data-target="#myCarousel" data-slide-to="<%= n %>" class="<%='active' if n == 0%>"></li>
-      <% end %>    
+      <% end %>
     </ol>
 
     <div class="carousel-inner">
@@ -45,7 +45,7 @@
         <%= render 'feed', feed: feed %>
       <% end %>
     </div>
-  
+
     <div class="dashboard-polls">
       <% @polls.each do |poll| %>
         <%= render 'poll', neighbourhood_id: @neighbourhood.id, poll: poll %>
