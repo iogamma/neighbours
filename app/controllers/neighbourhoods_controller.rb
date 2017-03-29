@@ -3,7 +3,6 @@ class NeighbourhoodsController < ApplicationController
     render 'index'
   end
 
-
   def show
     user_neighbourhood_id = users_building.neighbourhood_id
     @notices = Notice.where(neighbourhood_id: user_neighbourhood_id)

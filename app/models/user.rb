@@ -11,12 +11,12 @@ class User < ApplicationRecord
   has_many :event_comments
   has_many :votes
 
-  def self.authenticate_with_credentials(params)
+  def self.authenticate_with_credentials(email, password)
     user = User.arel_table
-    email_filtered = params[:email].strip
+    email_filtered = email.strip
     #prepend('%').concat('%')
     @user = User.where(user[:email].matches(email_filtered))[0]
-    if @user && @user.authenticate(params[:password])
+    if @user && @user.authenticate(password)
       return @user
     else
       return nil

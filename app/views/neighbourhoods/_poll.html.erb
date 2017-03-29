@@ -1,6 +1,6 @@
   <div class="well dashboard-feed">
     <h4><%= poll.title %></h4>
-      <h5>submitted on date <%= poll.created_at %> by <%= 'user' %></h5>
+      <h5>Submitted <%= time_ago_in_words(poll.created_at) %> ago by <%= find_user(poll.user_id).first_name %> <%= find_user(poll.user_id).last_name %></h5>
    
       <div class="progress">
         <div class="progress-bar" style="width: <%= number_to_percentage(Vote.yes_calculation(poll.id), precision: 0)%>">Yes</div>

@@ -1,6 +1,5 @@
   <div class="well dashboard-feed">
-    <h4>
-      <%= link_to "#{feed.class.table_name.titleize.singularize}: #{feed.title}", feed_link(feed.class.table_name, feed) %>
-    </h4>
-    <h5><%= "Submitted on #{feed.created_at} by User" %></h5>
+    <h4><%= link_to "#{feed.title}", feed_link(feed.class.table_name, feed) %></h4>
+    <%= select_notification(feed.class.table_name)%>
+    <h5>Submitted <%= time_ago_in_words(feed.created_at) %> ago by <%= find_user(feed.user_id).first_name %> <%= find_user(feed.user_id).last_name %></h5>
   </div>
