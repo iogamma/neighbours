@@ -43,6 +43,34 @@
               </fieldset>
             </div>
           <% end  %>
+          <%= form_for [@neighbourhood, meeting, @document] do |form| %>
+            <div class="form-horizontal">
+              <fieldset>
+                <div class="row">
+                  <div class="form-group">
+                    <div class="col-sm-2 control-label">
+                      <strong>Add New Document</strong>
+                    </div>
+                    <div class="col-sm-1">
+                      <%= form.label :name, class: "control-label" %>
+                    </div>
+                    <div class="col-sm-3">
+                      <%= form.text_field :name, class: "form-control" %>
+                    </div>
+                    <div class="col-sm-1">
+                      <%= form.label :upload, class: "control-label" %>
+                    </div>
+                    <div class="col-sm-3">
+                      <%= form.file_field :location, class: "form-control" %>
+                    </div>
+                    <div class="col-sm-2">
+                      <%= form.submit "Add Document", class: "btn btn-primary" %>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          <% end %>
         <% end %>
       <% end %>
       <div id="<%= meeting.id %>" class="collapse">
@@ -50,6 +78,16 @@
           <div>
             Location: <%= meeting.location  %>
           </div>
+
+          <% meeting.documents.each do |document| %>
+            <a href=" <%= document.location  %> "><%= document['location'] %></a>
+            <% if current_user %>
+              <% if meeting.user_id == current_user.id  %>
+                <%= link_to fa_icon('trash'), [@neighbourhood, meeting, document], class: 'btn btn-sm btn-danger', method: :delete, file: { confirm: "Are you sure?" } %>
+              <% end  %>
+            <% end %>
+          <% end %>
+
           <% meeting.videos.each do |video| %>
             <iframe
               width="560"

@@ -7,6 +7,7 @@ class MeetingsController < ApplicationController
     @meeting.user_id = current_user.id
     @meeting.neighbourhood_id = params[:neighbourhood_id]
     @video = Video.new
+    @document = Document.new
   end
 
   def create

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     end
     resources :meetings do
       resources :videos, only: [:create, :destroy]
+      resources :documents, only: [:create, :destroy, :show]
     end
     resources :polls, only: [:update]
     resources :notices
