@@ -10,17 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171024175365) do
+ActiveRecord::Schema.define(version: 20171024175366) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "alerts", force: :cascade do |t|
-    t.string   "email",      null: false
-    t.string   "first_name", null: false
-    t.text     "message",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "email",            null: false
+    t.string   "first_name",       null: false
+    t.text     "message",          null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "neighbourhood_id"
   end
 
   create_table "assistance_comments", force: :cascade do |t|
@@ -179,6 +180,7 @@ ActiveRecord::Schema.define(version: 20171024175365) do
     t.index ["user_id"], name: "index_votes_on_user_id", using: :btree
   end
 
+  add_foreign_key "alerts", "neighbourhoods"
   add_foreign_key "assistance_comments", "assistances"
   add_foreign_key "assistance_comments", "users"
   add_foreign_key "assistances", "neighbourhoods"

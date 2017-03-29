@@ -1,18 +1,24 @@
 class SessionsController < ApplicationController
 
+  def new
+    redirect_to root_path
+  end
+
   def create
-      if user = User.authenticate_with_credentials(user_params)
-        session[:user_id] = user.id
-        # TODO: Assign signed cookie for admin only
-        cookies.signed[:user_id] = user.id
-        flash[:notice] = "You are now logged in."
-        redirect_to root_path
-      else
-      # If user's login doesn't work, tell them
-      # and send them back to the login form.
-        flash[:alert] = "Your login credentials do not match"
-        redirect_to register_path
-      end
+    if user = User.authenticate_with_credentials(params[:email].first, params[:password].first)
+      session[:user_id] = user.id
+      # TODO: Assign signed cookie for admin only
+      cookies.signed[:user_id] = user.id
+      users_hood_id = users_building.neighbourhood_id
+
+      flash[:notice] = "You are now logged in."
+      redirect_to neighbourhood_path(users_hood_id)
+    else
+    # If user's login doesn't work, tell them
+    # and send them back to the login form.
+      flash[:alert] = "Your login credentials do not match"
+      redirect_to register_path
+    end
   end
 
   def destroy
@@ -23,9 +29,4 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
-  private
-    def user_params
-      params.require(:user).permit(:email,
-                                   :password)
-    end
 end
