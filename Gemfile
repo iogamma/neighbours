@@ -37,6 +37,7 @@ gem 'bootswatch-rails'
 gem 'font-awesome-rails'
 gem 'bootstrap-popover-rails'
 gem 'carrierwave', '~> 1.0'
+gem 'kaminari'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

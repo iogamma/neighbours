@@ -40,12 +40,15 @@
   </div>
 </div>
 
-    <div class="dashboard-feeds">
+  <div class="dashboard-feeds">
+    <div id="feeds">
       <% @feeds.each do |feed| %>
         <%= render 'feed', feed: feed %>
       <% end %>
     </div>
-  
+    <%= paginate @feeds %>
+  </div>
+
     <div class="dashboard-polls">
       <% @polls.each do |poll| %>
         <%= render 'poll', neighbourhood_id: @neighbourhood.id, poll: poll %>
