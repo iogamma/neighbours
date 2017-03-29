@@ -16,7 +16,6 @@ class AssistancesController < ApplicationController
   end
 
   def create
-    @neighbourhood = Neighbourhood.find params[:neighbourhood_id]
     @assistance = Assistance.create(assistance_params)
     @assistance.user_id = current_user.id
     @assistance.neighbourhood_id = params[:neighbourhood_id]

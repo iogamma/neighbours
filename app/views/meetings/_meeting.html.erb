@@ -15,6 +15,34 @@
       <% if current_user %>
         <% if meeting.user_id == current_user.id  %>
           <%= link_to fa_icon('trash'), [@neighbourhood, meeting], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+          <%= form_for [@neighbourhood, meeting, @video] do |form| %>
+            <div class="form-horizontal">
+              <fieldset>
+                <div class="row">
+                  <div class="form-group">
+                    <div class="col-sm-2 control-label">
+                      <strong>Add New Video</strong>
+                    </div>
+                    <div class="col-sm-1">
+                      <%= form.label :URL, class: "control-label" %>
+                    </div>
+                    <div class="col-sm-3">
+                      <%= form.text_field :location, class: "form-control" %>
+                    </div>
+                    <div class="col-sm-1">
+                      <%= form.label :name, class: "control-label" %>
+                    </div>
+                    <div class="col-sm-3">
+                      <%= form.text_field :name, class: "form-control" %>
+                    </div>
+                    <div class="col-sm-2">
+                      <%= form.submit "Add Video", class: "btn btn-primary" %>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          <% end  %>
         <% end %>
       <% end %>
       <div id="<%= meeting.id %>" class="collapse">
@@ -22,14 +50,29 @@
           <div>
             Location: <%= meeting.location  %>
           </div>
-            <%=  meeting.documents  %>
-            <%= meeting.videos %>
+          <% meeting.videos.each do |video| %>
+            <iframe
+              width="560"
+              height="349"
+              src=
+                <% if video.location.exclude?('https://www.youtube.com/embed') %>
+                  "<%= video.location.sub! 'https://youtu.be', 'https://www.youtube.com/embed' %>"
+                <% else %>
+                  "<%= video.location  %>"
+                <% end %>
+            >
+            </iframe>
+            <% if current_user %>
+              <% if meeting.user_id == current_user.id  %>
+                <%= link_to fa_icon('trash'), [@neighbourhood, meeting, video], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+              <% end  %>
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>
   </header>
 </article>
-
 
 
 
