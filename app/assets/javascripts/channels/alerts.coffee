@@ -6,7 +6,7 @@ App.alerts = App.cable.subscriptions.create "AlertsChannel",
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
-    $(".alert_feed").append data['alert_message']
+    $(".alerts_box").append data['alert_message']
 
   speak: (message) ->
     @perform "speak", alert_message: message
