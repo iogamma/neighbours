@@ -1,18 +1,24 @@
-App.admin_chat = App.cable.subscriptions.create "AdminChatChannel",
-  connected: ->
-    # Called when the subscription is ready for use on the server
+ready = ->
 
-  disconnected: ->
-    # Called when the subscription has been terminated by the server
+  room_num = $(".chat_box").attr("data-room")
 
-  received: (data) ->
-    $(".chat_box").append data['chat_message']
+  App.admin_chat = App.cable.subscriptions.create { channel: "AdminChatChannel", room_num: room_num },
+    connected: ->
 
-  speak: (input) ->
-    @perform "speak", chat_input: input
+    disconnected: ->
+      # Called when the subscription has been terminated by the server
 
-$(document).on "keypress", "[data-behavior~=chat_speaker]", (event) ->
-  if event.keyCode is 13
-    App.admin_chat.speak event.target.value
-    event.target.value = ""
-    event.preventDefault()
+    received: (data) ->
+      $(".chat_box").append data['chat_message']
+
+    speak: (input) ->
+      @perform "speak", chat_input: input,
+
+  $(document).on "keypress", "[data-behavior~=chat_speaker]", (event) ->
+    if event.keyCode is 13
+      event.preventDefault()
+      App.admin_chat.speak event.target.value
+      event.target.value = ""
+
+$(document).ready(ready)
+$(document).on('page:load', ready)
