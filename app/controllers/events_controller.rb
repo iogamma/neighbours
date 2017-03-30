@@ -1,14 +1,9 @@
 class EventsController < ApplicationController
-  
+
   def show
     @event = Event.find params[:id]
-    @event_comment = EventComment.new   
+    @event_comment = EventComment.new
     @event_comments = EventComment.where(event_id: @event.id).sort_by(&:created_at).reverse
-  end
-
-  def new
-    
-    @event = Event.new
   end
 
   def create
@@ -24,7 +19,7 @@ class EventsController < ApplicationController
       render :new
     end
   end
-  
+
   def destroy
     @neighbourhood = Neighbourhood.find users_building.neighbourhood_id
     @assistance = Event.find params[:id]

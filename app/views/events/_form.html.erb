@@ -4,7 +4,7 @@
     <div class="well bs-component">
       <fieldset>
         <legend>Create your event</legend>
-        <%= form_for [:neighbourhood, @event] do |form| %>
+        <%= form_for [:neighbourhood, Event.new] do |form| %>
           <% if form.object.errors.any? %>
             <div class="alert alert-danger">
               <strong>The following errors prevented saving:</strong>
