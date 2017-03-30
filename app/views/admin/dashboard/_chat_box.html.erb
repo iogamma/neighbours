@@ -1,5 +1,20 @@
 <div class="row">
   <div class="col-sm-12">
-    <h2>Chatbox</h2>
+    <div class="row">
+      <div class="col-sm-12">
+        <h2>Admin Chat</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 pre-scrollable chat_box" data-room="<%= @neighbourhood.uuid %>">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <%= form_tag admin_chat_path, remote: true do %>
+          <%= text_field_tag 'message', nil, data: { behavior: "chat_speaker" } %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

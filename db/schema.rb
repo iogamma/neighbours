@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171024175366) do
+ActiveRecord::Schema.define(version: 20171024175371) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pgcrypto"
+
+  create_table "admin_chats", force: :cascade do |t|
+    t.string   "email",      null: false
+    t.string   "first_name", null: false
+    t.text     "message",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "room_id",    null: false
+  end
 
   create_table "alerts", force: :cascade do |t|
     t.string   "email",            null: false
@@ -109,9 +119,10 @@ ActiveRecord::Schema.define(version: 20171024175366) do
   end
 
   create_table "neighbourhoods", force: :cascade do |t|
-    t.string   "strata_title", null: false
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.string   "strata_title",                                      null: false
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
+    t.uuid     "uuid",         default: -> { "gen_random_uuid()" }
   end
 
   create_table "notices", force: :cascade do |t|
