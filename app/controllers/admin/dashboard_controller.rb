@@ -1,7 +1,8 @@
 class Admin::DashboardController < ApplicationController
   def index
-    @unit = Unit.find(1)
-    @notice = Notice.new
+    user_id = current_user.id
+    @building = users_building
+    @neighbourhood = Neighbourhood.find(@building.neighbourhood_id)
   end
 
   def alert
@@ -9,5 +10,8 @@ class Admin::DashboardController < ApplicationController
     respond_to do |format|
       format.js {}
     end
+  end
+
+  def chat
   end
 end
