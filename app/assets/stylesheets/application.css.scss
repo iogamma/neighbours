@@ -28,16 +28,54 @@
 
 @import "bootstrap/bootstrap-rails-popover";
 
-.navbar .login_form {
-  color: white;
+.navbar {
+  .login_form {
+    color: white;
+  }
+  
+  .login_form .login_email {
+    padding: 8px;
+  }
+
+  .login_form .login_password {
+    padding: 8px;
+  }
 }
 
-.navbar .login_form .login_email {
-  padding: 8px;
+.navbar-custom {
+  background-color: #3c8dbc;
+  background-image: none;
+  background-repeat: no-repeat;
+  border-radius: 0px;
+  
+  a {
+    color: #fff;
+    
+    &:hover {
+      color: #0000FF;
+    }
+  }
+
+ }
+
+.message-box {
+  margin-bottom: 20px;
+  background-color: #fff;
+  border: 1px solid transparent;
+  border-color: #ddd;
+  border-radius: 0px;
+  box-shadow: 0 5px 5px rgba(0,0,0,0.05);
+
+  .post-title {
+    color: #36454f;
+  }
+
+  a {
+    color: #36454f;
+  }
+
+  .content-box {
+    border: 1px solid transparent;
+    border-color: #ddd;
+  }
 }
-
-.navbar .login_form .login_password {
-  padding: 8px;
-}
-
-
