@@ -5,8 +5,15 @@
   </header>
     <% if current_user  %>
       <% if current_user.on_council == true %>
-        <div class="well">
-          <%= link_to 'Click here to create new notices', new_neighbourhood_notice_path, class: 'btn btn-info' %>
+        <div class="well" id="accordion" role="tablist" aria-multiselectable="true">
+          <a role="button" class="btn btn-info" data-toggle="collapse" href="#new_notice">
+          Click here to create new notices
+          </a>
+          <div id="new_notice" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+              <%= render 'form'  %>
+            </div>
+          </div>
         </div>
       <% end %>
     <% end %>
