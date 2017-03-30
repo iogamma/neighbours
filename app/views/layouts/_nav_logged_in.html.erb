@@ -4,10 +4,10 @@
     <% if current_user.on_council %>
       <li><a href="/admin">Administrator</a></li>
     <% end %>
-    <li><a href="/neighbourhoods/:neighbourhood_id/events/new">Create Events</a></li>
-    <li><a href="/neighbourhoods/:neighbourhood_id/assistances">Assistance</a></li>
-    <li><a href="/neighbourhoods/:neighbourhood_id/notices">Notices</a></li>
-    <li><a href="/neighbourhoods/:neighbourhood_id/meetings">Minutes</a></li>
+    <li><%= link_to "Create Events", new_neighbourhood_event_path %></a></li>
+    <li><%= link_to "Assistance", neighbourhood_assistances_path %></li>
+    <li><%= link_to "Notices",  neighbourhood_notices_path %></li>
+    <li><%= link_to "Minutes", neighbourhood_meetings_path %></li>
   </ul>
   <ul class="nav navbar-nav navbar-right">
     <li>

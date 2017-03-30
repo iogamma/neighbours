@@ -1,2 +1,0 @@
-class CommentsEventsController < ApplicationController
-end

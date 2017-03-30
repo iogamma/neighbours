@@ -3,7 +3,7 @@ class AssistancesController < ApplicationController
   def index
     @neighbourhood = Neighbourhood.find params[:neighbourhood_id]
     @assistances = Assistance.all.where(neighbourhood_id: params[:neighbourhood_id]).order(created_at: :desc)
-
+    @assistance = Assistance.new
   end
 
   def show
@@ -14,11 +14,8 @@ class AssistancesController < ApplicationController
     @assistance_comments = AssistanceComment.where(assistance_id: @assistance.id).sort_by(&:created_at).reverse
   end
 
-  def new
-    @assistance = Assistance.new
-  end
-
   def create
+    @neighbourhood = Neighbourhood.find params[:neighbourhood_id]
     @assistance = Assistance.create(assistance_params)
     @assistance.user_id = current_user.id
     @assistance.neighbourhood_id = params[:neighbourhood_id]
