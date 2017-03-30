@@ -26,6 +26,7 @@ end
 puts "Finding or Creating Neighbourhood ..."
 
 neigh1 = Neighbourhood.find_or_create_by! strata_title: 'test_neighbourhood'
+neigh2 = Neighbourhood.find_or_create_by! strata_title: 'Grand Central'
 
 ## BUILDINGS
 
@@ -34,13 +35,23 @@ puts "Re-creating Buildings ..."
 Building.destroy_all
 
 build1 = neigh1.buildings.create!({
-  name: 'Tower1',
+  name: "Tower1",
   address: Faker::Address.street_address
 })
 
 build2 = neigh1.buildings.create!({
-  name: 'Tower2',
+  name: "Tower2",
   address: Faker::Address.street_address
+})
+
+build3 = neigh2.buildings.create!({
+  name: "Tower 1",
+  address: "2978 Glen Drive, Coquitlam "
+})
+
+build4 = neigh2.buildings.create!({
+  name: "Tower 2",
+  address: "2968 Glen Drive, Coquitlam"
 })
 
 ## UNITS
@@ -57,6 +68,16 @@ unit1 = build1.units.create!({
 unit2 = build1.units.create!({
   resident_code: '222',
   unit_number: '202'
+})
+
+unit3 = build3.units.create!({
+  resident_code: '333',
+  unit_number: '502'
+})
+
+unit4 = build4.units.create!({
+  resident_code: '444',
+  unit_number: '2508'
 })
 
 ## USERS
