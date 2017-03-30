@@ -1,21 +1,23 @@
 class AssistancesController < ApplicationController
 
   def index
-    @neighbourhood = Neighbourhood.find params[:neighbourhood_id]
+    user_neighbourhood_id = users_building.neighbourhood_id
+    @neighbourhood = Neighbourhood.find user_neighbourhood_id
     @assistances = Assistance.all.where(neighbourhood_id: params[:neighbourhood_id]).order(created_at: :desc)
     @assistance = Assistance.new
   end
 
   def show
-    @neighbourhood = Neighbourhood.find params[:neighbourhood_id]
+    user_neighbourhood_id = users_building.neighbourhood_id
+    @neighbourhood = Neighbourhood.find user_neighbourhood_id
     @assistance = Assistance.find params[:id]
-
-    @assistance_comment = AssistanceComment.new   
+    @assistance_comment = AssistanceComment.new
     @assistance_comments = AssistanceComment.where(assistance_id: @assistance.id).sort_by(&:created_at).reverse
   end
 
   def create
-    @neighbourhood = Neighbourhood.find params[:neighbourhood_id]
+    user_neighbourhood_id = users_building.neighbourhood_id
+    @neighbourhood = Neighbourhood.find user_neighbourhood_id
     @assistance = Assistance.create(assistance_params)
     @assistance.user_id = current_user.id
     @assistance.neighbourhood_id = params[:neighbourhood_id]
@@ -28,7 +30,8 @@ class AssistancesController < ApplicationController
   end
 
   def destroy
-    @neighbourhood = Neighbourhood.find params[:neighbourhood_id]
+    user_neighbourhood_id = users_building.neighbourhood_id
+    @neighbourhood = Neighbourhood.find user_neighbourhood_id
     @assistance = Assistance.find params[:id]
     @assistance.destroy
     respond_to do |format|
