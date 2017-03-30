@@ -1,0 +1,22 @@
+<table class="table table-striped table-hover">
+  <tr>
+    <th>User id</th>
+    <th>Email</th>
+    <th>Resident Code</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>On Council?</th>
+    <th>Unit id</th>
+  </tr>
+    <% for user in @users %>
+  <tr>
+    <th><%= user.id  %></th>
+    <th><%= user.email %></th>
+    <th><%= user.resident_code  %></th>
+    <th><%= user.first_name %></th>
+    <th><%= user.last_name %></th>
+    <th><%= user.on_council %></th>
+    <th><%= user.unit_id %></th>
+  </tr>
+  <% end %>
+</table>
