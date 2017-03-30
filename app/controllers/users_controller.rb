@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     # Defaults to false. Set true by other council members
-    @user.on_council = false
+    @user.on_council = true
     # Unit_id fetch logic
     @user.unit_id ||= Unit.find_by_resident_code(user_params[:resident_code]).id;
     unless @user.unit_id
