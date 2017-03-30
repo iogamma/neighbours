@@ -14,7 +14,6 @@ ActiveRecord::Schema.define(version: 20171024175368) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "pgcrypto"
 
   create_table "admin_chats", force: :cascade do |t|
     t.string   "email",            null: false

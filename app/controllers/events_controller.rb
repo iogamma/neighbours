@@ -6,6 +6,11 @@ class EventsController < ApplicationController
     @event_comments = EventComment.where(event_id: @event.id).sort_by(&:created_at).reverse
   end
 
+  def new
+
+    @event = Event.new
+  end
+
   def create
     user_neighbourhood_id = users_building.neighbourhood_id
     @neighbourhood = Neighbourhood.find user_neighbourhood_id
