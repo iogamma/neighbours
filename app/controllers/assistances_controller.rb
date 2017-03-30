@@ -3,7 +3,7 @@ class AssistancesController < ApplicationController
   def index
     @neighbourhood = Neighbourhood.find params[:neighbourhood_id]
     @assistances = Assistance.all.where(neighbourhood_id: params[:neighbourhood_id]).order(created_at: :desc)
-
+    @assistance = Assistance.new
   end
 
   def show
@@ -11,11 +11,8 @@ class AssistancesController < ApplicationController
     @assistance = Assistance.find params[:id]
   end
 
-  def new
-    @assistance = Assistance.new
-  end
-
   def create
+    @neighbourhood = Neighbourhood.find params[:neighbourhood_id]
     @assistance = Assistance.create(assistance_params)
     @assistance.user_id = current_user.id
     @assistance.neighbourhood_id = params[:neighbourhood_id]
