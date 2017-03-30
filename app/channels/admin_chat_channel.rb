@@ -1,6 +1,6 @@
 class AdminChatChannel < ApplicationCable::Channel
   def subscribed
-    stream_from  "AdminChatChannel_#{params[:room_num]}"
+    stream_from  "AdminChatChannel_#{params[:room]}"
   end
 
   def unsubscribed
@@ -11,6 +11,6 @@ class AdminChatChannel < ApplicationCable::Channel
     AdminChat.create! message: data["chat_input"],
                       email: current_user.email,
                       first_name: current_user.first_name,
-                      neighbourhood_id: params[:room_num]
+                      neighbourhood_id: params[:room]
   end
 end

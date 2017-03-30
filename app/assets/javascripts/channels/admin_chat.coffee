@@ -1,8 +1,8 @@
 ready = ->
 
   room_num = $(".chat_box").attr("data-room")
-
-  App.admin_chat = App.cable.subscriptions.create { channel: "AdminChatChannel", room_num: room_num },
+  console.log(room_num)
+  App.admin_chat = App.cable.subscriptions.create { channel: "AdminChatChannel", room: room_num },
     connected: ->
 
     disconnected: ->
@@ -20,5 +20,4 @@ ready = ->
       App.admin_chat.speak event.target.value
       event.target.value = ""
 
-$(document).ready(ready)
-$(document).on('page:load', ready)
+$(document).on('turbolinks:load', ready)
