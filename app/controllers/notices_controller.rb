@@ -2,16 +2,12 @@ class NoticesController < ApplicationController
   def index
     @neighbourhood = Neighbourhood.find params[:neighbourhood_id]
     @notices = Notice.all.where(neighbourhood_id: params[:neighbourhood_id]).order(created_at: :desc)
-
+    @notice = Notice.new
   end
 
   def show
     @neighbourhood = Neighbourhood.find params[:neighbourhood_id]
     @notice = Notice.find params[:id]
-  end
-
-  def new
-    @notice = Notice.new
   end
 
   def create
