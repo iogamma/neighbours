@@ -1,17 +1,15 @@
 ready = ->
+  if $(".dashboard.index").length > 0
+    room_id = $("body").attr("data-room_id")
 
-  if $(".dashboard.index")
-
-    room_id = $(".chat_box").attr("data-room")
-
-    App.admin_chat = App.cable.subscriptions.create { channel: "AdminChatChannel", room: room_id },
+    App.admin_chat = App.cable.subscriptions.create { channel: "AdminChatChannel", room_id: room_id },
       # Called when the subscription has been connected by the server
       connected: ->
       # Called when the subscription has been terminated by the server
       disconnected: ->
       # Called when data is received from server
       received: (data) ->
-        $(".chat_box").append data['chat_message']
+        $(".chat.box").append data["chat_message"]
       # Used to send information to the server
       speak: (input) ->
         @perform "speak", chat_input: input
@@ -28,4 +26,4 @@ ready = ->
       App.admin_chat.unsubscribe()
       delete App.admin_chat
 
-$(document).on('turbolinks:load', ready)
+$(document).on("turbolinks:load", ready)

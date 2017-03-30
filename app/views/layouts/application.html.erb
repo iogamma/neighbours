@@ -10,7 +10,13 @@
         <%= javascript_include_tag 'cable', 'data-turbolinks-track': 'reload' %>
     <% end %>
   </header>
-  <body class="<%= controller_name %> <%= action_name %>">
+  <body class="<%= controller_name %> <%= action_name %>"
+    <% if @neighbourhood %>
+      data-room_id="<%= @neighbourhood.uuid %>">
+    <% else %>
+      data-room_id="false"
+    <% end %>
+  >
     <%= render 'layouts/top_nav' %>
     <%= render 'alerts/alerts_feed' %>
     <main class="container">

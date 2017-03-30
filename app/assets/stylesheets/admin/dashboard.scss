@@ -2,6 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.alerts_box {
-  height: 5em;
+.chat {
+  .box {
+    border: 1px, solid;
+    height: 10em;
+  }
+  .input {
+    padding: 0
+  }
+
 }
