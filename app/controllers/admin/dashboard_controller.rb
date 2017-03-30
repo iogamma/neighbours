@@ -7,11 +7,9 @@ class Admin::DashboardController < ApplicationController
 
   def alert
     @message = params[:message]
-    respond_to do |format|
-      format.js {}
-    end
   end
 
   def chat
   end
+
 end

@@ -2,7 +2,7 @@ class AlertBroadcastJob < ApplicationJob
   queue_as :default
 
   def perform(alert)
-    ActionCable.server.broadcast "alerts_channel", alert_message: render_alert(alert)
+    ActionCable.server.broadcast "alerts_channel_#{alert.room_id}", alert_message: render_alert(alert)
   end
 
   def render_alert(alert)
