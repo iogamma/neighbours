@@ -7,42 +7,32 @@
           <%= meeting.title %>
         </h3>
       </a>
-      <small>
-        <em>
-          uploaded on date <%= meeting.created_at %> by <%= meeting.user_id %>
-        </em>
-      </small>
-      <% if current_user %>
-        <% if meeting.user_id == current_user.id  %>
-          <%= link_to fa_icon('trash'), [@neighbourhood, meeting], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
-          <%= form_for [@neighbourhood, meeting, @video] do |form| %>
-            <div class="form-horizontal">
-              <fieldset>
-                <div class="row">
-                  <div class="form-group">
-                    <div class="col-sm-2 control-label">
-                      <strong>Add New Video</strong>
-                    </div>
-                    <div class="col-sm-1">
-                      <%= form.label :URL, class: "control-label" %>
-                    </div>
-                    <div class="col-sm-3">
-                      <%= form.text_field :location, class: "form-control" %>
-                    </div>
-                    <div class="col-sm-1">
-                      <%= form.label :name, class: "control-label" %>
-                    </div>
-                    <div class="col-sm-3">
-                      <%= form.text_field :name, class: "form-control" %>
-                    </div>
-                    <div class="col-sm-2">
-                      <%= form.submit "Add Video", class: "btn btn-primary" %>
-                    </div>
-                  </div>
-                </div>
-              </fieldset>
-            </div>
-          <% end  %>
+      <div class="row">
+        <div class="col-sm-6">
+          <small>
+            <em>
+              uploaded on date <%= meeting.created_at %> by <%= meeting.user_id %>
+            </em>
+          </small>
+          <% if current_user %>
+            <% if meeting.user_id == current_user.id  %>
+              <%= link_to fa_icon('trash'), [@neighbourhood, meeting], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+        </div>
+        <!-- upload toggles for doc/vid -->
+        <div class="alert alert-dismissible alert-info col-sm-3 text-center" id="accordion" role="tablist" aria-multiselectable="true">
+          <a role="button" class="label label-primary" data-toggle="collapse" href="#<%= meeting.id %>D">
+            Upload new Document
+          </a>
+        </div>
+        <div class="alert alert-dismissible alert-info col-sm-3 text-center" id="accordion" role="tablist" aria-multiselectable="true">
+          <a role="button" class="label label-primary" data-toggle="collapse" href="#<%= meeting.id %>V">
+            Upload new Video
+          </a>
+        </div>
+      </div>
+      <!-- form for new document(toggle) -->
+      <div id="<%= meeting.id %>D" class="collapse">
+        <div class="panel-body">
           <%= form_for [@neighbourhood, meeting, @document] do |form| %>
             <div class="form-horizontal">
               <fieldset>
@@ -71,41 +61,83 @@
               </fieldset>
             </div>
           <% end %>
-        <% end %>
-      <% end %>
+        </div>
+      </div>
+      <!-- form for new video(toggle) -->
+      <div id="<%= meeting.id %>V" class="collapse">
+        <div class="panel-body">
+          <%= form_for [@neighbourhood, meeting, @video] do |form| %>
+            <div class="form-horizontal">
+              <fieldset>
+                <div class="row">
+                  <div class="form-group">
+                    <div class="col-sm-2 control-label">
+                      <strong>Add New Video</strong>
+                    </div>
+                    <div class="col-sm-1">
+                      <%= form.label :URL, class: "control-label" %>
+                    </div>
+                    <div class="col-sm-3">
+                      <%= form.text_field :location, class: "form-control" %>
+                    </div>
+                    <div class="col-sm-1">
+                      <%= form.label :name, class: "control-label" %>
+                    </div>
+                    <div class="col-sm-3">
+                      <%= form.text_field :name, class: "form-control" %>
+                    </div>
+                    <div class="col-sm-2">
+                      <%= form.submit "Add Video", class: "btn btn-primary" %>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          <% end %>
+        </div>
+      </div>
+            <% end %>
+          <% end %>
       <div id="<%= meeting.id %>" class="collapse">
         <div class="panel-body">
           <div>
-            Location: <%= meeting.location  %>
+            <h5>Location: <%= meeting.location  %></h5>
           </div>
-
-          <% meeting.documents.each do |document| %>
-            <a href=" <%= document.location  %> "><%= document['location'] %></a>
-            <% if current_user %>
-              <% if meeting.user_id == current_user.id  %>
-                <%= link_to fa_icon('trash'), [@neighbourhood, meeting, document], class: 'btn btn-sm btn-danger', method: :delete, file: { confirm: "Are you sure?" } %>
-              <% end  %>
-            <% end %>
-          <% end %>
-
-          <% meeting.videos.each do |video| %>
-            <iframe
-              width="560"
-              height="349"
-              src=
-                <% if video.location.exclude?('https://www.youtube.com/embed') %>
-                  "<%= video.location.sub! 'https://youtu.be', 'https://www.youtube.com/embed' %>"
-                <% else %>
-                  "<%= video.location  %>"
+          <div>
+            <h5>
+              Documents:
+              <% meeting.documents.each do |document| %>
+                <%= document.name  %>
+                <a href=" <%= document.location  %> " class="label label-info"><%= document['location'] %></a>
+                <% if current_user %>
+                  <% if meeting.user_id == current_user.id  %>
+                    <%= link_to fa_icon('trash'), [@neighbourhood, meeting, document], class: 'btn btn-sm btn-danger', method: :delete, file: { confirm: "Are you sure?" } %>
+                  <% end  %>
                 <% end %>
-            >
-            </iframe>
-            <% if current_user %>
-              <% if meeting.user_id == current_user.id  %>
-                <%= link_to fa_icon('trash'), [@neighbourhood, meeting, video], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
-              <% end  %>
+              <% end %>
+            </h5>
+          </div>
+          <div>
+            <h5>Videos</h5>
+            <% meeting.videos.each do |video| %>
+              <iframe
+                width="560"
+                height="349"
+                src=
+                  <% if video.location.exclude?('https://www.youtube.com/embed') %>
+                    "<%= video.location.sub! 'https://youtu.be', 'https://www.youtube.com/embed' %>"
+                  <% else %>
+                    "<%= video.location  %>"
+                  <% end %>
+              >
+              </iframe>
+              <% if current_user %>
+                <% if meeting.user_id == current_user.id  %>
+                  <%= link_to fa_icon('trash'), [@neighbourhood, meeting, video], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+                <% end  %>
+              <% end %>
             <% end %>
-          <% end %>
+          </div>
         </div>
       </div>
     </div>
