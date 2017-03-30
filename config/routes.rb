@@ -3,19 +3,23 @@ Rails.application.routes.draw do
   root to: 'neighbourhoods#index'
 
   resources :neighbourhoods, only: [:index, :show] do
-    resources :events, except: [:index] do
-      resources :comments, only: [:create, :destroy]
-    end
-    resources :assistances do
-      resources :comments, only: [:create, :destroy]
-    end
+    resources :events, except: [:index]
+    resources :assistances
     resources :meetings do
       resources :videos, only: [:create, :destroy]
     end
-    resources :polls, only: [:update]
     resources :notices
-
+    resources :polls, only: [:update]
   end
+
+  resources :events, only: [] do
+    resources :comments, only: [:create, :update, :destroy]
+  end
+
+  resources :assistances, only: [] do
+    resources :comments, only: [:create, :update, :destroy]
+  end
+
 
   # resources :user, only: [:new, :create] do
   # end

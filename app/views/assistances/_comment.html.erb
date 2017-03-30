@@ -1,0 +1,15 @@
+<div class="panel panel-default">
+  <div class="panel-heading"> 
+    <%= AssistanceComment.find_user(comment.user_id) %> 
+  </div>
+  <div class="panel-body">
+    <dd>
+      <%= comment.content %>
+    </dd>
+    <% if current_user.id === comment.user_id %>
+      <dd>
+        <%= link_to fa_icon('trash'), assistance_comment_path(assistance_id: @assistance.id, id:comment.id, type: 'assistance'), class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+      </dd>
+    <% end %>
+  </div>
+</div>

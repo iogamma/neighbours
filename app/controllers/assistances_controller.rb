@@ -9,6 +9,9 @@ class AssistancesController < ApplicationController
   def show
     @neighbourhood = Neighbourhood.find params[:neighbourhood_id]
     @assistance = Assistance.find params[:id]
+
+    @assistance_comment = AssistanceComment.new   
+    @assistance_comments = AssistanceComment.where(assistance_id: @assistance.id).sort_by(&:created_at).reverse
   end
 
   def new
