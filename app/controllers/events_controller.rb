@@ -27,10 +27,10 @@ class EventsController < ApplicationController
 
   def destroy
     @neighbourhood = Neighbourhood.find users_building.neighbourhood_id
-    @assistance = Event.find params[:id]
-    @assistance.destroy
+    @event = Event.find params[:id]
+    @event.destroy
     respond_to do |format|
-      format.html { redirect_to [@neighbourhood], notice: 'event is successfully destroyed.' }
+      format.html { redirect_to neighbourhood_path, notice: 'event is successfully destroyed.' }
       format.json { head :no_content }
     end
   end

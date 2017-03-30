@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html>
   <header>
-  <%= render 'layouts/header' %>
+    <title>Neighbours</title>
+      <%= csrf_meta_tags %>
+      <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag params[:controller], 'data-turbolinks-track': 'reload'  %>
+      <% if current_user %>
+        <%= javascript_include_tag 'cable', 'data-turbolinks-track': 'reload' %>
+      <% end %>
   </header>
   <body>
     <%= render 'layouts/top_nav' %>
