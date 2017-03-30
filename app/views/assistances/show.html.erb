@@ -16,3 +16,25 @@
     <%= @assistance.description %>
   </article>
 </section>
+
+<%#Comment Section%>
+
+<div class="assistance-comments">
+  <div class="post-comment">
+    <h2>Add a comment:</h2>
+    <%= form_for @assistance_comment, url: assistance_comments_path(assistance_id: @assistance.id, type: 'assistance') do |f| %> 
+      <p>
+        <%= f.label :content %><br>
+        <%= f.text_field :content  %>
+      </p>
+      <p>
+        <%= f.submit %>
+      </p>
+    <% end %>
+  </div>
+  <div class="comments">
+    <% @assistance_comments.each do |comment| %>
+      <%= render 'comment', comment: comment %>
+    <% end %>
+  </div>
+</div>

@@ -3,22 +3,44 @@
     <div class="well">
       <%= link_to 'Create New Event', new_neighbourhood_event_path, class: 'btn btn-info' %>
     </div>
-    <div class="image-container">  
+    <div class="jumbotron"> 
       <%= image_tag @event.image, alt: @event.title, class:"event-image img-responsive"%>
-    </div>
-    <h2><%= @event.title %></h2>
-    <small>
-      <em>
-      submitted on date <%= @event.created_at %> by <%= @event.user_id %>
-      </em>
-    </small>
-    <% if current_user %>
-      <% if @event.user_id == current_user.id  %>
-        <%= link_to fa_icon('trash'), [@neighbourhood, :event], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+      <h2><%= @event.title %></h2>
+      <small>
+        <em>
+        submitted on date <%= @event.created_at %> by <%= @event.user_id %>
+        </em>
+      </small>
+      <% if current_user %>
+        <% if @event.user_id == current_user.id  %>
+          <%= link_to fa_icon('trash'), [@neighbourhood, :event], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+        <% end %>
       <% end %>
-    <% end %>
-  </header>
-  <article class="assistance-detail">
-    <%= @event.description %>
-  </article>
+    <article class="event-detail">
+      <%= @event.description %>
+    </article>
+    </header>
+  </div>
 </section>
+
+<%#Comment Section%>
+
+<div class="event-comments">
+  <div class="post-comment">
+    <h2>Add a comment:</h2>
+    <%= form_for @event_comment, url: event_comments_path(event_id: @event.id, type: 'event') do |f| %> 
+      <p>
+        <%= f.label :content %><br>
+        <%= f.text_field :content  %>
+      </p>
+      <p>
+        <%= f.submit %>
+      </p>
+    <% end %>
+  </div>
+  <div class="comments">
+    <% @event_comments.each do |comment| %>
+      <%= render 'comment', comment: comment %>
+    <% end %>
+  </div>
+</div>
