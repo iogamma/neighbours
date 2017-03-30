@@ -8,14 +8,13 @@
       <%= javascript_include_tag params[:controller], 'data-turbolinks-track': 'reload'  %>
       <% if current_user %>
         <%= javascript_include_tag 'cable', 'data-turbolinks-track': 'reload' %>
-      <% end %>
+    <% end %>
   </header>
-  <body>
+  <body class="<%= controller_name %> <%= action_name %>">
     <%= render 'layouts/top_nav' %>
     <%= render 'alerts/alerts_feed' %>
     <main class="container">
       <%= yield %>
     </main>
   </body>
-
 </html>

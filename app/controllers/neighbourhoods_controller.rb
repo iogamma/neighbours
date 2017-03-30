@@ -1,6 +1,5 @@
 class NeighbourhoodsController < ApplicationController
   def index
-    render 'index'
   end
 
   def show
