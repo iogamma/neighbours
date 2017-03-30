@@ -6,10 +6,10 @@ Rails.application.routes.draw do
     resources :events, except: [:index] do
       resources :comments, only: [:create, :destroy]
     end
-    resources :assistances do
+    resources :assistances, only: [:index, :show, :create, :destroy] do
       resources :comments, only: [:create, :destroy]
     end
-    resources :meetings do
+    resources :meetings, only: [:index, :create, :update, :destroy] do
       resources :videos, only: [:create, :destroy]
       resources :documents, only: [:create, :destroy, :show]
     end
