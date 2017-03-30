@@ -11,6 +11,6 @@ class AdminChatChannel < ApplicationCable::Channel
     AdminChat.create! message: data["chat_input"],
                       email: current_user.email,
                       first_name: current_user.first_name,
-                      neighbourhood_id: params[:room]
+                      room_id: params[:room]
   end
 end

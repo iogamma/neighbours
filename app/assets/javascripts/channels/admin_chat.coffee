@@ -1,8 +1,8 @@
 ready = ->
 
-  room_num = $(".chat_box").attr("data-room")
-  console.log(room_num)
-  App.admin_chat = App.cable.subscriptions.create { channel: "AdminChatChannel", room: room_num },
+  room_id = $(".chat_box").attr("data-room")
+
+  App.admin_chat = App.cable.subscriptions.create { channel: "AdminChatChannel", room: room_id },
     connected: ->
 
     disconnected: ->
@@ -12,7 +12,7 @@ ready = ->
       $(".chat_box").append data['chat_message']
 
     speak: (input) ->
-      @perform "speak", chat_input: input,
+      @perform "speak", chat_input: input
 
   $(document).on "keypress", "[data-behavior~=chat_speaker]", (event) ->
     if event.keyCode is 13
