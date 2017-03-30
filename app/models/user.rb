@@ -23,4 +23,12 @@ class User < ApplicationRecord
     end
   end
 
+  def self.search(search)
+    if search
+      where('last_name LIKE ? OR first_name LIKE ?', "%#{search}%", "%#{search}%")
+    else
+      scoped
+    end
+  end
+
 end

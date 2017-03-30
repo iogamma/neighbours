@@ -14,4 +14,11 @@ class Admin::DashboardController < ApplicationController
 
   def chat
   end
+
+  def search
+    @users = User.search(params[:search])
+    respond_to do |format|
+      format.js {}
+    end
+  end
 end
