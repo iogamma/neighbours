@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root to: 'neighbourhoods#index'
+  root to: 'neighbourhoods#show'
 
-  resources :neighbourhoods, only: [:index, :show] do
+  resource :neighbourhood, only: [:show], controller: "neighbourhoods" do
     resources :events, except: [:index]
     resources :assistances
     resources :meetings do
