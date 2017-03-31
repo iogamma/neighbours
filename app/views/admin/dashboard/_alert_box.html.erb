@@ -1,14 +1,14 @@
 
-  <div class="alert alert-dismissible alert-danger">
+  <div class="alert alert-dismissible alert-danger aler">
     <%= form_tag admin_alert_path do %>
       <div class="form-group has-error center-block input">
         <div class="input-group">
           <span class="input-group-btn">
-            <button class="btn btn-danger" type="button">Post Alert</button>
+            <button class="btn btn-danger post-button" data-behaviour="alert-post" type="button">Post Alert</button>
           </span>
           <input type="text" class="form-control" placeholder="Alert Your Residents" data-behaviour="alert-speaker">
           <span class="input-group-btn">
-            <button class="btn btn-warning" type="button">Clear All</button>
+            <button class="btn btn-warning" type="button" data-behaviour="alert-clear-all">Clear All</button>
           </span>
         </div>
       </div>
