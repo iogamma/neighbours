@@ -1,28 +1,30 @@
 <section class="assistances-show">
-  <header class="page-header">
-    <h2><%= @assistance.title %></h2>
-    <small>
-      <em>
-      submitted on date <%= @assistance.created_at %> by <%= @assistance.user_id %>
-      </em>
-    </small>
-    <% if current_user %>
-      <% if @assistance.user_id == current_user.id  %>
-        <%= link_to fa_icon('trash'), [@neighbourhood, :assistance], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+  <div class="panel-default">
+    <div class="panel-heading">
+      <h2><%= @assistance.title %></h2>
+      <small>
+        <em>
+        submitted on date <%= @assistance.created_at %> by <%= @assistance.user_id %>
+        </em>
+      </small>
+      <% if current_user %>
+        <% if @assistance.user_id == current_user.id  %>
+          <%= link_to fa_icon('trash'), [@neighbourhood, :assistance], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+        <% end %>
       <% end %>
-    <% end %>
-  </header>
-  <article class="assistance-detail">
-    <%= @assistance.description %>
-  </article>
+    </div>
+    <div class="alert alert-dismissible alert-success">
+      <%= @assistance.description %>
+    </div>
+  </div>
 </section>
 
 <%#Comment Section%>
 
 <div class="assistance-comments">
   <div class="post-comment">
-    <h2>Add a comment:</h2>
-    <%= form_for @assistance_comment, url: assistance_comments_path(assistance_id: @assistance.id, type: 'assistance') do |f| %> 
+    <h4>Add a comment:</h4>
+    <%= form_for @assistance_comment, url: assistance_comments_path(assistance_id: @assistance.id, type: 'assistance') do |f| %>
       <p>
         <%= f.label :content %><br>
         <%= f.text_field :content  %>
