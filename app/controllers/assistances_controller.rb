@@ -29,6 +29,16 @@ class AssistancesController < ApplicationController
     end
   end
 
+  def update
+    @assistance = Assistance.find params[:id]
+    @assistance_updated = @assistance.update(assistance_params)
+    if @assistance_updated
+      redirect_to neighbourhood_assistance_path
+    else
+      redirect_to neighbourhood_assistances_path, notice:"Vote result failed to submit."
+    end
+  end
+
   def destroy
     user_neighbourhood_id = users_building.neighbourhood_id
     @neighbourhood = Neighbourhood.find user_neighbourhood_id
