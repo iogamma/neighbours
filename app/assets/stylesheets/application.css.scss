@@ -28,11 +28,15 @@
 
 @import "bootstrap/bootstrap-rails-popover";
 
+.alerts-feed {
+  margin: 0;
+}
+
 .navbar {
   .login_form {
     color: white;
   }
-  
+
   .login_form .login_email {
     padding: 8px;
   }
@@ -47,16 +51,19 @@
   background-image: none;
   background-repeat: no-repeat;
   border-radius: 0px;
-  
+
   a {
     color: #fff;
-    
+
     &:hover {
       color: #0000FF;
     }
   }
+}
 
- }
+.navbar-default {
+  margin: 0;
+}
 
 .message-box {
   margin-bottom: 20px;

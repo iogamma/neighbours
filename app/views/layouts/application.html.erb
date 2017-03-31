@@ -12,14 +12,16 @@
   </header>
   <body class="<%= controller_name %> <%= action_name %>"
     <% if @neighbourhood %>
-      data-room_id="<%= @neighbourhood.uuid %>">
+      data-room_id="<%= @neighbourhood.uuid %>"
     <% else %>
       data-room_id="false"
     <% end %>
   >
     <%= render 'layouts/top_nav' %>
-    <%= render 'alerts/alerts_feed' %>
     <main class="container">
+      <% if current_user && @neighbourhood %>
+        <div class="alert alert-danger alerts-feed"></div>
+      <% end %>
       <%= yield %>
     </main>
   </body>

@@ -8,7 +8,7 @@ ready = ->
       disconnected: ->
         # Called when the subscription has been terminated by the server
       received: (data) ->
-        $(".alerts_feed").append data['alert_message']
+        $(".alerts-feed").append data['alert_message']
       speak: (message) ->
         @perform "speak", alert_input: message
 
@@ -17,7 +17,7 @@ ready = ->
       event.target.value = ""
       event.preventDefault()
 
-    $(document).on "keypress", "[data-behavior~=alert_speaker]", (event) ->
+    $(document).on "keypress", "[data-behaviour~=alert-speaker]", (event) ->
       if event.keyCode is 13
         submit(event)
 
