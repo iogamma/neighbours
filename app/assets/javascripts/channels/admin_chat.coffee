@@ -15,7 +15,7 @@ ready = ->
         @perform "speak", chat_input: input
 
     # Admin page specific jQuery
-    $(document).on "keypress", "[data-behavior~=chat_speaker]", (event) ->
+    $(document).on "keypress", "[data-behaviour~=chat-speaker]", (event) ->
       if event.keyCode is 13
         event.preventDefault()
         App.admin_chat.speak event.target.value
