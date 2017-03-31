@@ -28,6 +28,8 @@
 
 @import "bootstrap/bootstrap-rails-popover";
 
+div:empty { display: none }
+
 .alerts-feed {
   margin: 0;
 }

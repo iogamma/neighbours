@@ -14,4 +14,10 @@ class AlertsChannel < ApplicationCable::Channel
                   first_name: current_user.first_name,
                   room_id: params[:room_id]
   end
+
+  def clear(data)
+    Alert.destroy_all
+    ActionCable.server.broadcast "alerts_channel_#{ data['room_id'] }", { alert_action: "CLEAR" }
+  end
+
 end
