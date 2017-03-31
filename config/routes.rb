@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :neighbourhoods, only: [:index] do
     resources :events, except: [:index]
     resources :assistances
-    resources :meetings do
+    resources :meetings, except: [:edit] do
       resources :videos, only: [:create, :destroy]
       resources :documents, only: [:create, :destroy, :show]
     end
