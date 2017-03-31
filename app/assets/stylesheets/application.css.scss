@@ -28,6 +28,10 @@
 
 @import "bootstrap/bootstrap-rails-popover";
 
+.alerts-feed {
+  margin: 0;
+}
+
 .navbar {
   .login_form {
     color: white;
@@ -55,8 +59,11 @@
       color: #0000FF;
     }
   }
+}
 
- }
+.navbar-default {
+  margin: 0;
+}
 
 .message-box {
   margin-bottom: 20px;

@@ -1,21 +1,16 @@
-<div class="row">
-  <div class="col-sm-12">
-    <div class="row">
-      <div class="col-sm-12">
-        <h2>Alert Residents</h2>
+
+  <div class="alert alert-dismissible alert-danger">
+    <%= form_tag admin_alert_path do %>
+      <div class="form-group has-error center-block input">
+        <div class="input-group">
+          <span class="input-group-btn">
+            <button class="btn btn-danger" type="button">Post Alert</button>
+          </span>
+          <input type="text" class="form-control" placeholder="Alert Your Residents" data-behaviour="alert-speaker">
+          <span class="input-group-btn">
+            <button class="btn btn-warning" type="button">Clear All</button>
+          </span>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 pre-scrollable alerts_box">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12">
-        <%= form_tag admin_alert_path, remote: true do %>
-          <%= text_field_tag 'message', nil, data: { behavior: "alert_speaker" } %>
-          <%= submit_tag 'alert' %>
-        <% end %>
-      </div>
-    </div>
+    <% end %>
   </div>
-</div>
