@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-sm-12">
     <h2>Create a Poll</h2>
-    <%= form_tag admin_create_poll_path, remote: true, class: "form-horizontal" do %>
+    <%= form_tag admin_create_poll_path, remote: true, name:"pollform", class: "form-horizontal" do %>
       <div class="form-group">
         <label for="Question" class="col-sm-2 control-label">Question</label>
         <div class="col-sm-10">

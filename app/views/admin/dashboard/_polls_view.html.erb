@@ -3,9 +3,14 @@
     <h2>Current Polls</h2>
     <% polls.each do |p| %>
       <div class="list-group">
-        <div class="list-group-item">
+        <div class="list-group-item poll-item">
           <h4><%= p.title %></h4>
           <%= p.description %>
+          <div data-yes=<%= p.votes.where(vote: "yes").count %>
+               data-no=<%= p.votes.where(vote: "no").count %>
+               data-abstain=<%= p.votes.where(vote: "abstain").count %>
+          >
+          </div>
         </div>
       </div>
     <% end %>
