@@ -38,7 +38,7 @@ Rails.application.routes.draw do
     post :chat, to:'dashboard#chat'
     get :search, to:'dashboard#search'
 
-    resources :users, only: [:edit, :destroy]
+    resources :users, only: [:update, :destroy]
     resources :polls, only: [:create, :edit, :destroy]
     resources :units, only: [:update]
   end

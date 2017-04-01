@@ -4,6 +4,7 @@ class Event < ApplicationRecord
   belongs_to :user
   belongs_to :neighbourhood
 
-  has_many :attendees, dependent: :destroy
-  has_many :event_comments, dependent: :destroy
+  has_many :event_comments, dependent: :delete_all
+  has_many :attendees, dependent: :delete_all
+
 end
