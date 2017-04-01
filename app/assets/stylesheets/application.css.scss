@@ -14,6 +14,8 @@
  *= require_self
  */
 
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
 @import "bootstrap-sprockets";
 
 @import "bootswatch/cerulean/variables";
@@ -27,6 +29,96 @@
 @import "bootstrap/bootstrap-rails-tooltip";
 
 @import "bootstrap/bootstrap-rails-popover";
+
+@import "jquery.Jcrop";
+
+$brand-color: #3c8dbc;
+$secondary-color: #656565;
+$lato: 'Lato', sans-serif;
+$border-color: #c4c4c4;
+$box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+
+.container{
+  .jumbotron {
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-color:$border-color;
+    border-radius: 0em;
+    border-width: 0.35em;
+    box-shadow: $box-shadow;
+    padding: 0.5em;
+
+    .carousel-caption {
+      padding-bottom: 4.5em;
+      background: rgba(0, 0, 0, 0.45);
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 5em;
+
+      h3 {
+        font-family: $lato;
+        font-size: 43px;
+        font-weight: bolder;
+        letter-spacing: 0.085em;
+        color: white;
+      }
+
+
+      p {
+        font-family: $lato;
+        font-size: 17px;
+        font-weight: bold;
+        letter-spacing: 0.085em;
+        color: white;
+      }
+
+      .btn-default {
+        border-radius: 0px;
+        font-family: $lato;
+        font-weight: bold;
+        margin: 0.75em;
+        width: 9em;
+        border-color: white;
+        background: $secondary-color;
+        color: white;
+        border-width: 0.25em;
+
+        &:hover{
+          background: #8f8f8f;
+        }
+        
+      }
+    }
+  }
+}
+
+.nav {
+  .btn-lg {
+    font-size: 1em;
+    padding: 0.6em 0.8em; 
+  }
+
+  .btn-info {
+    background-color: #347aa2;
+    background-image: none;
+    border-color: #fff;
+    border-width: 0.15em;
+    margin-top: 0.2em;
+    border-radius: 0;
+    font-family: $lato;
+    font-size: 1.1em;
+
+    &:active{
+      background-color: #275d7c;
+      border-color: #fff;
+      border-width: 0.15em;
+    }
+    &:hover{
+      background-color: #529dc8;
+    }
+  }
 
 div:empty { display: none }
 
@@ -48,44 +140,72 @@ div:empty { display: none }
   }
 }
 
-.navbar-custom {
-  background-color: #3c8dbc;
+.navbar-default {
+  background-color: $brand-color;
   background-image: none;
   background-repeat: no-repeat;
   border-radius: 0px;
 
-  a {
-    color: #fff;
+.navbar-nav{
+   li{
+     a{
+       font-family: $lato;
+       font-size: 1.1em;
 
-    &:hover {
-      color: #0000FF;
-    }
+       &:hover{
+         background-color: #529dc8;
+       }
+     }
+   }
+ }
+
+  .navbar-brand {
+    font-family: $lato;
+    font-size: 1.65em;
+    font-weight: bold;
   }
-}
+ }
 
 .navbar-default {
   margin: 0;
 }
 
+
 .message-box {
   margin-bottom: 20px;
   background-color: #fff;
-  border: 1px solid transparent;
-  border-color: #ddd;
+  border: 0.1em solid transparent;
+  border-color: $border-color;
   border-radius: 0px;
-  box-shadow: 0 5px 5px rgba(0,0,0,0.05);
+  box-shadow: $box-shadow;
+  
+  // .label {
+  //   margin-right: 1%;
+  // }
 
+  hr {
+    border-color: $border-color;
+  }
+
+  .name {
+    color: #14191d;
+  }
+  
   .post-title {
-    color: #36454f;
+    color: #445763;
   }
 
   a {
-    color: #36454f;
+    color: #445763;
   }
 
-  .content-box {
-    border: 1px solid transparent;
-    border-color: #ddd;
+  h6 {
+    color: #587181;
+  }
+
+  .poll-thank-you {
+    color: #445763;
+    text-align: center;
   }
 }
 

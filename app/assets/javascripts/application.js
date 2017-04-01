@@ -16,3 +16,4 @@
 //= require jquery-readyselector
 //= require bootstrap-sprockets
 //= require init
+//= require jquery.Jcrop

@@ -7,7 +7,6 @@ class EventsController < ApplicationController
   end
 
   def new
-
     @event = Event.new
   end
 
@@ -19,9 +18,28 @@ class EventsController < ApplicationController
     @event.neighbourhood_id = user_neighbourhood_id
 
     if @event.save
-      redirect_to [@neighbourhood, @event], notice: 'Event created'
+      if event_params[:image].present?
+        render :crop
+      else
+        redirect_to [@neighbourhood, @event], notice: 'Event created'
+      end
     else
       render :new
+    end
+  end
+
+  def update
+    @neighbourhood = Neighbourhood.find users_building.neighbourhood_id
+    @event = Event.find params[:id]
+
+    if crop_params
+      if @event.update crop_params
+        redirect_to [@neighbourhood, @event], notice: 'Event updated'
+      end
+    else
+      if @event.user_id = current_user.id
+        return
+      end
     end
   end
 
@@ -44,6 +62,15 @@ class EventsController < ApplicationController
       :location,
       :date,
       :image
+    )
+  end
+
+  def crop_params
+    params.require(:event).permit(
+      :crop_x,
+      :crop_y,
+      :crop_h,
+      :crop_w
     )
   end
 

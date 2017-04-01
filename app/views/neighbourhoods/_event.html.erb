@@ -6,7 +6,8 @@
     <h3>Organizer</h3>
     <h3><%= event.date %></h3>
     <h3><%= event.location %></h3>
-     <%= image_tag event.image, alt: event.title %>
+     <%= event.inspect %>
+     <%= image_tag event.image.url(:thumb), alt: event.title %>
     <p class="list-group-item-text"><%= "Submitted on #{event.created_at} by User" %></p>
   </div>
 
