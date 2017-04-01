@@ -70,7 +70,6 @@
     <h4>Add a comment:</h4>
     <%= form_for @assistance_comment, url: assistance_comments_path(assistance_id: @assistance.id, type: 'assistance') do |f| %>
       <p>
-        <%= f.label :content %><br>
         <%= f.text_field :content  %>
       </p>
       <p>
