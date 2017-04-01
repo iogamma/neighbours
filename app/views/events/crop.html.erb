@@ -1,0 +1,12 @@
+<h1 class="crop-image">Crop Image</h1>
+
+<%= image_tag @event.image.url(:large), id:"cropbox"%>
+
+<%= form_for [@neighbourhood, @event] do |f| %>
+  <% %w[x y w h].each do |attribute| %>
+    <%= f.hidden_field "crop_#{attribute}" %><br>
+  <% end %>
+  <div class="action">
+    <%= f.submit "Crop" %>
+  </div>
+<% end %>

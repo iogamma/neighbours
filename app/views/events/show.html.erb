@@ -3,8 +3,13 @@
     <div class="well">
       <%= link_to 'Create New Event', new_neighbourhood_event_path, class: 'btn btn-info' %>
     </div>
+<<<<<<< HEAD
+    <div class="jumbotron"> 
+      <%= image_tag @event.image.url(:thumb), alt: @event.title, class:"event-image img-responsive"%>
+=======
     <div class="jumbotron">
       <%= image_tag @event.image, alt: @event.title, class:"event-image img-responsive"%>
+>>>>>>> 5b72269fadb1534b6b404fc1035322904232bf53
       <h2><%= @event.title %></h2>
       <small>
         <em>

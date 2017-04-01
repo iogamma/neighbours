@@ -1,7 +1,12 @@
   <div class="well dashboard-feed message-box">
-    <h4 class="post-title"><%= link_to "#{feed.title}", feed_link(feed.class.table_name, feed) %></h4>
-    <div class="content-box">
-      <%= select_notification(feed.class.table_name)%>
-      <h5>Submitted <%= time_ago_in_words(feed.created_at) %> ago by <%= find_user(feed.user_id).first_name %> <%= find_user(feed.user_id).last_name %></h5>
-    </div>
+    <h4 class='name'>
+      <%= find_user(feed.user_id).first_name %> <%= find_user(feed.user_id).last_name %>
+    </h4>
+    <hr>
+    <h4 class="post-title">
+      <%= link_to "#{feed.title}", feed_link(feed.class.table_name, feed) %>
+    </h4>
+    <%= select_notification(feed.class.table_name)%>
+    <hr>
+    <h6 'submit-detail'>Submitted <%= time_ago_in_words(feed.created_at) %> ago</h6>
   </div>

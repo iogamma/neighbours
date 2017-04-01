@@ -1,20 +1,21 @@
   <div class="well dashboard-poll message-box">
-    <h4 class="post-title"><%= poll.title %></h4>
-      <h5>Submitted <%= time_ago_in_words(poll.created_at) %> ago by <%= find_user(poll.user_id).first_name %> <%= find_user(poll.user_id).last_name %></h5>
-   
+    <h4 class="post-title"><%= poll.title %></h4>   
+      <hr>
       <div class="progress">
         <div class="progress-bar" style="width: <%= number_to_percentage(Vote.yes_calculation(poll.id), precision: 0)%>">Yes</div>
       </div>
       <div class="progress">
         <div class="progress-bar progress-bar-danger" style="width: <%= number_to_percentage(Vote.no_calculation(poll.id), precision: 0)%>">No</div>
       </div>
-
-      <% if !Vote.where(poll_id: poll.id, user_id: current_user.id).empty? %>
-        <h4>Thank you for voting!</h4>
-      <% else %>
-        <%= link_to "Yes", neighbourhood_poll_path(neighbourhood_id: neighbourhood_id, id: poll.id, vote: "yes", poll: poll.id), class: 'btn btn-default', method: 'put' %>
-        <%= link_to "No", neighbourhood_poll_path(neighbourhood_id: neighbourhood_id, id: poll, vote: "no", poll: poll.id), class: 'btn btn-default', method: 'put' %>
-      <% end %>
+      <h6>Submitted <%= time_ago_in_words(poll.created_at) %> ago by <%= find_user(poll.user_id).first_name %> <%= find_user(poll.user_id).last_name %></h5>
+      <div class="vote-result"> 
+        <% if !Vote.where(poll_id: poll.id, user_id: current_user.id).empty? %>
+          <h5 class="poll-thank-you">Thank you for voting!</h5>
+        <% else %>
+          <%= link_to "Yes", neighbourhood_poll_path(neighbourhood_id: neighbourhood_id, id: poll.id, vote: "yes", poll: poll.id), class: 'btn btn-default', method: 'put' %>
+          <%= link_to "No", neighbourhood_poll_path(neighbourhood_id: neighbourhood_id, id: poll, vote: "no", poll: poll.id), class: 'btn btn-default', method: 'put' %>
+        <% end %>
+      </div>
   </div>
 
   
