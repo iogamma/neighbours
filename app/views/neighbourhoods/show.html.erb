@@ -1,6 +1,6 @@
 <section class="dashboard-show">
 
- <div class="jumbotron">
+ <div class="jumbotron dashboard-event">
   <%if !@events.empty? %>
    <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -11,23 +11,23 @@
 
     <div class="carousel-inner">
       <div class="item active">
-        <%= image_tag @events.first.image, alt: @events.first.title, class: "d-block img-fluid" %>
-            <div class="carousel-caption">
-                <h3><%= @events.first.title%></h3>
-                <p><%= "Location: #{@events.first.date}" %></p>
-                <p><%= "Location: #{@events.first.location}" %></p>
-                <a class="btn btn-default">Details</a>
-            </div>
+        <%= image_tag @events.first.image.url(:thumb), alt: @events.first.title, class: "d-block img-fluid" %>
+        <div class="carousel-caption">
+            <h3><%= @events.first.title%></h3>
+            <p><%= "#{@events.first.date.strftime("%B %d,%Y")}" %></p>
+            <p><%= "#{@events.first.location}" %></p>
+            <a class="btn btn-default">Details</a>
+        </div>
         </div>
       <% @events.drop(1).each do |event| %>
         <div class="item">
-          <%= image_tag event.image, alt: event.title, class: "d-block img-fluid" %>
-            <div class="carousel-caption">
-              <h3><%= event.title%></h3>
-              <p><%= "Location: #{event.date}" %></p>
-              <p><%= "Location: #{event.location}" %></p>
-              <a class="btn btn-default">Details</a>
-            </div>
+          <%= image_tag event.image.url(:thumb), alt: event.title, class: "d-block img-fluid" %>
+          <div class="carousel-caption">
+            <h3><%= event.title%></h3>
+            <p><%= "#{event.date.strftime("%B %d,%Y")}" %></p>
+            <p><%= "#{event.location}" %></p>
+            <a class="btn btn-default">Details</a>
+          </div>
         </div>
       <% end %>
     <% end %>
@@ -43,19 +43,28 @@
 </div>
 
   <div class="dashboard-feeds">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        Community Feeds
+      </div>
+    </div>
     <div id="feeds">
       <% @feeds.each do |feed| %>
         <%= render 'feed', feed: feed %>
-      <% end %>
+      <% end %>]
     </div>
     <%= paginate @feeds %>
   </div>
   
-
-    <div class="dashboard-polls">
-      <% @polls.each do |poll| %>
-        <%= render 'poll', neighbourhood_id: @neighbourhood.id, poll: poll %>
-      <% end %>
+  <div class="dashboard-polls">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        Polls
+      </div>
+    </div>
+    <% @polls.each do |poll| %>
+      <%= render 'poll', neighbourhood_id: @neighbourhood.id, poll: poll %>
+    <% end %>
     </div>
 
 </section>
