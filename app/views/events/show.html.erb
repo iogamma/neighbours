@@ -3,7 +3,7 @@
     <div class="well">
       <%= link_to 'Create New Event', new_neighbourhood_event_path, class: 'btn btn-info' %>
     </div>
-    <div class="jumbotron"> 
+    <div class="jumbotron">
       <%= image_tag @event.image, alt: @event.title, class:"event-image img-responsive"%>
       <h2><%= @event.title %></h2>
       <small>
@@ -28,9 +28,8 @@
 <div class="event-comments">
   <div class="post-comment">
     <h2>Add a comment:</h2>
-    <%= form_for @event_comment, url: event_comments_path(event_id: @event.id, type: 'event') do |f| %> 
+    <%= form_for @event_comment, url: event_comments_path(event_id: @event.id, type: 'event') do |f| %>
       <p>
-        <%= f.label :content %><br>
         <%= f.text_field :content  %>
       </p>
       <p>

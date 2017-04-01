@@ -38,7 +38,7 @@
               <fieldset>
                 <div class="row">
                   <div class="form-group">
-                    <div class="col-sm-2 control-label">
+                    <div class="col-sm-3 control-label">
                       <strong>Add New Document</strong>
                     </div>
                     <div class="col-sm-1">
@@ -47,11 +47,11 @@
                     <div class="col-sm-3">
                       <%= form.text_field :name, class: "form-control" %>
                     </div>
-                    <div class="col-sm-1">
-                      <%= form.label :upload, class: "control-label" %>
-                    </div>
                     <div class="col-sm-3">
-                      <%= form.file_field :location, class: "form-control" %>
+                      <span class="btn btn-warning btn-file">
+                        Upload Document File
+                        <%= form.file_field :location, class: "form-control" %>
+                      </span>
                     </div>
                     <div class="col-sm-2">
                       <%= form.submit "Add Document", class: "btn btn-primary" %>
@@ -105,7 +105,6 @@
           </div>
           <div>
             <h5>
-              Documents:
               <% meeting.documents.each do |document| %>
                 <%= document.name  %>
                 <a href=" <%= document.location  %> " class="label label-info"><%= document['location'] %></a>
@@ -118,7 +117,6 @@
             </h5>
           </div>
           <div>
-            <h5>Videos</h5>
             <% meeting.videos.each do |video| %>
               <iframe
                 width="560"
