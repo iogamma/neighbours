@@ -10,7 +10,7 @@ ready = ->
       disconnected: ->
 
       received: (data) ->
-        switch data["alert_action"]
+        switch data["payload_action"]
           when "POST"
             $(".alerts-feed").append data["alert_message"]
           when "CLEAR"
@@ -18,7 +18,7 @@ ready = ->
           else return false
 
       speak: (message) ->
-        @perform "speak", alert_input: message, alert_action: "post"
+        @perform "speak", alert_input: message, payload_action: "post"
 
       clear: (room_id) ->
         @perform "clear", room_id: room_id

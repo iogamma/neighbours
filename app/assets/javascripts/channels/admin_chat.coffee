@@ -9,7 +9,7 @@ ready = ->
       disconnected: ->
       # Called when data is received from server
       received: (data) ->
-        $(".chat.box").append data["chat_message"]
+        $("[data-display~=chat-box]").append data["chat_message"]
       # Used to send information to the server
       speak: (input) ->
         @perform "speak", chat_input: input

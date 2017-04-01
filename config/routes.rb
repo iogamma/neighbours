@@ -37,10 +37,9 @@ Rails.application.routes.draw do
     post :alert, to: 'dashboard#alert'
     post :chat, to:'dashboard#chat'
     get :search, to:'dashboard#search'
+    post :create_poll, to: 'dashboard#create_poll'
+    get :show_polls, to: 'dashboard#show_polls'
 
-    resources :users, only: [:edit, :destroy]
-    resources :polls, only: [:create, :edit, :destroy]
-    resources :units, only: [:update]
   end
 
 end

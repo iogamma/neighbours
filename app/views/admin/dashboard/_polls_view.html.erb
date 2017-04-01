@@ -1,5 +1,13 @@
 <div class="row">
-  <div class="col-sm-12">
-    <h2>Current Poll</h2>
+  <div class="col-sm-12 poll-list">
+    <h2>Current Polls</h2>
+    <% polls.each do |p| %>
+      <div class="list-group">
+        <div class="list-group-item">
+          <h4><%= p.title %></h4>
+          <%= p.description %>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
