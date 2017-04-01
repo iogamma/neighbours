@@ -96,7 +96,7 @@ $box-shadow: 0 10px 10px rgba(0,0,0,0.1);
 .nav {
   .btn-lg {
     font-size: 1em;
-    padding: 0.6em 0.8em; 
+    padding: 0.6em 0.8em;
   }
 
   .btn-info {
@@ -121,8 +121,8 @@ $box-shadow: 0 10px 10px rgba(0,0,0,0.1);
   }
 }
 
-div:empty { 
-  display: none 
+div:empty {
+  display: none
 }
 
 .alerts-feed {
@@ -180,7 +180,7 @@ div:empty {
   border-color: $border-color;
   border-radius: 0px;
   box-shadow: $box-shadow;
-  
+
   // .label {
   //   margin-right: 1%;
   // }
@@ -192,7 +192,7 @@ div:empty {
   .name {
     color: #14191d;
   }
-  
+
   .post-title {
     color: #445763;
   }
@@ -231,3 +231,8 @@ div:empty {
     cursor: inherit;
     display: block;
 }
+
+.text-center {
+  text-align: center;
+}
+

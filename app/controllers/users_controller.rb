@@ -29,6 +29,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    @user = User.find params[:id]
+    @user_updated = @user.update(update_params)
+    if @user_updated
+      redirect_to admin_dashboard_path
+    else
+      redirect_to back
+    end
+  end
+end
+
+
   private
     def user_params
       params.require(:user).permit(:first_name,
@@ -37,6 +49,10 @@ class UsersController < ApplicationController
                                    :password,
                                    :password_confirmation,
                                    :resident_code)
+    end
+
+    def update_params
+      params.require(:user).permit(:on_council)
     end
 
 end
