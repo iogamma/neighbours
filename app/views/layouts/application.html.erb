@@ -5,15 +5,28 @@
       <%= csrf_meta_tags %>
       <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
       <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-      <%= javascript_include_tag params[:controller], 'data-turbolinks-track': 'reload'  %>
+      <%= javascript_include_tag params[:controller], 'data-turbolinks-track': 'reload' %>
       <% if current_user %>
         <%= javascript_include_tag 'cable', 'data-turbolinks-track': 'reload' %>
-    <% end %>
+      <% end %>
   </header>
-  <body class="<%= controller_name %> <%= action_name %>">
+  <body class="<%= controller_name %> <%= action_name %>"
+    <% if @neighbourhood %>
+      data-room_id="<%= @neighbourhood.uuid %>"
+    <% else %>
+      data-room_id="false"
+    <% end %>
+  >
     <%= render 'layouts/top_nav' %>
-    <%= render 'alerts/alerts_feed' %>
     <main class="container">
+      <% if current_user && @neighbourhood %>
+        <% @alerts = Alert.where(room_id: @neighbourhood.uuid) %>
+        <div class="alert alert-danger alerts-feed">
+          <% @alerts.each do |alert| %>
+            <p><%= alert.message %></p>
+          <% end %>
+        </div>
+      <% end %>
       <%= yield %>
     </main>
   </body>

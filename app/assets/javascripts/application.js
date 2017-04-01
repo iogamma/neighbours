@@ -15,7 +15,5 @@
 //= require turbolinks
 //= require jquery-readyselector
 //= require bootstrap-sprockets
-//= require bootstrap/bootstrap-rails-tooltip
-//= require bootstrap/bootstrap-rails-popover
 //= require init
 //= require jquery.Jcrop

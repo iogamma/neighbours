@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :neighbourhoods, only: [:index] do
     resources :events, except: [:index]
     resources :assistances
-    resources :meetings do
+    resources :meetings, except: [:edit] do
       resources :videos, only: [:create, :destroy]
       resources :documents, only: [:create, :destroy, :show]
     end
@@ -36,6 +36,8 @@ Rails.application.routes.draw do
     root to: 'dashboard#index'
     post :alert, to: 'dashboard#alert'
     post :chat, to:'dashboard#chat'
+    get :search, to:'dashboard#search'
+
     resources :users, only: [:edit, :destroy]
     resources :polls, only: [:create, :edit, :destroy]
     resources :units, only: [:update]

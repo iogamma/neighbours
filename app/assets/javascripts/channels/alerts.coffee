@@ -1,19 +1,47 @@
-App.alerts = App.cable.subscriptions.create "AlertsChannel",
-  connected: ->
-    # Called when the subscription is ready for use on the server
+ready = ->
+  unless $(".neighbourhoods.index").length > 0
+    room_id = $("body").attr("data-room_id")
 
-  disconnected: ->
-    # Called when the subscription has been terminated by the server
+    App.alerts = App.cable.subscriptions.create { channel: "AlertsChannel", room_id: room_id },
+      # Called when the subscription is ready for use on the server
+      connected: ->
 
-  received: (data) ->
-    $(".alerts_box").append data['alert_message']
-    $(".alerts_feed").append data['alert_message']
+      # Called when the subscription has been terminated by the server
+      disconnected: ->
 
-  speak: (message) ->
-    @perform "speak", alert_message: message
+      received: (data) ->
+        switch data["alert_action"]
+          when "POST"
+            $(".alerts-feed").append data["alert_message"]
+          when "CLEAR"
+            $(".alerts-feed").text("")
+          else return false
 
-$(document).on "keypress", "[data-behavior~=alert_speaker]", (event) ->
-  if event.keyCode is 13
-    App.alerts.speak event.target.value
-    event.target.value = ""
-    event.preventDefault()
+      speak: (message) ->
+        @perform "speak", alert_input: message, alert_action: "post"
+
+      clear: (room_id) ->
+        @perform "clear", room_id: room_id
+
+    $(document).on "keypress", "[data-behaviour~=alert-speaker]", (event) ->
+      if event.keyCode is 13
+        App.alerts.speak event.target.value
+        event.target.value = ""
+        event.preventDefault()
+
+    $(document).on "click", "[data-behaviour~=alert-post]", () ->
+      $alert_input = $("[data-behaviour='alert-speaker']")
+      App.alerts.speak $alert_input.val()
+      $alert_input.value = ""
+      event.preventDefault()
+
+    $(document).on "click", "[data-behaviour=alert-clear-all]", () ->
+      App.alerts.clear(room_id)
+      event.preventDefault()
+
+  else
+    unless App.alerts is undefined
+      App.alerts.unsubscribe()
+      delete App.alerts
+
+$(document).on("turbolinks:load", ready)

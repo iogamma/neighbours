@@ -6,10 +6,8 @@ class Event < ApplicationRecord
   belongs_to :user
   belongs_to :neighbourhood
 
-  has_many :attendees
-  has_many :event_comments
-
   def crop_image
     image.recreate_versions! if crop_x.present?
   end
+
 end

@@ -1,6 +1,6 @@
 ready = ->
   
-  if  $(".crop-image")
+  if  $(".crop-image").length > 0
     new ImageCropper()
 
   class ImageCropper

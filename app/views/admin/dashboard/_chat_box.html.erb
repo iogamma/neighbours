@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row chat">
   <div class="col-sm-12">
     <div class="row">
       <div class="col-sm-12">
@@ -6,15 +6,18 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 pre-scrollable chat_box" data-room="<%= @neighbourhood.uuid %>">
+      <div class="col-sm-12 panel panel-default pre-scrollable box">
       </div>
     </div>
-    <div class="row">
-      <div class="col-sm-12">
-        <%= form_tag admin_chat_path, remote: true do %>
-          <%= text_field_tag 'message', nil, data: { behavior: "chat_speaker" } %>
-        <% end %>
+    <%= form_tag admin_chat_path, remote: true do %>
+      <div class="form-group ">
+        <div class="input-group">
+          <input type="text" class="form-control input-sm" data-behaviour="chat-speaker">
+          <span class="input-group-btn">
+            <button class="btn btn-primary btn-sm" type="button">Send</button>
+          </span>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>

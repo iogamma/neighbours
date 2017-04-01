@@ -119,13 +119,18 @@ $box-shadow: 0 10px 10px rgba(0,0,0,0.1);
       background-color: #529dc8;
     }
   }
+
+div:empty { display: none }
+
+.alerts-feed {
+  margin: 0;
 }
 
 .navbar {
   .login_form {
     color: white;
   }
-  
+
   .login_form .login_email {
     padding: 8px;
   }
@@ -154,20 +159,17 @@ $box-shadow: 0 10px 10px rgba(0,0,0,0.1);
    }
  }
 
-  a {
-    color: #fff;
-
-    &:hover {
-      background-color: #529dc8;  
-    }
-  }
-
   .navbar-brand {
     font-family: $lato;
     font-size: 1.65em;
     font-weight: bold;
   }
  }
+
+.navbar-default {
+  margin: 0;
+}
+
 
 .message-box {
   margin-bottom: 20px;
@@ -205,9 +207,25 @@ $box-shadow: 0 10px 10px rgba(0,0,0,0.1);
     color: #445763;
     text-align: center;
   }
-
 }
 
-hr {
-  border-color: #d5dde2;
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
 }
