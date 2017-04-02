@@ -5,9 +5,15 @@
 //= require_self
 //= require_tree ./channels
 
-(function() {
-  this.App || (this.App = {});
+executeScript = function() {
 
-    App.cable = ActionCable.createConsumer();
+  (function() {
+    this.App || (this.App = {});
 
-}).call(this);
+      App.cable = ActionCable.createConsumer();
+
+  }).call(this);
+
+}
+
+$(document).ready(executeScript);

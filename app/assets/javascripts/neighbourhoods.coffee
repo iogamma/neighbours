@@ -1,5 +1,4 @@
-ready = ->
-
+executeScript = ->
   if $(".neighbourhoods.show").length > 0
     $(window).scroll ->
       url = $('.pagination .next a[rel=next]').attr('href')
@@ -8,6 +7,6 @@ ready = ->
         $('.pagination').text("Loading more feeds...")
         $.getScript(url)
 
-$(document).on 'turbolinks:load', ->
-  ready()
+$(document).ready executeScript
+
 

@@ -1,4 +1,4 @@
-ready = ->
+executeScript = ->
   unless $(".neighbourhoods.index").length > 0
     room_id = $("body").attr("data-room_id")
 
@@ -44,4 +44,4 @@ ready = ->
       App.alerts.unsubscribe()
       delete App.alerts
 
-$(document).on("turbolinks:load", ready)
+$(document).ready executeScript

@@ -1,55 +1,59 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 // You can use CoffeeScript in this file: http://coffeescript.org/
+if($(".dashboard.index").length > 0) {
 
-var ready;
+  var ready;
 
-ready = function() {
-  var pollsID = $('#poll-list').data('polls-id').toString().split(',');
+  executeScript = function() {
 
-  function drawCharts() {
-    pollsID.forEach(function(pollID) {
-      drawChart(pollID);
-    });
-  }
+    var pollsID = $('#poll-list').data('polls-id').toString().split(',');
 
-  // Load the Visualization API and the corechart package.
-  google.charts.load('current', {'packages':['corechart']});
+    function drawCharts() {
+      pollsID.forEach(function(pollID) {
+        drawChart(pollID);
+      });
+    }
 
-  // Set a callback to run when the Google Visualization API is loaded.
-  google.charts.setOnLoadCallback(drawCharts);
+    // Load the Visualization API and the corechart package.
+    google.charts.load('current', {'packages':['corechart']});
 
-  // Callback that creates and populates a data table,
-  // instantiates the pie chart, passes in the data and
-  // draws it.
-  function drawChart(pollID) {
-    var $pollItem = $(`#poll-item-${pollID}`);
-    var yesCount = $pollItem.data('yes');
-    var noCount = $pollItem.data('no');
-    var abstainCount = $pollItem.data("abstain");
+    // Set a callback to run when the Google Visualization API is loaded.
+    google.charts.setOnLoadCallback(drawCharts);
 
-    // Create the data table.
-    var data = new google.visualization.DataTable();
-    data.addColumn('string', 'Vote');
-    data.addColumn('number', 'Count');
-    data.addRows([
-      ['Yes', yesCount],
-      ['No', noCount],
-      ['Abstiain', abstainCount]
-    ]);
+    // Callback that creates and populates a data table,
+    // instantiates the pie chart, passes in the data and
+    // draws it.
+    function drawChart(pollID) {
+      var $pollItem = $(`#poll-item-${pollID}`);
+      var yesCount = $pollItem.data('yes');
+      var noCount = $pollItem.data('no');
+      var abstainCount = $pollItem.data("abstain");
 
-    // Set chart options
-    var options = {'width':400,
-                   'height':300};
+      // Create the data table.
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Vote');
+      data.addColumn('number', 'Count');
+      data.addRows([
+        ['Yes', yesCount],
+        ['No', noCount],
+        ['Abstiain', abstainCount]
+      ]);
 
-    // Instantiate and draw our chart, passing in some options.
-    if(yesCount || noCount || abstainCount) {
-      var chart = new google.visualization.PieChart(document.getElementById(`poll-item-${ pollID }`));
-      chart.draw(data, options);
-    } else {
-      $pollItem.text('There are no votes at this time.')
+      // Set chart options
+      var options = {'width':400,
+                     'height':300};
+
+      // Instantiate and draw our chart, passing in some options.
+      if(yesCount || noCount || abstainCount) {
+        var chart = new google.visualization.PieChart(document.getElementById(`poll-item-${ pollID }`));
+        chart.draw(data, options);
+      } else {
+        $pollItem.text('There are no votes at this time.')
+      }
     }
   }
-}
 
-$(document).on('turbolinks:load', ready);
+  $(document).ready(executeScript);
+
+}
