@@ -4,11 +4,8 @@
       <h3>
         <%= link_to assistance.title,  [@neighbourhood, assistance] %>
       </h3>
-      <small>
-        <em>
-          submitted on date <%= assistance.created_at %> by <%= assistance.user_id %>
-        </em>
-      </small>
+      <hr>
+      <h6>Submitted <%= time_ago_in_words(assistance.created_at) %> ago by <%= find_user(assistance.user_id).first_name %> <%= find_user(assistance.user_id).last_name %></h6>
       <% if current_user %>
         <% if assistance.user_id == current_user.id  %>
             <%= link_to fa_icon('trash'), [@neighbourhood, assistance], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure? hi" } %>

@@ -3,7 +3,7 @@ class AssistancesController < ApplicationController
   def index
     user_neighbourhood_id = users_building.neighbourhood_id
     @neighbourhood = Neighbourhood.find user_neighbourhood_id
-    @assistances = Assistance.all.where(neighbourhood_id: params[:neighbourhood_id]).order(created_at: :desc)
+    @assistances = Kaminari.paginate_array(Assistance.where(neighbourhood_id: @neighbourhood.id).sort_by(&:created_at).reverse).page(params[:page]).per(5)
     @assistance = Assistance.new
   end
 
