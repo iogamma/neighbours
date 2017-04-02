@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-sm-12 poll-list">
+  <div class="col-sm-12 poll-list" data-polls-id="<%= @polls_id %>" id="poll-list">
     <h2>Current Polls</h2>
     <% polls.each do |p| %>
       <div class="list-group">
@@ -9,10 +9,12 @@
           <div data-yes=<%= p.votes.where(vote: "yes").count %>
                data-no=<%= p.votes.where(vote: "no").count %>
                data-abstain=<%= p.votes.where(vote: "abstain").count %>
+               id="poll-item-<%= p.id %>"
           >
           </div>
         </div>
       </div>
     <% end %>
+    <%= paginate polls %>
   </div>
 </div>

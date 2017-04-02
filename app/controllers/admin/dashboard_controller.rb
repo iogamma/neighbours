@@ -4,8 +4,12 @@ class Admin::DashboardController < ApplicationController
     @building = users_building
     neighbourhood_id = @building.neighbourhood_id
     @neighbourhood = Neighbourhood.find(neighbourhood_id)
+
     @poll = Poll.new
-    @polls = Poll.where(neighbourhood_id: neighbourhood_id)
+    # @polls = Poll.where(neighbourhood_id: neighbourhood_id)
+    @polls = Kaminari.paginate_array(Poll.where(neighbourhood_id: neighbourhood_id).sort_by(&:created_at).reverse).page(params[:page]).per(1)
+    @polls_id = select_polls_id(@polls)
+
   end
 
   def create_poll
@@ -26,6 +30,18 @@ class Admin::DashboardController < ApplicationController
     respond_to do |format|
       format.js {}
     end
+  end
+
+  private
+
+  def select_polls_id(polls)
+    polls_id = []
+
+    polls.each do |poll|
+      polls_id << poll.id
+    end
+
+    polls_id
   end
 
   def poll_params
