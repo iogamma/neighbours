@@ -1,3 +1,101 @@
 // Place all the styles related to the notice controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "variables";
+@import "extend";
+
+.notices-index {
+  .page-header {
+    border-bottom: 0em;
+    margin-bottom: -1em;
+  }
+
+  .panel-default {
+    @extend %grey-box;
+
+    .panel-body {
+      font-size: 1.75em;
+      text-align: justify;
+    }
+  }
+  
+  #accordion {
+    background-color: #fff;
+    border: 0em;
+  }
+
+  .btn-info {
+    @extend %add-button;
+
+    @include hover-state {
+      @include button-color ($secondary-color, #fff, #fff);
+    }
+  }
+}
+
+#accordion {
+  margin-left: -2.3em;
+
+  .alert-info {
+    @extend %white-box;
+    padding-left: 3em;
+
+    label {
+      margin-left: 1em;
+      margin-bottom: 1em;
+      color: $secondary-color;
+    }
+
+    #title-input{
+      margin-left: -1em;
+      width: 113%;
+    }
+
+    #date-input{
+      margin-left: -1em;
+      width: 113%;
+    }
+
+    .form-control{
+      margin-left: 1em;
+      border-radius: 0em;
+    }
+
+    fieldset {
+      padding-right: 1.25em;
+      
+      legend {
+        font-weight: bold;
+        border-bottom: 0em;
+      }  
+    }
+  }
+}
+
+.alert-info {
+  .btn-primary{
+    @extend %add-button;
+
+    @include hover-state {
+      @include button-color ($secondary-color, #fff, #fff);
+    }
+  }
+}
+
+.notices {
+  .alert-info {
+    @extend %white-box;
+  }
+
+  a {
+    color: #445763;
+  }
+
+  hr {
+    border-color: $border-color;
+  }
+  
+  h6 {
+    color: #587181;
+  }
+}

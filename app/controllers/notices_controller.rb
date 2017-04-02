@@ -1,7 +1,8 @@
 class NoticesController < ApplicationController
   def index
-    @neighbourhood = Neighbourhood.find params[:neighbourhood_id]
-    @notices = Notice.all.where(neighbourhood_id: params[:neighbourhood_id]).order(created_at: :desc)
+    user_neighbourhood_id = users_building.neighbourhood_id
+    @neighbourhood = Neighbourhood.find user_neighbourhood_id
+    @notices = Kaminari.paginate_array(Notice.where(neighbourhood_id: user_neighbourhood_id).sort_by(&:created_at).reverse).page(params[:page]).per(5)
     @notice = Notice.new
   end
 
