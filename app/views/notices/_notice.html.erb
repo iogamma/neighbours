@@ -4,11 +4,10 @@
       <h3>
         <%= link_to notice.title,  [@neighbourhood, notice] %>
       </h3>
-      <small>
-        <em>
-          submitted on date <%= notice.created_at %> by <%= notice.user_id %>
-        </em>
-      </small>
+      <hr>
+      <h6>
+        Submitted on <%= time_ago_in_words(notice.created_at) %> by <%= find_user(notice.user_id).first_name %> <%= find_user(notice.user_id).last_name %>
+      </h6>
       <% if current_user %>
         <% if notice.user_id == current_user.id  %>
           <%= link_to fa_icon('trash'), [@neighbourhood, notice], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
