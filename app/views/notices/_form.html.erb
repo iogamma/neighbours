@@ -39,7 +39,7 @@
               </div>
               <div class="form-group">
                 <%= form.label :Description, class: "control-label" %>
-                <%= form.text_area :description, class: "form-control" %>
+                <%= form.text_area :description, :rows => 8, style: 'width:100%', class: "form-control" %>
               </div>
               <div class="form-group">
                 <%= form.submit "Submit Notice", class: "btn btn-primary" %>

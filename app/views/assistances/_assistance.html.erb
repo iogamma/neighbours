@@ -11,11 +11,11 @@
       </small>
       <% if current_user %>
         <% if assistance.user_id == current_user.id  %>
-            <%= link_to fa_icon('trash'), [@neighbourhood, assistance], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+            <%= link_to fa_icon('trash'), [@neighbourhood, assistance], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure? hi" } %>
             <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#<%= assistance.id %>">Edit help request</button>
 
                         <!-- Modal -->
-            <div id="<%= assistance.id %>" class="modal" role="dialog">
+            <div id="<%= assistance.id %>" class="modal fade in" role="dialog">
               <div class="modal-dialog">
               <div class="modal-content">
               <div class="modal-header">
@@ -50,7 +50,7 @@
                       </div>
                       <div class="form-group">
                         <%= form.label :Description, class: "control-label" %>
-                        <%= form.text_area :description, class: "form-control" %>
+                        <%= form.text_area :description, :rows => 8, style: 'width:100%', class: "form-control" %>
                       </div>
                       <div>
                         <div class="form-group">

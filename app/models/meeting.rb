@@ -3,6 +3,6 @@ class Meeting < ApplicationRecord
   belongs_to :user
   belongs_to :neighbourhood
 
-  has_many :documents, dependent: :destroy
-  has_many :videos, dependent: :destroy
+  has_many :documents, dependent: :delete_all
+  has_many :videos, dependent: :delete_all
 end

@@ -10,6 +10,50 @@
       <% if current_user %>
         <% if @assistance.user_id == current_user.id  %>
           <%= link_to fa_icon('trash'), [@neighbourhood, :assistance], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+          <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#<%= @assistance.id %>">Edit help request</button>
+
+          <!-- Modal -->
+          <div id="<%= @assistance.id %>" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                  &times;
+                </button>
+                <h5>Edit description for your help request</h5>
+              </div>
+              <div class="modal-body">
+                <%= form_for @assistance, url: neighbourhood_assistance_path(neighbourhood_id: users_building.neighbourhood_id, id: @assistance.id), method: 'put' do |form| %>
+                  <% if form.object.errors.any? %>
+                    <div class="alert alert-danger">
+                      <strong>The following errors prevented saving:</strong>
+                      <ul>
+                        <% form.object.errors.full_messages.each do |error| %>
+                          <li><%= error %></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                  <% end %>
+                  <div class="form-horizontal">
+                    <fieldset>
+                      <div class="form-group">
+                        <%= form.label :Description, class: "control-label" %>
+                        <%= form.text_area :description, :rows => 8, style: 'width:100%', class: "form-control" %>
+                      </div>
+                      <div>
+                        <div class="form-group">
+                          <%= form.submit "Update help request", class: "btn btn-primary" %>
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+            </div>
+          </div>
+
         <% end %>
       <% end %>
     </div>
@@ -26,7 +70,6 @@
     <h4>Add a comment:</h4>
     <%= form_for @assistance_comment, url: assistance_comments_path(assistance_id: @assistance.id, type: 'assistance') do |f| %>
       <p>
-        <%= f.label :content %><br>
         <%= f.text_field :content  %>
       </p>
       <p>

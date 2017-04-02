@@ -2,15 +2,56 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$border-color: #c4c4c4;
+$box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+$brand-color: #3c8dbc;
+$lato: 'Lato', sans-serif;
+
+
 .dashboard-polls {
   float: right;
   width: 32.5%;
+  
+  .panel-default {
+    border-color:$border-color;
+    border-radius: 0em;
+    border-width: 0.1em;
+    color: white;
+    font-family: $lato;
+    font-weight: bold;
+    font-size: 1em;
+    background-color: $brand-color;
+    text-align: center;
+    box-shadow: $box-shadow;
+
+    .panel-body {
+      font-size: 1.25em;
+    }
+  }
 
 }
 
 .dashboard-feeds {
   float:left;
   width: 65%;
+
+  .panel-default {
+    border-color:$border-color;
+    border-radius: 0em;
+    border-width: 0.1em;
+    color: white;
+    font-family: $lato;
+    font-weight: bold;
+    font-size: 1em;
+    background-color: $brand-color;
+    text-align: center;
+    box-shadow: $box-shadow;
+
+    .panel-body {
+      font-size: 1.25em;
+    }
+  }
 }
+
 
 

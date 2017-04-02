@@ -39,7 +39,6 @@ Rails.application.routes.draw do
     get :search, to:'dashboard#search'
     post :create_poll, to: 'dashboard#create_poll'
     get :show_polls, to: 'dashboard#show_polls'
-
   end
 
 end
