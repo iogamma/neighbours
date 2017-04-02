@@ -9,7 +9,4 @@ Rails.application.config.assets.version = '1.0'
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
-Rails.application.config.assets.precompile += %w( admin/dashboard.coffee )
-Rails.application.config.assets.precompile += %w( cable.js )
-Rails.application.config.assets.precompile += %w( neighbourhoods.js )
-Rails.application.config.assets.precompile += %w( events.js )
+Rails.application.config.assets.precompile += %w( admin/dashboard.js cable.js neighbourhoods.js events.js )

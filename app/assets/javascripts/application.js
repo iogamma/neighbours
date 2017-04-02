@@ -12,8 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require jquery-readyselector
 //= require bootstrap-sprockets
 //= require init
 //= require jquery.Jcrop
+//= require cable

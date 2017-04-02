@@ -1,4 +1,4 @@
-ready = ->
+executeScript = ->
   if $(".dashboard.index").length > 0
     room_id = $("body").attr("data-room_id")
 
@@ -26,4 +26,4 @@ ready = ->
       App.admin_chat.unsubscribe()
       delete App.admin_chat
 
-$(document).on("turbolinks:load", ready)
+$(document).ready executeScript
