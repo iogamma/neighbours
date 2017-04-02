@@ -94,7 +94,7 @@
 .nav {
   .btn-lg {
     font-size: 1em;
-    padding: 0.6em 0.8em; 
+    padding: 0.6em 0.8em;
   }
 
   .btn-info {
@@ -118,6 +118,7 @@
     }
   }
 }
+
 
 .navbar {
   .login_form {
@@ -177,7 +178,7 @@
   .name {
     color: #14191d;
   }
-  
+
   .post-title {
     color: #445763;
   }
@@ -217,10 +218,17 @@
     display: block;
 }
 
+
 div:empty { 
-  display: none 
+  display: none;
 }
 
 .alerts-feed {
   margin: 0;
 }
+
+.text-center {
+  text-align: center;
+}
+
+

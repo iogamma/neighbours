@@ -17,7 +17,7 @@ class AlertsChannel < ApplicationCable::Channel
 
   def clear(data)
     Alert.destroy_all
-    ActionCable.server.broadcast "alerts_channel_#{ data['room_id'] }", { alert_action: "CLEAR" }
+    ActionCable.server.broadcast "alerts_channel_#{ data['room_id'] }", { payload_action: "CLEAR" }
   end
 
 end
