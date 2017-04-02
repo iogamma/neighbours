@@ -32,11 +32,9 @@
 
 @import "jquery.Jcrop";
 
-$brand-color: #3c8dbc;
-$secondary-color: #656565;
-$lato: 'Lato', sans-serif;
-$border-color: #c4c4c4;
-$box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+@import "variables";
+
+@import "extend";
 
 .container{
   .jumbotron {
@@ -83,7 +81,7 @@ $box-shadow: 0 10px 10px rgba(0,0,0,0.1);
         border-color: white;
         background: $secondary-color;
         color: white;
-        border-width: 0.25em;
+        border-width: 0.15em;
 
         &:hover{
           background: #8f8f8f;
@@ -121,13 +119,6 @@ $box-shadow: 0 10px 10px rgba(0,0,0,0.1);
   }
 }
 
-div:empty {
-  display: none
-}
-
-.alerts-feed {
-  margin: 0;
-}
 
 .navbar {
   .login_form {
@@ -174,13 +165,8 @@ div:empty {
 }
 
 .message-box {
-  margin-bottom: 20px;
-  background-color: #fff;
-  border: 0.1em solid transparent;
-  border-color: $border-color;
-  border-radius: 0px;
-  box-shadow: $box-shadow;
-
+  @extend %white-box;
+  
   // .label {
   //   margin-right: 1%;
   // }
@@ -232,7 +218,17 @@ div:empty {
     display: block;
 }
 
+
+div:empty { 
+  display: none;
+}
+
+.alerts-feed {
+  margin: 0;
+}
+
 .text-center {
   text-align: center;
 }
+
 

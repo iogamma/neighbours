@@ -1,0 +1,53 @@
+@import "variables";
+@mixin button-color ($background, $border, $font) {
+  background-color: $background;
+  border-color: $border;
+  color: $font;
+}
+
+@mixin hover-state {
+  &:hover, &:active, &:focus {
+    @content;
+  }
+}
+
+%blue-box {
+  border-color:$border-color;
+  border-radius: 0em;
+  color: white;
+  font-family: $lato;
+  background-color: $brand-color;
+  box-shadow: $box-shadow;
+}
+
+%grey-box {
+  border-color:$secondary-color;
+  border-radius: 0em;
+  color: white;
+  font-family: $lato;
+  background-color: $secondary-color;
+  box-shadow: $box-shadow;
+}
+
+%white-box {
+  margin-bottom: 20px;
+  background-color: #fff;
+  border: 0.1em solid transparent;
+  border-color: $border-color;
+  border-radius: 0px;
+  box-shadow: $box-shadow;
+}
+
+%add-button {
+  @include button-color(#fff, $secondary-color, $secondary-color);
+  background-image: none;
+  border-width: 0.15em;
+  margin-top: 0.2em;
+  border-radius: 0;
+  font-family: $lato;
+  font-size: 1.1em;
+  margin-left: 1em;
+}
+
+ 
+
