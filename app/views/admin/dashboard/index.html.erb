@@ -5,10 +5,9 @@
     <%= render partial: "admin/dashboard/neighbourhood_info" %>
     <%= render partial: "admin/dashboard/chat_box" %>
     <%= render partial: "admin/dashboard/polls_form" %>
-    <%= render partial: "admin/dashboard/polls_view" %>
+    <%= render partial: "admin/dashboard/polls_view", locals: { polls: @polls } %>
   </div>
   <div class="col-sm-6">
-
     <%= render partial: "admin/dashboard/code_generator" %>
     <%= render partial: "admin/dashboard/user_search" %>
   </div>
