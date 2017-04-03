@@ -9,5 +9,7 @@ class EventComment < ApplicationRecord
       user = User.find(user_id)
       "#{user.first_name} #{user.last_name}"
     end
-  end 
+  end
+
+  validates :content, presence: true
 end

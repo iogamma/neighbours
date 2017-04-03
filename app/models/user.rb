@@ -29,4 +29,14 @@ class User < ApplicationRecord
     end
   end
 
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :email,
+            presence: true,
+            format: { without: /\s/ },
+            uniqueness: { case_sensitive: false, message: "This email has already been registered!" }
+  validates :password,
+            presence: true,
+            length: { in: 5..20 }
+
 end

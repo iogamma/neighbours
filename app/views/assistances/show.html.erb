@@ -64,7 +64,11 @@
 </section>
 
 <%#Comment Section%>
-
+<% if flash.notice %>
+  <div class="alert alert-danger">
+    <%= notice %>
+  </div>
+<% end %>
 <div class="assistance-comments">
   <div class="post-comment">
     <h4>Add a comment:</h4>
