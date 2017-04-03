@@ -1,14 +1,24 @@
 <div class="row">
   <div class="col-sm-12">
-    <h2>Generate New Resident Code</h2>
-    <%= form_tag root_path, remote: true do %>
+    <h2>Reset Resident Code</h2>
+    <%= form_tag admin_reset_resident_code_path, method: "patch", remote: true, class: 'form-horizontal' do %>
       <div class="form-group">
-        <label for="Question" class="col-sm-3 control-label">Building ID: </label>
-        <div class="col-sm-5">
-          <%= text_field_tag :title, nil, class: "form-control" %>
-        </div>
+        <label for="building-id" class="col-sm-5 control-label">Building ID: </label>
+        <%= select_tag :building_id, options_for_select(@buildings_list), class: "col-sm-1" %>
+        <label for="unit_number" class="col-sm-2 control-label">Unit: </label>
         <div class="col-sm-4">
-          <%= submit_tag "Generate", class: "btn btn-primary btn-block" %>
+          <%= text_field_tag :unit_number, nil, id:"unit_number", class: "form-control input-sm" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="send-to" class="col-sm-4 control-label">Send to: </label>
+        <div class="col-sm-8">
+          <%= email_field_tag :send_to, nil, id:"send-to", class: "form-control input-sm" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-12">
+          <%= submit_tag "Reset", class: "btn btn-primary btn-block" %>
         </div>
       </div>
     <% end %>
