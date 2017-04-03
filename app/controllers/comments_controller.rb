@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
             redirect_to neighbourhood_assistance_path(neighbourhood_id: users_building.neighbourhood_id, id: @assistance.id)
           else
             flash[:notice] = 'Comment cannot be blank, not successfully saved'
-            redirect_to neighbourhood_assistance_path(neighbourhood_id: users_building.neighbourhood_id, id: @assistance.id), notice: 'Comment was not successfully saved'
+            redirect_to neighbourhood_assistance_path(neighbourhood_id: users_building.neighbourhood_id, id: @assistance.id), notice: 'Comment cannot be blank, not successfully saved'
           end
       end
     end
