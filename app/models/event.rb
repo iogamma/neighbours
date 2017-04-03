@@ -12,4 +12,11 @@ class Event < ApplicationRecord
     image.recreate_versions! if crop_x.present?
   end
 
+  validates :title, presence: true
+  validates :location, presence: true
+  validates :description, presence: true,
+            length: { minimum: 10 }
+  validates :image, presence: true
+  validates :date, presence: true
+
 end
