@@ -18,14 +18,7 @@
   >
     <%= render 'layouts/top_nav' %>
     <main class="container">
-      <% if current_user && @neighbourhood %>
-        <% @alerts = Alert.where(room_id: @neighbourhood.uuid) %>
-        <div class="alert alert-danger alerts-feed">
-          <% @alerts.each do |alert| %>
-            <p><%= alert.message %></p>
-          <% end %>
-        </div>
-      <% end %>
+      <%= render 'layouts/alerts_feed' %>
       <%= yield %>
     </main>
   </body>
