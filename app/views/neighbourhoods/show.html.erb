@@ -1,5 +1,9 @@
 <section class="dashboard-show">
-
+  <% if flash.notice %>
+    <div class="alert alert-danger">
+      <%= notice %>
+    </div>
+  <% end %>
  <div class="jumbotron dashboard-event">
   <%if !@events.empty? %>
    <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -55,7 +59,7 @@
     </div>
     <%= paginate @feeds %>
   </div>
-  
+
   <div class="dashboard-polls">
     <div class="panel panel-default">
       <div class="panel-body">
