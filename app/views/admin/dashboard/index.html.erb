@@ -3,12 +3,16 @@
 <div class="row">
   <div class="col-sm-6">
     <%= render partial: "admin/dashboard/neighbourhood_info" %>
+    <%= render partial: "admin/dashboard/code_generator" %>
     <%= render partial: "admin/dashboard/chat_box" %>
+  </div>
+  <div class="col-sm-6">
     <%= render partial: "admin/dashboard/polls_form" %>
     <%= render partial: "admin/dashboard/polls_view", locals: { polls: @polls } %>
   </div>
-  <div class="col-sm-6">
-    <%= render partial: "admin/dashboard/code_generator" %>
+</div>
+<div class="row">
+  <div class="col-sm-12">
     <%= render partial: "admin/dashboard/user_search" %>
   </div>
 </div>
