@@ -1,20 +1,18 @@
 <div class="row">
-  <div class="col-sm-12 poll-list" data-polls-id="<%= @polls_id %>" id="poll-list">
+  <div class="col-sm-12 poll-list" data-poll-ids="<%= @polls_id %>" id="poll-list">
     <h2>Current Polls</h2>
     <% polls.each do |p| %>
       <div class="list-group">
-        <div class="list-group-item poll-item">
+        <div class="list-group-item poll-item" id="poll-item-<%= p.id %>">
           <h4><%= p.title %></h4>
           <%= p.description %>
           <div data-yes=<%= p.votes.where(vote: "yes").count %>
                data-no=<%= p.votes.where(vote: "no").count %>
                data-abstain=<%= p.votes.where(vote: "abstain").count %>
-               id="poll-item-<%= p.id %>"
-          >
+               id="poll-results">
           </div>
         </div>
       </div>
     <% end %>
-    <%= paginate polls %>
   </div>
 </div>

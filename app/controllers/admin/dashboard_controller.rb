@@ -6,8 +6,8 @@ class Admin::DashboardController < ApplicationController
     @neighbourhood = Neighbourhood.find(neighbourhood_id)
 
     @poll = Poll.new
-    # @polls = Poll.where(neighbourhood_id: neighbourhood_id)
-    @polls = Kaminari.paginate_array(Poll.where(neighbourhood_id: neighbourhood_id).sort_by(&:created_at).reverse).page(params[:page]).per(1)
+    @polls = Poll.where(neighbourhood_id: neighbourhood_id)
+    # @polls = Kaminari.paginate_array(Poll.where(neighbourhood_id: neighbourhood_id).sort_by(&:created_at).reverse).page(params[:page]).per(1)
     @polls_id = select_polls_id(@polls)
 
   end
@@ -25,6 +25,18 @@ class Admin::DashboardController < ApplicationController
     end
   end
 
+  def delete_poll
+    if current_user.on_council
+      Poll.delete(params[:id]) if params[:id]
+
+      respond_to do |format|
+        format.js {}
+      end
+    else
+      redirect_to admin_root
+    end
+  end
+
   def search
     @users = User.search(params[:search])
     respond_to do |format|
@@ -34,20 +46,20 @@ class Admin::DashboardController < ApplicationController
 
   private
 
-  def select_polls_id(polls)
-    polls_id = []
+    def select_polls_id(polls)
+      polls_id = []
 
-    polls.each do |poll|
-      polls_id << poll.id
+      polls.each do |poll|
+        polls_id << poll.id
+      end
+
+      polls_id
     end
 
-    polls_id
-  end
-
-  def poll_params
-    params.permit(
-      :title,
-      :description
-    )
-  end
+    def poll_params
+      params.permit(
+        :title,
+        :description
+      )
+    end
 end
