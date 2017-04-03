@@ -1,7 +1,6 @@
 <!-- partial navigation for logged in users -->
 
-  <%= form_tag  login_path,
-                class: "form-inline login_form" do %>
+  <%= form_tag login_path, class: "form-inline login_form" do %>
     <ul class="nav navbar-nav navbar-right">
       <li class="form-group login_email">
         <%= email_field "email", nil ,class: "form-control input-sm", placeholder: "E-mail" %>

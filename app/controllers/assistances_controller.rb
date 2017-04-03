@@ -15,28 +15,48 @@ class AssistancesController < ApplicationController
     @assistance_comments = AssistanceComment.where(assistance_id: @assistance.id).sort_by(&:created_at).reverse
   end
 
+  def new
+    @assistance = Assistance.new
+  end
+
   def create
     user_neighbourhood_id = users_building.neighbourhood_id
     @neighbourhood = Neighbourhood.find user_neighbourhood_id
     @assistance = Assistance.create(assistance_params)
     @assistance.user_id = current_user.id
     @assistance.neighbourhood_id = params[:neighbourhood_id]
+    @assistances = Kaminari.paginate_array(Assistance.where(neighbourhood_id: @neighbourhood.id).sort_by(&:created_at).reverse).page(params[:page]).per(5)
 
-    if @assistance.save
-      redirect_to [@neighbourhood, :assistances], notice: 'Assistance created'
-    else
-      render :new
+
+    respond_to do |format|
+      if @assistance.save
+        format.html { redirect_to neighbourhood_assistance_path(@assistance), notice: 'Assistance was successfully created.' }
+        format.json { render :show, status: :created, location: @assistance }
+      else
+        format.html { render :index }
+        format.json { render json: @assistance.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   def update
+    user_neighbourhood_id = users_building.neighbourhood_id
+    @neighbourhood = Neighbourhood.find user_neighbourhood_id
     @assistance = Assistance.find params[:id]
     @assistance_updated = @assistance.update(assistance_params)
-    if @assistance_updated
-      redirect_to neighbourhood_assistance_path
-    else
-      redirect_to neighbourhood_assistances_path, notice:"Vote result failed to submit."
+    @assistance_comment = AssistanceComment.new
+    @assistance_comments = AssistanceComment.where(assistance_id: @assistance.id).sort_by(&:created_at).reverse
+
+    respond_to do |format|
+      if @assistance_updated
+        format.html { redirect_to neighbourhood_assistance_path(@assistance), notice: 'Assistance was successfully updated.' }
+        format.json { render :show, status: :updated, location: @assistance }
+      else
+        format.html { render :show }
+        format.json { render json: @assistance.errors, status: :unprocessable_entity }
+      end
     end
+
   end
 
   def destroy

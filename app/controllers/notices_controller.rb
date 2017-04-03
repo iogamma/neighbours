@@ -12,15 +12,18 @@ class NoticesController < ApplicationController
   end
 
   def create
-    @neighbourhood = Neighbourhood.find params[:neighbourhood_id]
+    user_neighbourhood_id = users_building.neighbourhood_id
+    @neighbourhood = Neighbourhood.find user_neighbourhood_id
     @notice = Notice.create(notice_params)
     @notice.user_id = current_user.id
     @notice.neighbourhood_id = params[:neighbourhood_id]
+    @notices = Kaminari.paginate_array(Notice.where(neighbourhood_id: user_neighbourhood_id).sort_by(&:created_at).reverse).page(params[:page]).per(5)
+
 
     if @notice.save
       redirect_to [@neighbourhood, :notices], notice: 'Notice created'
     else
-      render :new
+      render :index
     end
   end
 
