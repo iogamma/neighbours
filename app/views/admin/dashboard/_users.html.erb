@@ -34,7 +34,7 @@
           </span>
         </td>
         <td>
-          <%= link_to fa_icon('trash'), admin_user_path(id: user.id), class: 'btn btn-danger', method: :delete, data: { confirm: "Please only do so if user no longer resident in current neighbourhood" } %>
+          <%= link_to fa_icon('trash'), admin_user_path(id: user.id), class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Please only do so if user no longer resident in current neighbourhood" } %>
         </td>
       <% end %>
     </tr>

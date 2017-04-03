@@ -23,7 +23,7 @@ class User < ApplicationRecord
 
   def self.search(search)
     if search
-      where('last_name LIKE ? OR first_name LIKE ?', "%#{search}%", "%#{search}%")
+      where("lower(last_name) LIKE lower(?) OR lower(first_name) LIKE lower(?)", "%#{search}%", "%#{search}%")
     else
       scoped
     end

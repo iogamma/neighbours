@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   def create
     if !current_user
-      redirect_to login_path, notice: 'Please log in to review the product.'
+      redirect_to login_path, notice: 'Please login to view event.'
     else
       case params[:type]
         when 'event'
