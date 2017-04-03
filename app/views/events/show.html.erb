@@ -4,7 +4,7 @@
       <%= link_to 'Create New Event', new_neighbourhood_event_path, class: 'btn btn-info' %>
     </div>
 
-    <div class="jumbotron"> 
+    <div class="jumbotron">
       <%= image_tag @event.image.url(:thumb), alt: @event.title, class:"event-image img-responsive"%>
       <h2><%= @event.title %></h2>
       <small>
@@ -25,7 +25,11 @@
 </section>
 
 <%#Comment Section%>
-
+<% if flash.notice %>
+  <div class="alert alert-danger">
+    <%= notice %>
+  </div>
+<% end %>
 <div class="event-comments">
   <div class="post-comment">
     <h2>Add a comment:</h2>

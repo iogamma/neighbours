@@ -15,11 +15,15 @@ class MeetingsController < ApplicationController
     @meeting = Meeting.create(meeting_params)
     @meeting.user_id = current_user.id
     @meeting.neighbourhood_id = params[:neighbourhood_id]
+    @meetings = Meeting.all.where(neighbourhood_id: params[:neighbourhood_id]).order(created_at: :desc)
+    @video = Video.new
+    @document = Document.new
 
     if @meeting.save
       redirect_to [@neighbourhood, :meetings], notice: 'Meeting posted'
     else
-      render :new
+      render :index
+
     end
   end
 
