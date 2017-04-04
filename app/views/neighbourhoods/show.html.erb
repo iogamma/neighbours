@@ -30,7 +30,7 @@
             <h3><%= event.title%></h3>
             <p><%= "#{event.date.strftime("%B %d,%Y")}" %></p>
             <p><%= "#{event.location}" %></p>
-            <a class="btn btn-default">Details</a>
+            <a class="btn btn-default" href="<%=neighbourhood_event_path(neighbourhood_id: users_building.neighbourhood_id, id: event.id) %>">Details</a>
           </div>
         </div>
       <% end %>
