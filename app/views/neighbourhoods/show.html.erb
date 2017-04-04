@@ -20,7 +20,7 @@
             <h3><%= @events.first.title%></h3>
             <p><%= "#{@events.first.date.strftime("%B %d,%Y")}" %></p>
             <p><%= "#{@events.first.location}" %></p>
-            <a class="btn btn-default">Details</a>
+            <a class="btn btn-default" href="<%=neighbourhood_event_path(neighbourhood_id: users_building.neighbourhood_id, id: @events.first.id) %>">Details</a>
         </div>
         </div>
       <% @events.drop(1).each do |event| %>
