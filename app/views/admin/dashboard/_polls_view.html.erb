@@ -14,7 +14,7 @@
           <div data-yes=<%= p.votes.where(vote: "yes").count %>
                data-no=<%= p.votes.where(vote: "no").count %>
                data-abstain=<%= p.votes.where(vote: "abstain").count %>
-               id="poll-results">
+               id="poll-results-<%= p.id %>">
           </div>
         </div>
       </div>
