@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
             redirect_to neighbourhood_event_path(neighbourhood_id: users_building.neighbourhood_id, id: @event.id)
           else
             flash[:notice] = 'Comment cannot be blank, not successfully saved'
-            render neighbourhood_event_path(neighbourhood_id: users_building.neighbourhood_id, id: @event.id), notice: 'Comment was not successfully saved'
+            redirect_to neighbourhood_event_path(neighbourhood_id: users_building.neighbourhood_id, id: @event.id), notice: 'Comment cannot be blank, not successfully saved'
           end
         when 'assistance'
           @assistance = Assistance.find params[:assistance_id]
