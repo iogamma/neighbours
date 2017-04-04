@@ -1,3 +1,139 @@
 // Place all the styles related to the meeting controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "variables";
+@import "extend";
+
+
+.meetings-index {
+  .page-header {
+    border-bottom: 0em;
+    margin-bottom: -1em;
+  }
+
+  .panel-default {
+    @extend %grey-box;
+
+    .panel-body {
+      font-size: 1.75em;
+      text-align: justify;
+    }
+  }
+  
+  #accordion {
+    background-color: #fff;
+    border: 0em;
+  }
+
+  .btn-danger {
+    @include button-color(#fff, #fb3f5e, #fb3f5e);
+    border-color: #fb3f5e;
+    background-image: none;
+    border-width: 0.1em;
+    margin-top: 0.2em;
+    border-radius: 0;
+    font-family: $lato;
+    font-size: 1.1em;
+    margin-left: -0.1em;
+
+    @include hover-state {
+      @include button-color (#fb3f5e, #fb3f5e, #fff);
+    }
+
+    a {
+      color:#fb3f5e;
+    }
+
+    &:hover {
+      a {
+        color:#fff;
+      }
+    }
+  }
+
+  .btn-info {
+    @extend %add-button;
+
+    @include hover-state {
+      @include button-color ($secondary-color, #fff, #fff);
+    }
+  }
+
+  .btn-upload {
+    @extend %modify-button;
+
+    @include hover-state {
+      @include button-color ($brand-color, #fff, #fff);
+    }
+  }
+
+  .btn-upload-vid {
+    @extend %modify-button;
+    margin-left:1em;
+
+    @include hover-state {
+      @include button-color ($brand-color, #fff, #fff);
+    }
+  }
+  
+  // .meeting-location{
+  //   color: #445763;
+  // }
+
+  h5{
+    color: #445763;
+    margin-top: 0em;
+  }
+
+  .document-name{
+    margin-left: -1em;
+    color: $secondary-color;
+    font-weight: bold;
+  }
+
+  iframe {
+    margin-left: -1.1em;
+    margin-top: 1.5em;
+  }
+}
+
+
+
+.upload-form {
+  border: 0.1em dashed transparent;
+  border-color: $brand-color;
+  margin-top: 1em;
+
+  .form-horizontal {
+    .form-group-doc {
+      margin-left: -10.75em;
+    }
+
+    .form-group-vid {
+      margin-left: -4.25em;
+    }
+  }
+}
+
+.meetings {
+  .alert-info {
+    @extend %white-box;
+  }
+
+  a {
+    color: #445763;
+  }
+
+  h3 {
+    color: #445763;
+  }
+  
+  h6 {
+    color: #587181;
+  }
+
+  hr {
+    border-top-color: $border-color;
+    margin-top: 0.5em;
+  }
+}

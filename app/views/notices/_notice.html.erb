@@ -9,8 +9,12 @@
         Submitted on <%= time_ago_in_words(notice.created_at) %> by <%= find_user(notice.user_id).first_name %> <%= find_user(notice.user_id).last_name %>
       </h6>
       <% if current_user %>
+
         <% if notice.user_id == current_user.id  %>
-          <%= link_to fa_icon('trash'), [@neighbourhood, notice], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+          <button type="button" class="btn btn-sm btn-danger">
+            <i class="fa fa-trash-o" aria-hidden="true"> </i>
+            &nbsp;<%= link_to "Delete", [@neighbourhood, notice], method: :delete, data: { confirm: "Are you sure?" } %>
+          </button>
         <% end %>
       <% end %>
     </div>

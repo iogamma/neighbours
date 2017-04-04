@@ -49,5 +49,15 @@
   margin-left: 1em;
 }
 
+%modify-button {
+  @include button-color(#fff, $brand-color, $brand-color);
+  background-image: none;
+  border-width: 0.1em;
+  margin-top: 0.2em;
+  border-radius: 0;
+  font-family: $lato;
+  font-size: 1.1em;
+}
+
  
 
