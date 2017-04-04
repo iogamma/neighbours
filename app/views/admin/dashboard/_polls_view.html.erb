@@ -1,6 +1,11 @@
 <div class="row">
   <div class="col-sm-12 poll-list" data-poll-ids="<%= @polls_id %>" id="poll-list">
-    <h2>Current Polls</h2>
+     <div class="panel panel-default poll-response-header">
+       <div class="panel-body">
+           Current Polls
+        </div>
+      </div>
+  <div id="poll-result">
     <% polls.each do |p| %>
       <div class="list-group">
         <div class="list-group-item poll-item" id="poll-item-<%= p.id %>">
@@ -14,5 +19,7 @@
         </div>
       </div>
     <% end %>
+    <%= paginate @polls%>
+  </div>
   </div>
 </div>

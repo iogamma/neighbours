@@ -1,15 +1,16 @@
 
-  <div class="alert alert-danger alert">
+  <div class="alert alert-danger community-alert">
     <%= form_tag admin_alert_path do %>
       <div class="form-group has-error center-block input">
         <div class="input-group">
-          <span class="input-group-btn">
-            <button class="btn btn-danger post-button" data-behaviour="alert-post" type="button">Post Alert</button>
-          </span>
+          <div class="panel panel-default alert-header">
+            <div class="panel-body">
+              Community Alert
+            </div>
+          </div>
           <input type="text" class="form-control" placeholder="Alert Your Residents" data-behaviour="alert-speaker">
-          <span class="input-group-btn">
-            <button class="btn btn-warning" type="button" data-behaviour="alert-clear-all">Clear All</button>
-          </span>
+          <button class="btn btn-alert post-button" data-behaviour="alert-post" type="button">Post Alert</button>
+          <button class="btn btn-warning" type="button" data-behaviour="alert-clear-all">Clear All</button>
         </div>
       </div>
     <% end %>
