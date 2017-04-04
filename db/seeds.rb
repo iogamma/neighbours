@@ -90,6 +90,7 @@ user1 = unit1.users.create!({
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
   email: 'admin@test.com',
+  password: '12345',
   password_digest: '12345678',
   resident_code: '111',
   on_council: true
@@ -99,6 +100,7 @@ user2 = unit1.users.create!({
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
   email: Faker::Internet.email,
+  password: '54321',
   password_digest: '12345678',
   resident_code: '222',
   on_council: false
