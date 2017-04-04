@@ -1,6 +1,8 @@
 class EventsController < ApplicationController
 
   def show
+    user_neighbourhood_id = users_building.neighbourhood_id
+    @neighbourhood = Neighbourhood.find user_neighbourhood_id
     @event = Event.find params[:id]
     @event_comment = EventComment.new
     @event_comments = EventComment.where(event_id: @event.id).sort_by(&:created_at).reverse
@@ -33,15 +35,34 @@ class EventsController < ApplicationController
     @neighbourhood = Neighbourhood.find users_building.neighbourhood_id
     @event = Event.find params[:id]
 
-    if crop_params
-      if @event.update crop_params
-        redirect_to [@neighbourhood, @event], notice: 'Event updated'
+    if @event.user_id == current_user.id
+      if crop_params
+        if @event.update crop_params
+          redirect_to [@neighbourhood, @event], notice: 'Event updated'
+        end
+      else
+        if @event.user_id = current_user.id
+          return
+        end
       end
     else
-      if @event.user_id = current_user.id
-        return
+      if Attendee.where(event_id: params[:event], user_id: current_user.id).empty?
+        @neighbourhood = Neighbourhood.find params[:neighbourhood_id]
+        @attendee = Attendee.create(attend: params[:attend])
+        @attendee.user_id = current_user.id
+        @attendee.event_id = params[:id]
+
+        if @attendee.save
+          redirect_to @neighbourhood
+        else
+          redirect_to @neighbourhood, notice:"attendance result failed to submit."
+        end
+
+      else
+        redirect_to @neighbourhood, notice:"You have already Voted."
       end
     end
+
   end
 
   def destroy

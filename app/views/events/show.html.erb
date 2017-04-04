@@ -1,8 +1,5 @@
 <section class="events-show">
   <header class="page-header">
-    <div class="well">
-      <%= link_to 'Create New Event', new_neighbourhood_event_path, class: 'btn btn-info' %>
-    </div>
 
     <div class="jumbotron">
       <%= image_tag @event.image.url(:thumb), alt: @event.title, class:"event-image img-responsive"%>
@@ -17,12 +14,37 @@
           <%= link_to fa_icon('trash'), neighbourhood_event_path(id: @event.id), class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
         <% end %>
       <% end %>
-    <article class="event-detail">
-      <%= @event.description %>
-    </article>
-    </header>
-  </div>
+      <article class="event-detail">
+        <%= @event.description %>
+      </article>
+    </div>
+  </header>
 </section>
+
+
+<!-- attendees -->
+  <div class="well dashboard-poll message-box">
+    <h4 class="post-title">Please confirm your attendance!</h4>
+      <hr>
+      <div class="progress">
+        <div class="progress-bar" style="width: <%= number_to_percentage(Attendee.yes_calculation(@event.id), precision: 0)%>">Attending count: <%= (Attendee.yes_calculation(@event.id).to_i)/100 %></div>
+      </div>
+      <div class="progress">
+        <div class="progress-bar progress-bar-danger" style="width: <%= number_to_percentage(Attendee.no_calculation(@event.id), precision: 0)%>">Attending count: <%= (Attendee.no_calculation(@event.id).to_i)/100 %></div>
+      </div>
+      <h6>Submitted <%= time_ago_in_words(@event.created_at) %> ago by <%= find_user(@event.user_id).first_name %> <%= find_user(@event.user_id).last_name %></h5>
+      <div class="vote-result">
+        <% if !Attendee.where(event_id: @event.id, user_id: current_user.id).empty? %>
+            <h5 class="poll-thank-you">You have submitted your attendance.</h5>
+        <% else %>
+          <%= link_to "Yes", neighbourhood_event_path(neighbourhood_id: @neighbourhood, id: @event.id, attend: "yes", event: @event.id), class: 'btn btn-default', method: 'put' %>
+          <%= link_to "No", neighbourhood_event_path(neighbourhood_id: @neighbourhood, id: @event, attend: "no", event: @event.id), class: 'btn btn-default', method: 'put' %>
+        <% end %>
+      </div>
+  </div>
+
+
+
 
 <%#Comment Section%>
 <% if flash.notice %>
