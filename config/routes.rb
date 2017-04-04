@@ -39,6 +39,10 @@ Rails.application.routes.draw do
     get :search, to:'dashboard#search'
     post :create_poll, to: 'dashboard#create_poll'
     get :show_polls, to: 'dashboard#show_polls'
+    delete 'delete_poll/:id' => 'dashboard#delete_poll', as: 'delete_poll'
+    patch :reset_resident_code , to: 'dashboard#reset_resident_code'
+
+    resources :users, only: [:update, :destroy]
   end
 
 end

@@ -1,0 +1,13 @@
+
+  <% if current_user && @neighbourhood %>
+    <% @alerts = Alert.where(room_id: @neighbourhood.uuid) %>
+    <% if @alerts.length > 0 %>
+      <div class="alert alert-danger alerts-feed">
+        <% @alerts.each do |alert| %>
+          <p><%= alert.message %></p>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="alert alert-danger alerts-feed"></div>
+    <% end %>
+  <% end %>

@@ -7,4 +7,9 @@ class Assistance < ApplicationRecord
     self.table_name
   end
 
+  validates :title, presence: true
+  validates :description, presence: true,
+            length: { minimum: 10 }
+
+
 end
