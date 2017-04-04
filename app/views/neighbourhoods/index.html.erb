@@ -1,3 +1,46 @@
 
-<%= link_to "Register", register_path %>
-  <div>Hello world!</div>
+  <div class="row">
+    <div class="colxsm-3"></div>
+    <div class="col-xs-6 main_register overlay text">
+      <fieldset>
+        <h2 class="join-header">Join Yours</h2>
+        <%= form_tag register_path url: {action: "create"} do %>
+          <div class="row">
+            <div class="col-xs-6 form-group">
+              <%= label_tag :first_name, nil, class: "control-label" %>
+              <%= text_field_tag  :first_name, nil, class: "form-control"%>
+            </div>
+            <div class="col-xs-6 form-group">
+              <%= label_tag :last_name, nil, class: "control-label" %>
+              <%= text_field_tag  :last_name, nil,  class: "form-control"%>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 form-group">
+              <%= label_tag :email, nil, class: "control-label" %>:
+              <%= email_field_tag :email, nil,  class: "form-control" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6 form-group">
+              <%= label_tag :password, nil, class: "control-label" %>
+              <%= password_field_tag  :password, nil, class: "form-control"%>
+            </div>
+            <div class="col-xs-6 form-group">
+              <%= label_tag :confirm_password, nil, class: "control-label" %>
+              <%= password_field_tag  :password_confirmation, nil, class: "form-control"%>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6 form-group">
+              <%= label_tag :code, nil, class: "control-label" %>
+              <i class="fa fa-question-circle" data-toggle="popover" data-content="Ask Your Dad" aria-hidden="true"></i>
+              <%= text_field_tag :resident_code, nil, class: "form-control" %>
+            </div>
+          </div>
+          <%= submit_tag "Register", class: "btn btn-primary" %>
+        <% end %>
+      </fieldset>
+    </div>
+    <div class="col-xs-3"></div>
+  </div>

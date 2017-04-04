@@ -25,7 +25,6 @@ Rails.application.routes.draw do
   # resources :user, only: [:new, :create] do
   # end
   get :neighbourhood, to: 'neighbourhoods#show'
-  get :register, to: 'users#new'
   post :register, to: 'users#create'
 
   get :login, to: 'sessions#new'
