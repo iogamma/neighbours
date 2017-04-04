@@ -20,7 +20,7 @@
               <button type="button" class="btn btn-sm btn-danger">
                 <i class="fa fa-trash-o" aria-hidden="true"> </i>
                 <%= link_to 'Delete meeting info', [@neighbourhood, meeting], method: :delete, data: { confirm: "Are you sure?" } %>
-              </button> 
+              </button>
             <!-- upload toggles for doc/vid -->
               <button type="button" class="btn btn-sm btn-upload" data-toggle="collapse" href="#<%= meeting.id %>D">
                 Upload new Document
@@ -28,6 +28,8 @@
               <button type="button" class="btn btn-sm btn-upload" data-toggle="collapse" href="#<%= meeting.id %>V">
                 Upload new Video
               </button>
+            <% end %>
+          <% end %>
         </div>
       </div>
       <!-- form for new document(toggle) -->
@@ -99,8 +101,8 @@
             </fieldset>
           <% end %>
         </div>
-      <% end %>
-    <% end %>
+      </div>
+
       <div id="<%= meeting.id %>" class="collapse">
         <div class="panel-body upload-details">
           <div>
@@ -143,13 +145,11 @@
                 <% end  %>
               <% end %>
             <% end %>
+
           </div>
         </div>
+
       </div>
     </div>
   </header>
 </article>
-
-
-
-
