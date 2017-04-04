@@ -17,3 +17,4 @@
 //= require init
 //= require jquery.Jcrop
 //= require cable
+//= require login
