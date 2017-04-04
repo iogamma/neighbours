@@ -1,6 +1,10 @@
-<div class="row">
-  <div class="col-sm-12">
-    <h2>Reset Resident Code</h2>
+<div class="row code-generator">
+  <div class="col-sm-12 generator-column">
+    <div class="panel panel-default generator-header">
+      <div class="panel-body">
+        Reset Resident Code
+      </div>
+    </div>
     <%= form_tag admin_reset_resident_code_path, method: "patch", remote: true, class: 'form-horizontal' do %>
       <div class="form-group">
         <label for="building-id" class="col-sm-5 control-label">Building ID: </label>

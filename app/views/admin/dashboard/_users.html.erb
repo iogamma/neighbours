@@ -1,4 +1,4 @@
-<table class="table table-striped table-hover">
+<table class="table table-striped table-hover search-table">
   <tr>
     <th>User id</th>
     <th>Email</th>
@@ -21,14 +21,14 @@
         <td><%= user.on_council %></td>
         <td>N/A</td>
       <% else %>
-        <td class="row">
+        <td class="row council-column">
           <span class="form-horizontal">
             <%= form_for user, url: admin_user_path(id: user.id), method: 'PUT', class: "form-horizontal" do |form| %>
               <span class="col-sm-1">
                 <%= form.check_box :on_council %>
               </span>
               <span class="col-sm-2">
-                <%= form.submit "update", class: "btn btn-sm btn-info" %>
+                <%= form.submit "update", class: "btn btn-sm btn-update" %>
               </span>
             <% end %>
           </span>

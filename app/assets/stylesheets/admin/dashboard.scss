@@ -2,6 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "variables";
+@import "extend";
+
 .alert {
   .input {
     margin: 0;
@@ -11,5 +14,275 @@
 .chat {
   .box {
     height: 15em;
+  }
+}
+
+.page-info {
+  margin-top: 1.5em;
+
+  h5{
+    color:$secondary-color;
+    font-style: italic;
+  }
+}
+
+.user-search {
+  margin-bottom: 3em;
+
+  h4{
+    color: $secondary-color;
+    text-align: center;
+    font-weight: bold;
+  }
+}
+.search-bar {
+  height: 3em;
+  margin-left: 1.75em;
+  width: 87%;
+}
+
+.search-button {
+  @extend %add-button;
+  height: 2.75em;
+  margin-left: 1.6em;
+  border-width: 0.1em;
+
+  @include hover-state {
+    @include button-color ($secondary-color, #fff, #fff);
+  }
+}
+
+.table-striped {
+  th{
+    text-align: center;
+  }
+}
+
+.table{
+  .council-column{
+    padding-left:3.25em;
+
+    .btn-update {
+      @extend %modify-button;
+
+      @include hover-state {
+        @include button-color ($brand-color, #fff, #fff);
+      }
+    }  
+  }
+
+  .btn-danger {
+      @include button-color(#fff, #fb3f5e, #fb3f5e);
+      border-color: #fb3f5e;
+      background-image: none;
+      border-width: 0.1em;
+      margin-top: 0.2em;
+      border-radius: 0;
+      font-family: $lato;
+      font-size: 1.1em;
+      margin-left: -0.1em;
+
+    @include hover-state {
+      @include button-color (#fb3f5e, #fb3f5e, #fff);
+    }
+
+    a {
+      color:#fb3f5e;
+    }
+
+    &:hover {
+      a {
+        color:#fff;
+      }
+    }
+  }  
+}
+
+div {
+  .alert-header {
+    border-color: #fb3f5e;
+    border-radius: 0em;
+    color: white;
+    font-family: $lato;
+    background-color: #fb3f5e;
+    box-shadow: $box-shadow;
+    margin-bottom: 0.5em;
+    font-size: 1.25em;
+    font-weight: bold;
+  }
+
+  .alert-danger{
+    border-color: #fff;
+    background-color: #fff;
+  }
+}
+
+.alert-danger {
+  input {
+    height: 15em;
+    width: 33em;
+    border-color: #fb3f5e;
+    border-radius: 0em;
+    margin-bottom:1em;
+  }
+
+  .btn-alert {
+    @extend %add-button;
+    border-width: 0.1em;
+    margin-left: 0em;
+    margin-top: 0.5em;
+    width:16.95em;
+
+    @include hover-state {
+      @include button-color ($secondary-color, $secondary-color, #fff);
+    }
+  }
+
+  .btn-warning {
+    @include button-color(#fff, #fb3f5e, #fb3f5e);
+    border-color: #fb3f5e;
+    background-image: none;
+    border-width: 0.1em;
+    margin-top: 0.5em;
+    border-radius: 0;
+    font-family: $lato;
+    font-size: 1.1em;
+    width:16.95em;
+
+    @include hover-state {
+      @include button-color (#fb3f5e, #fb3f5e, #fff);
+    }
+
+    a {
+      color:#fb3f5e;
+    }
+
+    &:hover {
+      a {
+        color:#fff;
+      }
+    }
+  }
+}
+
+.code-generator {
+  width:100%;
+
+  .generator-column {
+    margin-left:1em;
+  }
+
+  .generator-header {
+    @extend %blue-box;
+    font-size: 1.25em;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+  }
+
+  .btn-primary {
+    @extend %modify-button;
+    border-width: 0.1em;
+
+    @include hover-state {
+      @include button-color ($brand-color, #fff, #fff);
+    }
+  }
+
+  .input-sm {
+    border-color: $border-color;
+    border-radius:0em;
+  }
+}
+
+.chat-column {
+  .chat-box {
+    border: 0.1em solid transparent;
+    border-color: $border-color;
+    border-radius: 0em;
+    margin-left: 2.25em;
+    width: 90%;
+  }
+
+  .chat-header {
+    @extend %blue-box;
+    font-size: 1.25em;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    margin-left: 0.8em;
+    width: 95.5%;
+  }
+
+  .input-sm {
+    border: 0.1em solid transparent;
+    border-color: $border-color;
+    border-radius: 0em;
+    margin-left:1.25em;
+    margin-right:0.5em;
+  }
+  .input-group {
+    .form-control {
+      &:focus{
+        z-index: 0
+      }
+    }
+  }
+  .input-group-btn {
+    .btn-chat {
+      width: 85%;
+      text-align: center;
+      padding-right: 1.5em;
+      background-color:$brand-color;
+      color: white;
+    }
+  }
+}
+
+.poll-column {
+  margin-top: 1.25em;
+
+  .poll-header {
+    @extend %blue-box;
+    font-size: 1.25em;
+    font-weight: bold;
+  }
+
+  #Question {
+    border-radius: 0em;
+    border-color: $border-color;
+  }
+
+  #description {
+    border-radius: 0em;
+    border-color: $border-color;
+  }
+
+  .btn-poll {
+    @extend %modify-button;
+    border-width: 0.1em;
+
+    @include hover-state {
+      @include button-color ($brand-color, #fff, #fff);
+    }
+  }
+}
+
+.poll-list {
+  .poll-response-header {
+    @extend %blue-box;
+    font-size: 1.25em;
+    font-weight: bold;
+  }
+
+  .poll-item{
+    border-radius: 0em;
+    border-color: $border-color;
+  }
+
+  .pagination {
+    margin: 0em;
+  }
+
+  a{
+    color: $secondary-color;
   }
 }
