@@ -11,20 +11,24 @@ class UsersController < ApplicationController
     # Defaults to false. Set true by other council members
     @user.on_council = true
     # Unit_id fetch logic
-    @user.unit_id ||= Unit.find_by_resident_code(user_params[:resident_code]).id;
-    unless @user.unit_id
-      # TODO: Error Logic
+    users_unit = Unit.find_by_resident_code(user_params[:resident_code])
+    if users_unit
+      @user.unit_id ||= users_unit.id
+    else
+
     end
 
     respond_to do |format|
       if @user.save
         session[:user_id] = @user.id
         cookies.signed[:user_id] = @user.id
-        format.html { redirect_to root_path, notice: "Registration successful" }
-        format.json { render :show, status: :created, location: @user }
+        format.html {
+          users_hood_id = users_building.neighbourhood_id
+          flash[:notice] = "You are now logged in."
+          redirect_to neighbourhood_path(users_hood_id)
+        }
       else
-        format.html { render "new" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.html { redirect_to root_path }
       end
     end
   end
@@ -39,16 +43,14 @@ class UsersController < ApplicationController
     end
   end
 
-
-
   private
     def user_params
-      params.require(:user).permit(:first_name,
-                                   :last_name,
-                                   :email,
-                                   :password,
-                                   :password_confirmation,
-                                   :resident_code)
+      params.permit(:first_name,
+                    :last_name,
+                    :email,
+                    :password,
+                    :password_confirmation,
+                    :resident_code)
     end
 
     def update_params
