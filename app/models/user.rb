@@ -14,7 +14,6 @@ class User < ApplicationRecord
     email_filtered = email.strip
     #prepend('%').concat('%')
     @user = User.where(user[:email].matches(email_filtered))[0]
-    byebug
     if @user && @user.authenticate(password)
       return @user
     else
