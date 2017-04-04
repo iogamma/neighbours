@@ -24,6 +24,32 @@
     border: 0em;
   }
 
+  .btn-danger {
+    @include button-color(#fff, #fb3f5e, #fb3f5e);
+    border-color: #fb3f5e;
+    background-image: none;
+    border-width: 0.1em;
+    margin-top: 0.2em;
+    border-radius: 0;
+    font-family: $lato;
+    font-size: 1.1em;
+    margin-left: -0.1em;
+
+    @include hover-state {
+      @include button-color (#fb3f5e, #fb3f5e, #fff);
+    }
+
+    a {
+      color:#fb3f5e;
+    }
+
+    &:hover {
+      a {
+        color:#fff;
+      }
+    }
+  }
+
   .btn-info {
     @extend %add-button;
 
@@ -48,12 +74,12 @@
 
     #title-input{
       margin-left: -1em;
-      width: 113%;
+      width: 105%;
     }
 
     #date-input{
       margin-left: -1em;
-      width: 113%;
+      width: 105%;
     }
 
     .form-control{

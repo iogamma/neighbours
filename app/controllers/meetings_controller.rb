@@ -1,11 +1,12 @@
 class MeetingsController < ApplicationController
 
   def index
-    @neighbourhood = Neighbourhood.find params[:neighbourhood_id]
-    @meetings = Meeting.all.where(neighbourhood_id: params[:neighbourhood_id]).order(created_at: :desc)
+    user_neighbourhood_id = users_building.neighbourhood_id
+    @neighbourhood = Neighbourhood.find user_neighbourhood_id
+    @meetings = Kaminari.paginate_array(Meeting.where(neighbourhood_id: user_neighbourhood_id).sort_by(&:created_at).reverse).page(params[:page]).per(5)
     @meeting = Meeting.new
     @meeting.user_id = current_user.id
-    @meeting.neighbourhood_id = params[:neighbourhood_id]
+    @meeting.neighbourhood_id = users_building.neighbourhood_id
     @video = Video.new
     @document = Document.new
   end
@@ -29,7 +30,7 @@ class MeetingsController < ApplicationController
 
   def update
     @neighbourhood = Neighbourhood.find params[:neighbourhood_id]
-    @meetings = Meeting.all.where(neighbourhood_id: params[:neighbourhood_id]).order(created_at: :desc)
+    @meetings = Meeting.where(neighbourhood_id: params[:neighbourhood_id]).sort_by(&:created_at).reverse
   end
 
   def destroy
