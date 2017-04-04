@@ -6,8 +6,8 @@ class Admin::DashboardController < ApplicationController
     @neighbourhood = Neighbourhood.find(neighbourhood_id)
 
     @poll = Poll.new
-    @polls = Poll.where(neighbourhood_id: neighbourhood_id)
-    # @polls = Kaminari.paginate_array(Poll.where(neighbourhood_id: neighbourhood_id).sort_by(&:created_at).reverse).page(params[:page]).per(1)
+    # @polls = Poll.where(neighbourhood_id: neighbourhood_id)
+    @polls = Kaminari.paginate_array(Poll.where(neighbourhood_id: neighbourhood_id).sort_by(&:created_at).reverse).page(params[:page]).per(1)
     @polls_id = select_polls_id(@polls)
 
     @buildings_list = []

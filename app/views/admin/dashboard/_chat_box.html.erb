@@ -1,20 +1,24 @@
 <div class="row chat">
-  <div class="col-sm-12">
+  <div class="col-sm-12 chat-column">
     <div class="row">
       <div class="col-sm-12">
-        <h2>Admin Chat</h2>
+        <div class="panel panel-default chat-header">
+          <div class="panel-body">
+            Admin Chat
+          </div>
+        </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 panel panel-default pre-scrollable box" data-display="chat-box">
+      <div class="col-sm-12 panel panel-default pre-scrollable box chat-box" data-display="chat-box">
       </div>
     </div>
     <%= form_tag admin_chat_path, remote: true do %>
       <div class="form-group ">
         <div class="input-group">
-          <input type="text" class="form-control input-sm" data-behaviour="chat-speaker">
+          <input type="text" class="form-control input-sm" data-behaviour="chat-speaker" placeholder"Type your message here">
           <span class="input-group-btn">
-            <button class="btn btn-primary btn-sm" type="button">Send</button>
+            <button class="btn btn-chat btn-sm" type="button">Send</button>
           </span>
         </div>
       </div>

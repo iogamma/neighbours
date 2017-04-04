@@ -1,8 +1,14 @@
-<%= render partial: "admin/dashboard/alert_box" %>
+
+<div class="row">
+  <div class="col-sm-12">
+    <%= render partial: "admin/dashboard/neighbourhood_info" %>
+    <%= render partial: "admin/dashboard/user_search" %>
+  </div>
+</div>
 
 <div class="row">
   <div class="col-sm-6">
-    <%= render partial: "admin/dashboard/neighbourhood_info" %>
+    <%= render partial: "admin/dashboard/alert_box" %>
     <%= render partial: "admin/dashboard/code_generator" %>
     <%= render partial: "admin/dashboard/chat_box" %>
   </div>
@@ -11,8 +17,4 @@
     <%= render partial: "admin/dashboard/polls_view", locals: { polls: @polls } %>
   </div>
 </div>
-<div class="row">
-  <div class="col-sm-12">
-    <%= render partial: "admin/dashboard/user_search" %>
-  </div>
-</div>
+
