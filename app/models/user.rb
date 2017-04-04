@@ -10,11 +10,9 @@ class User < ApplicationRecord
   has_many :votes, dependent: :delete_all
 
   def self.authenticate_with_credentials(email, password)
-    user = User.arel_table
-    email_filtered = email.strip
-    #prepend('%').concat('%')
-    @user = User.where(user[:email].matches(email_filtered))[0]
-    if @user && @user.authenticate(password)
+    @user = User.where('lower(email) = ?', email.strip.downcase).first
+    unit_res_code = @user.unit.resident_code
+    if @user.resident_code == unit_res_code && @user.authenticate(password)
       return @user
     else
       return nil
