@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
     # If user's login doesn't work, tell them
     # and send them back to the login form.
       flash[:alert] = "Your login credentials do not match"
-      redirect_to register_path
+      redirect_to root_path
     end
   end
 

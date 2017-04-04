@@ -5,11 +5,10 @@
 @import "variables";
 @import "extend";
 
-
 .dashboard-polls {
   float: right;
   width: 32.5%;
-  
+
   .panel-default {
     @extend %blue-box;
     border-width: 0.1em;
@@ -24,7 +23,7 @@
 }
 
 .dashboard-feeds {
-  float:left;
+  float: left;
   width: 65%;
 
   .panel-default {
@@ -39,6 +38,59 @@
   }
 }
 
+@keyframes panning {
+  0% {
+    background-position: 0% 0%;
+  }
+  25% {
+    background-position: 100% 100%;
+  }
+  50% {
+    background-position: 100% 0%;
+  }
+  75% {
+    background-position: 0 100%;
+  }
+  200% {
+    background-position: 0 0;
+  }
+}
 
+.neighbourhoods.index {
+  animation: panning 100s infinite linear;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background: black url(/Concert-Properties2.png);
+  background-size: 200%;
+  margin: 0;
+  padding: 0;
+}
 
+.join-header {
+  border-bottom: 1px solid white;
+  color: white;
+  padding-bottom: 1em;
+  text-align: center;
+}
 
+.overlay {
+  float: left;
+  position: absolute;
+  width: 100%;
+  height: auto;
+  background: rgba(0,0,0,0.6);
+  top: 3em;
+  z-index: 50
+}
+
+.text {
+  z-index: 20;
+  margin: auto;
+  font-size: 1em;
+  color: white;
+  padding: 10px 40px;
+  border: 3px solid #ccc;
+  border-radius: 2px;
+  -webkit-font-smoothing: antialiased;
+}
