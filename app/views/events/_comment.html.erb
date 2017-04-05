@@ -1,15 +1,17 @@
-<div class="panel panel-default">
+<div class="panel panel-default comment-panel">
   <div class="panel-heading"> 
-    <%= EventComment.find_user(comment.user_id) %> 
+    <dd>
+      <%= link_to fa_icon('times'), event_comment_path(event_id: @event.id, id:comment.id, type: 'event'), class: 'btn btn-sm btn-delete', method: :delete, data: { confirm: "Are you sure?" } %>
+    </dd>
+    <dd class="comment-user">
+      <%= EventComment.find_user(comment.user_id) %> 
+    </dd>
   </div>
   <div class="panel-body">
     <dd>
       <%= comment.content %>
-    </dd>
+    </dd >
     <% if current_user.id === comment.user_id %>
-      <dd>
-        <%= link_to fa_icon('trash'), event_comment_path(event_id: @event.id, id:comment.id, type: 'event'), class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
-      </dd>
     <% end %>
   </div>
 </div>
