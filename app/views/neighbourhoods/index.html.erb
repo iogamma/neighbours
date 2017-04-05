@@ -3,7 +3,7 @@
     <div class="colxsm-3"></div>
     <div class="col-xs-6 main_register overlay text">
       <fieldset>
-        <h2 class="join-header">Join Yours</h2>
+        <h2 class="join-header">Join Your Neighbourhood</h2>
         <%= form_tag register_path url: {action: "create"} do %>
           <div class="row">
             <div class="col-xs-6 form-group">
@@ -32,13 +32,13 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-xs-6 form-group">
+            <div class="col-xs-12 form-group">
               <%= label_tag :code, nil, class: "control-label" %>
               <i class="fa fa-question-circle" data-toggle="popover" data-content="Ask Your Dad" aria-hidden="true"></i>
               <%= text_field_tag :resident_code, nil, class: "form-control" %>
             </div>
           </div>
-          <%= submit_tag "Register", class: "btn btn-primary" %>
+          <%= submit_tag "Enter", class: "btn btn-primary" %>
         <% end %>
       </fieldset>
     </div>
