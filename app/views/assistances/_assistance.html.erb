@@ -10,7 +10,7 @@
         <% if assistance.user_id == current_user.id  %>
           <button type="button" class="btn btn-sm btn-danger">
             <i class="fa fa-trash-o" aria-hidden="true"> </i>
-              &nbsp;<%= link_to 'Delete', [@neighbourhood, assistance], method: :delete, data: { confirm: "Are you sure? hi" } %>
+              &nbsp;<%= link_to 'Delete', [@neighbourhood, assistance], method: :delete, data: { confirm: "Are you sure?" } %>
           </button>
           <button type="button" class="btn btn-sm btn-edit" data-toggle="modal" data-target="#<%= assistance.id %>">
             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>

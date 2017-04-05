@@ -26,14 +26,12 @@ class AssistancesController < ApplicationController
     @assistance.user_id = current_user.id
     @assistance.neighbourhood_id = params[:neighbourhood_id]
     @assistances = Kaminari.paginate_array(Assistance.where(neighbourhood_id: @neighbourhood.id).sort_by(&:created_at).reverse).page(params[:page]).per(5)
-
-
     respond_to do |format|
       if @assistance.save
-        format.html { redirect_to neighbourhood_assistance_path(@assistance), notice: 'Assistance was successfully created.' }
+        format.html { redirect_to neighbourhood_assistance_path(@assistance), :flash => { :success => 'Assistance was successfully created.'} }
         format.json { render :show, status: :created, location: @assistance }
       else
-        format.html { render :index }
+        format.html { redirect_to neighbourhood_assistances_path, alert: @assistance.errors.full_messages}
         format.json { render json: @assistance.errors, status: :unprocessable_entity }
       end
     end
@@ -49,10 +47,10 @@ class AssistancesController < ApplicationController
 
     respond_to do |format|
       if @assistance_updated
-        format.html { redirect_to neighbourhood_assistance_path(@assistance), notice: 'Assistance was successfully updated.' }
+        format.html { redirect_to neighbourhood_assistance_path(@assistance), :flash => { :success => 'Assistance was successfully updated.'} }
         format.json { render :show, status: :updated, location: @assistance }
       else
-        format.html { render :show }
+        format.html { redirect_to neighbourhood_assistance_path(@assistance), alert: @assistance.errors.full_messages }
         format.json { render json: @assistance.errors, status: :unprocessable_entity }
       end
     end
@@ -65,7 +63,7 @@ class AssistancesController < ApplicationController
     @assistance = Assistance.find params[:id]
     @assistance.destroy
     respond_to do |format|
-      format.html { redirect_to [@neighbourhood, :assistances], notice: 'assistance was successfully destroyed.' }
+      format.html { redirect_to [@neighbourhood, :assistances], :flash => { :success => 'assistance was successfully deleted.'}}
       format.json { head :no_content }
     end
   end

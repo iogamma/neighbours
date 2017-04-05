@@ -26,7 +26,7 @@ class EventsController < ApplicationController
         redirect_to [@neighbourhood, @event], notice: 'Event created'
       end
     else
-      flash[:notice] = 'Please fill in all fields in order for an event to be created.'
+      flash[:alert] = 'Please fill in all fields in order for an event to be created.'
       redirect_to @neighbourhood
     end
   end

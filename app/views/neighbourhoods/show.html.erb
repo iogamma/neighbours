@@ -4,6 +4,11 @@
       <%= notice %>
     </div>
   <% end %>
+  <% if flash.alert %>
+    <div class="alert alert-danger">
+      <%= alert %>
+    </div>
+  <% end %>
  <div class="jumbotron dashboard-event">
   <%if !@events.empty? %>
    <div id="myCarousel" class="carousel slide" data-ride="carousel">
