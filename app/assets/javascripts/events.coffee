@@ -1,5 +1,5 @@
 execute = ->
-  unless $(".neighbourhoods.index").length > 0
+  unless $(".crop-image").length > 0
     if  $(".crop-image").length > 0
       new ImageCropper()
 
