@@ -7,11 +7,20 @@
       </div>
     </div>
   </header>
+    <% if flash.alert %>
+      <div class="alert alert-dismissible alert-danger">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>The following errors prevented saving:</strong>
+        <% alert.each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </div>
+    <% end %>
     <% if current_user  %>
       <% if current_user.on_council == true %>
         <div class="well" id="accordion" role="tablist" aria-multiselectable="true">
           <a role="button" class="btn btn-info" data-toggle="collapse" href="#new_notice">
-            <i class="fa fa-plus" aria-hidden="true"></i> 
+            <i class="fa fa-plus" aria-hidden="true"></i>
             &nbsp;Create New Notice
           </a>
           <div id="new_notice" class="collapse" role="tabpanel" aria-labelledby="headingOne">
