@@ -118,7 +118,7 @@ div {
 }
 
 .alert-danger {
-  input {
+  .form-control {
     height: 15em;
     width: 33em;
     border-color: #fb3f5e;
@@ -219,6 +219,7 @@ div {
     margin-left:1.25em;
     margin-right:0.5em;
   }
+  
   .input-group {
     .form-control {
       &:focus{

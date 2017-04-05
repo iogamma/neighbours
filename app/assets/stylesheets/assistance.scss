@@ -4,6 +4,7 @@
 
 @import "variables";
 @import "extend";
+@import "comment";
 
 .assistances-index {
   .page-header {
@@ -133,3 +134,66 @@
     color: #587181;
   }
 }
+
+.assistances-show {
+  .assistance-title{
+    color: $secondary-color;
+    font-family: $lato;
+    font-weight: bolder;
+    font-size: 3.5em;
+  }
+
+  .btn-danger {
+    @include button-color(#fff, #fb3f5e, #fb3f5e);
+    border-color: #fff;
+    background-image: none;
+    border-width: 0.1em;
+    margin-top: 0.2em;
+    border-radius: 0;
+    font-family: $lato;
+    font-size: 1.1em;
+    margin-left: -0.1em;
+
+    @include hover-state {
+      @include button-color (#fb3f5e, #fb3f5e, #fff);
+    }
+
+    a {
+      color:#fb3f5e;
+    }
+
+    &:hover {
+      a {
+        color:#fff;
+      }
+    }
+  }
+
+    .btn-info {
+    @extend %modify-button;
+    border-color: #fff;
+
+    @include hover-state {
+      @include button-color ($brand-color, #fff, #fff);
+    }
+  }
+}
+
+.assistances-show {
+  .assistance-panel {
+    .panel-heading{
+      background: #fff; 
+      border-color: $secondary-color;
+    }
+  }
+}
+
+.assistance-panel {
+  .alert-success{
+    background-color: #fff;
+    border-color: #fff;
+    color: $secondary-color;
+    line-height:2em;
+  }
+}
+

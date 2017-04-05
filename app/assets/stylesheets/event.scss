@@ -1,6 +1,9 @@
 // Place all the styles related to the event controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "variables";
+@import "extend";
+@import "comment";
 
 .image-container {
   height: 200px;
@@ -8,5 +11,3 @@
   background-size: cover;
 }
 
-.event-image {
-}
