@@ -35,7 +35,7 @@ class NoticesController < ApplicationController
     @notice = Notice.find params[:id]
     @notice.destroy
     respond_to do |format|
-      format.html { redirect_to [@neighbourhood, :notices], notice: 'notice was successfully destroyed.' }
+      format.html { redirect_to [@neighbourhood, :notices], notice: 'notice was successfully deleted.' }
       format.json { head :no_content }
     end
   end
