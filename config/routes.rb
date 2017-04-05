@@ -44,4 +44,6 @@ Rails.application.routes.draw do
     resources :users, only: [:update, :destroy]
   end
 
+  get "*path" => redirect('neighbourhood')
+
 end

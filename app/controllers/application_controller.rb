@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
-
   protect_from_forgery with: :exception
+  before_action :require_login
 
   private
 
@@ -17,5 +17,16 @@ class ApplicationController < ActionController::Base
       @users_building ||= Building.find(users_unit.building_id)
     end
     helper_method :users_building
+
+    def require_login
+      unless current_user
+        unless( (params[:controller] == "neighbourhoods" && params[:action] == "index") ||
+                (params[:controller] == "users" && params[:action] == "create") ||
+                (params[:controller] == "sessions" && params[:action] == "create") )
+          flash[:error] = "You are not authorized to access the page, please login"
+          redirect_to root_path
+        end
+      end
+    end
 
 end
