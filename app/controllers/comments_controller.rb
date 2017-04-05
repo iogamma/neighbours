@@ -1,26 +1,30 @@
 class CommentsController < ApplicationController
   def create
     if !current_user
-      redirect_to login_path, notice: 'Please login to view event.'
+      redirect_to login_path, alert: 'Please login to view event.'
     else
       case params[:type]
         when 'event'
           @event = Event.find params[:event_id]
           @comment = @event.event_comments.create(user_id: current_user.id, content: event_comment_params[:content])
-          if @comment.save
-            redirect_to neighbourhood_event_path(neighbourhood_id: users_building.neighbourhood_id, id: @event.id)
-          else
-            flash[:notice] = 'Comment cannot be blank, not successfully saved'
-            redirect_to neighbourhood_event_path(neighbourhood_id: users_building.neighbourhood_id, id: @event.id), notice: 'Comment cannot be blank, not successfully saved'
+
+          respond_to do |format|
+            if @comment.save
+              format.html {redirect_to neighbourhood_event_path(neighbourhood_id: users_building.neighbourhood_id, id: @event.id)}
+            else
+              format.html {redirect_to neighbourhood_event_path(neighbourhood_id: users_building.neighbourhood_id, id: @event.id), notice: 'Comment cannot be blank, not successfully saved'}
+            end
           end
+
         when 'assistance'
           @assistance = Assistance.find params[:assistance_id]
           @comment = @assistance.assistance_comments.create(user_id: current_user.id, content: assistance_comment_params[:content])
-          if @comment.save
-            redirect_to neighbourhood_assistance_path(neighbourhood_id: users_building.neighbourhood_id, id: @assistance.id)
-          else
-            flash[:notice] = 'Comment cannot be blank, not successfully saved'
-            redirect_to neighbourhood_assistance_path(neighbourhood_id: users_building.neighbourhood_id, id: @assistance.id), notice: 'Comment cannot be blank, not successfully saved'
+          respond_to do |format|
+            if @comment.save
+              format.html {redirect_to neighbourhood_assistance_path(neighbourhood_id: users_building.neighbourhood_id, id: @assistance.id)}
+            else
+              format.html {redirect_to neighbourhood_assistance_path(neighbourhood_id: users_building.neighbourhood_id, id: @assistance.id), notice: 'Comment cannot be blank, not successfully saved'}
+            end
           end
       end
     end
@@ -32,14 +36,14 @@ class CommentsController < ApplicationController
         @event = Event.find params[:event_id]
         @comment = @event.event_comments.find params[:id]
         respond_to do |format|
-          format.html { redirect_to neighbourhood_event_path(neighbourhood_id: users_building.neighbourhood_id, id: @event.id), notice: 'event was successfully destroyed.' }
+          format.html { redirect_to neighbourhood_event_path(neighbourhood_id: users_building.neighbourhood_id, id: @event.id), notice: 'comment deleted.' }
           format.json { head :no_content }
         end
       when 'assistance'
         @assistance = Assistance.find params[:assistance_id]
         @comment = @assistance.assistance_comments.find params[:id]
         respond_to do |format|
-          format.html { redirect_to neighbourhood_assistance_path(neighbourhood_id: users_building.neighbourhood_id, id: @assistance.id), notice: 'assistance was successfully destroyed.' }
+          format.html { redirect_to neighbourhood_assistance_path(neighbourhood_id: users_building.neighbourhood_id, id: @assistance.id), notice: 'comment deleted.' }
           format.json { head :no_content }
         end
     end

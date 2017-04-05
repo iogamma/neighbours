@@ -1,11 +1,25 @@
 <section class="assistances-index">
-
   <header class="page-header">
     <div class="panel panel-default">
       <div class="panel-body">
         Assistances
       </div>
     </div>
+    <% if flash.alert %>
+      <div class="alert alert-dismissible alert-danger">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>The following errors prevented saving:</strong>
+        <% alert.each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </div>
+    <% end %>
+    <% if flash[:success] %>
+      <div class="alert alert-dismissible alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= flash[:success] %>
+      </div>
+    <% end %>
   </header>
   <% if current_user %>
     <div class="well" id="accordion" role="tablist" aria-multiselectable="true">
@@ -15,7 +29,7 @@
       </a>
       <div id="new_assistance" class="collapse" role="tabpanel" aria-labelledby="headingOne">
         <div class="panel-body">
-          <%= render 'form'  %>
+          <%= render 'form' %>
         </div>
       </div>
     </div>

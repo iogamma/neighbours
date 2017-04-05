@@ -19,11 +19,14 @@ class NoticesController < ApplicationController
     @notice.neighbourhood_id = params[:neighbourhood_id]
     @notices = Kaminari.paginate_array(Notice.where(neighbourhood_id: user_neighbourhood_id).sort_by(&:created_at).reverse).page(params[:page]).per(5)
 
-
-    if @notice.save
-      redirect_to [@neighbourhood, :notices], notice: 'Notice created'
-    else
-      render :index
+    respond_to do |format|
+      if @notice.save
+        format.html { redirect_to neighbourhood_notice_path(@notice), :flash => { :success => 'Notice was successfully created.'} }
+        format.json { render :show, status: :created, location: @notice }
+      else
+        format.html { redirect_to neighbourhood_notices_path, alert: @notice.errors.full_messages}
+        format.json { render json: @notice.errors, status: :unprocessable_entity }
+      end
     end
   end
 

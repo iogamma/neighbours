@@ -12,7 +12,8 @@ class MeetingsController < ApplicationController
   end
 
   def create
-    @neighbourhood = Neighbourhood.find params[:neighbourhood_id]
+    user_neighbourhood_id = users_building.neighbourhood_id
+    @neighbourhood = Neighbourhood.find user_neighbourhood_id
     @meeting = Meeting.create(meeting_params)
     @meeting.user_id = current_user.id
     @meeting.neighbourhood_id = params[:neighbourhood_id]
@@ -20,13 +21,16 @@ class MeetingsController < ApplicationController
     @video = Video.new
     @document = Document.new
 
-    if @meeting.save
-      redirect_to [@neighbourhood, :meetings], notice: 'Meeting posted'
-    else
-      render :index
-
+    respond_to do |format|
+      if @meeting.save
+        format.html { redirect_to neighbourhood_meetings_path, :flash => { :success => 'meeting was successfully created.'} }
+      else
+        format.html { redirect_to neighbourhood_meetings_path, alert: @meeting.errors.full_messages}
+      end
     end
   end
+
+
 
   def update
     @neighbourhood = Neighbourhood.find params[:neighbourhood_id]
@@ -38,7 +42,7 @@ class MeetingsController < ApplicationController
     @meeting = Meeting.find params[:id]
     @meeting.destroy
     respond_to do |format|
-      format.html { redirect_to [@neighbourhood, :meetings], notice: 'meeting was successfully destroyed.' }
+      format.html { redirect_to [@neighbourhood, :meetings], :flash => { :success => 'meeting was successfully deleted.'} }
       format.json { head :no_content }
     end
   end
