@@ -233,14 +233,6 @@ div:empty {
 }
 
 .alerts-feed {
-  background: #f63602;
-  border-color: #c32b02;
-  border-width: 0.3em;
-  border-radius: 0em;
-  color: white;
-  font-weight: bold;
-  width: 100vw;
-  transform: translateX(-20.25vw);
 }
 
 .text-center {
@@ -250,7 +242,7 @@ div:empty {
 .modal-content{
   @extend %white-box;
   padding: 1.25em;
-  
+
   .modal-header {
     border-width: 0em;
   }
@@ -260,7 +252,7 @@ div:empty {
     font-size: 1.75em;
     font-weight: bold;
   }
-  
+
   .btn-primary {
     @extend %add-button;
     float: right;
@@ -273,7 +265,7 @@ div:empty {
         .form-control {
     border-radius:0em;
   }
-  
+
   .btn-file {
     @extend %modify-button;
     border-width:0.15em;
@@ -297,7 +289,7 @@ div:empty {
     font-family: $lato;
     font-weight: initial;
   }
-  
+
   .join-header {
     color: black;
     font-family:$lato;
