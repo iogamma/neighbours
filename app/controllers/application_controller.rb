@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
         unless( (params[:controller] == "neighbourhoods" && params[:action] == "index") ||
                 (params[:controller] == "users" && params[:action] == "create") ||
                 (params[:controller] == "sessions" && params[:action] == "create") )
-          flash[:error] = "You are not authorized to access the page, please login"
+          flash[:reroute] = "You are not authorized to access the page"
           redirect_to root_path
         end
       end
