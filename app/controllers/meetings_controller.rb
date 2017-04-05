@@ -25,7 +25,7 @@ class MeetingsController < ApplicationController
       if @meeting.save
         format.html { redirect_to neighbourhood_meetings_path, :flash => { :success => 'meeting was successfully created.'} }
       else
-        format.html { redirect_to neighbourhood_meetings_path, alert: @meeting.errors.full_messages}
+        format.html { redirect_to neighbourhood_meetings_path, :flash => { :error => @meeting.errors.full_messages} }
       end
     end
   end
