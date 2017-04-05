@@ -1,15 +1,15 @@
 <!-- partial navigation for logged in users -->
 
   <ul class="nav navbar-nav">
-    <% if current_user.on_council %>
-      <li><a href="/admin">Administrator</a></li>
-    <% end %>
     <li><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Create Event</button></li>
     <li><%= link_to "Assistance", neighbourhood_assistances_path(neighbourhood_id: users_building.neighbourhood_id) %></li>
     <li><%= link_to "Notices",  neighbourhood_notices_path(neighbourhood_id: users_building.neighbourhood_id) %></li>
     <li><%= link_to "Minutes", neighbourhood_meetings_path(neighbourhood_id: users_building.neighbourhood_id) %></li>
   </ul>
   <ul class="nav navbar-nav navbar-right">
+    <% if current_user.on_council %>
+      <li><a href="/admin">Administrator</a></li>
+    <% end %>
     <li>
       <%= link_to logout_path, confirm: "Are you sure?", method: :delete do %>
         Sign Out <%= fa_icon "sign-out" %>

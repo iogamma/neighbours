@@ -1,17 +1,17 @@
 <section class="assistances-show">
-  <div class="panel-default">
+  <div class="panel-default assistance-panel">
     <div class="panel-heading">
-      <h2><%= @assistance.title %></h2>
-      <small>
-        <em>
-        submitted on date <%= @assistance.created_at %> by <%= @assistance.user_id %>
-        </em>
-      </small>
-      <% if current_user %>
-        <% if @assistance.user_id == current_user.id  %>
-          <%= link_to fa_icon('trash'), [@neighbourhood, :assistance], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
-          <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#<%= @assistance.id %>">Edit help request</button>
+      <h2 class="assistance-title"><%= @assistance.title %></h2>
+      <div>
+        <h6>Submitted <%= time_ago_in_words(@assistance.created_at) %> ago by <%= find_user(@assistance.user_id).first_name %> <%= find_user(@assistance.user_id).last_name %></h6>
 
+        <% if current_user %>
+          <% if @assistance.user_id == current_user.id  %>
+            <%= link_to fa_icon('trash'), [@neighbourhood, :assistance], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#<%= @assistance.id %>">
+              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+            </button>
+      </div>
           <!-- Modal -->
           <div id="<%= @assistance.id %>" class="modal fade" role="dialog">
             <div class="modal-dialog">
@@ -74,10 +74,10 @@
     <h4>Add a comment:</h4>
     <%= form_for @assistance_comment, url: assistance_comments_path(assistance_id: @assistance.id, type: 'assistance') do |f| %>
       <p>
-        <%= f.text_field :content  %>
+        <%= f.text_area :content, class:'comment-input'  %>
       </p>
       <p>
-        <%= f.submit %>
+        <%= f.submit class:"btn btn-primary btn-comment"%>
       </p>
     <% end %>
   </div>
