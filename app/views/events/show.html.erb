@@ -3,20 +3,18 @@
 
     <div class="jumbotron">
       <%= image_tag @event.image.url(:thumb), alt: @event.title, class:"event-image img-responsive"%>
-      <h2><%= @event.title %></h2>
-      <small>
-        <em>
-        submitted on date <%= @event.created_at %> by <%= @event.user_id %>
-        </em>
-      </small>
+      <h2 class='event-title'><%= @event.title %></h2>
+      <h6>Submitted <%= time_ago_in_words(@event.created_at) %> ago by <%= find_user(@event.user_id).first_name %> <%= find_user(@event.user_id).last_name %></h6>
+      <hr>
+      <article class="event-detail">
+        <h4><%= "Event Description:" %></h4>
+        <%= @event.description %>
+      </article>
       <% if current_user %>
         <% if @event.user_id == current_user.id  %>
           <%= link_to fa_icon('trash'), neighbourhood_event_path(id: @event.id), class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
         <% end %>
       <% end %>
-      <article class="event-detail">
-        <%= @event.description %>
-      </article>
     </div>
   </header>
 </section>
@@ -55,13 +53,13 @@
 <% end %>
 <div class="event-comments">
   <div class="post-comment">
-    <h2>Add a comment:</h2>
+    <h4>Add a comment:</h4>
     <%= form_for @event_comment, url: event_comments_path(event_id: @event.id, type: 'event') do |f| %>
       <p>
-        <%= f.text_field :content  %>
+        <%= f.text_area :content, class:'comment-input'  %>
       </p>
       <p>
-        <%= f.submit %>
+        <%= f.submit "Comment", class:"btn btn-primary btn-comment"%>
       </p>
     <% end %>
   </div>

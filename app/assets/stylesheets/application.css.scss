@@ -233,10 +233,92 @@ div:empty {
 }
 
 .alerts-feed {
-  margin: 0;
+  background: #f63602;
+  border-color: #c32b02;
+  border-width: 0.3em;
+  border-radius: 0em;
+  color: white;
+  font-weight: bold;
+  width: 100vw;
+  transform: translateX(-20.25vw);
 }
 
 .text-center {
   text-align: center;
 }
+
+.modal-content{
+  @extend %white-box;
+  padding: 1.25em;
+  
+  .modal-header {
+    border-width: 0em;
+  }
+
+  h5{
+    color: $secondary-color;
+    font-size: 1.75em;
+    font-weight: bold;
+  }
+  
+  .btn-primary {
+    @extend %add-button;
+    float: right;
+
+      @include hover-state {
+      @include button-color ($secondary-color, #fff, #fff);
+    }
+  }
+
+        .form-control {
+    border-radius:0em;
+  }
+  
+  .btn-file {
+    @extend %modify-button;
+    border-width:0.15em;
+
+    @include hover-state {
+      @include button-color ($brand-color, #fff, #fff);
+    }
+  }
+}
+
+.main_register {
+  @extend %white-box;
+  background: #e9ebee;
+  color:$secondary-color;
+  border: $secondary-color;
+  font-size: 1.1em;
+
+  transform: translateX(20em);
+
+  label {
+    font-family: $lato;
+    font-weight: initial;
+  }
+  
+  .join-header {
+    color: black;
+    font-family:$lato;
+    font-weight: bold;
+  }
+
+  .form-control {
+    border-radius: 0em;
+  }
+
+  .btn-primary {
+    width: 100%;
+    border-radius: 0;
+    background: #eddb11;
+    color: black;
+    font-family:$lato;
+    border-color: $border-color;
+    font-weight: bold;
+  }
+}
+
+
+
 

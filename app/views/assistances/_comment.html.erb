@@ -1,15 +1,20 @@
-<div class="panel panel-default">
+<div class="panel panel-default comment-panel">
   <div class="panel-heading">
-    <%= AssistanceComment.find_user(comment.user_id) %>
+    <% if current_user.id === comment.user_id %>
+      <dd>
+        <%= link_to fa_icon('times'), assistance_comment_path(assistance_id: @assistance.id, id:comment.id, type: 'assistance'), class: 'btn btn-sm btn-delete', method: :delete, data: { confirm: "Are you sure?" } %>
+      </dd>
+    <% end %>
+    <dd class="comment-user">
+      <%= AssistanceComment.find_user(comment.user_id) %>
+    </dd>
   </div>
   <div class="panel-body">
     <dd>
       <%= comment.content %>
     </dd>
-    <% if current_user.id === comment.user_id %>
-      <dd>
-        <%= link_to fa_icon('trash'), assistance_comment_path(assistance_id: @assistance.id, id:comment.id, type: 'assistance'), class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
-      </dd>
-    <% end %>
+    <dd>
+      <h6>Submitted <%= time_ago_in_words(comment.created_at) %> ago </h6>
+    </dd>
   </div>
 </div>

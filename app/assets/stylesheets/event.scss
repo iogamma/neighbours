@@ -1,12 +1,84 @@
 // Place all the styles related to the event controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "variables";
+@import "extend";
+@import "comment";
+
+.jumbotron {
+  margin-bottom: 0em;
+}
 
 .image-container {
   height: 200px;
   width: 100%;
   background-size: cover;
 }
-
-.event-image {
+.events {
+  .jumbotron {
+    margin-bottom: 0em;
+  }
+  .message-box {
+    margin-bottom: 5em;
+  }
 }
+
+
+.events-show {
+  .event-title{
+    color: $secondary-color;
+    font-family: $lato;
+    font-weight: bolder;
+    font-size: 3.5em;
+  }
+
+  hr {
+    margin-top:1em;
+    margin-bottom:1em;
+    border-color:#587181
+  }
+  h4 {
+    color: #587181;
+    font-weight: bold;
+  }
+
+  h6 {
+    color: #587181;
+  }
+
+  .btn-danger {
+    @include button-color(#fff, #fb3f5e, #fb3f5e);
+    border-color: #fff;
+    background-image: none;
+    border-width: 0.1em;
+    margin-top: 0.2em;
+    border-radius: 0;
+    font-family: $lato;
+    font-size: 1.1em;
+    margin-left: -0.1em;
+
+    @include hover-state {
+      @include button-color (#fb3f5e, #fb3f5e, #fff);
+    }
+
+    a {
+      color:#fb3f5e;
+    }
+
+    &:hover {
+      a {
+        color:#fff;
+      }
+    }
+  }
+}
+
+
+// .assistance-panel {
+//   .alert-success{
+//     background-color: #fff;
+//     border-color: #fff;
+//     color: $secondary-color;
+//     line-height:2em;
+//   }
+// }

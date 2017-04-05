@@ -35,15 +35,9 @@ class EventsController < ApplicationController
     @neighbourhood = Neighbourhood.find users_building.neighbourhood_id
     @event = Event.find params[:id]
 
-    if @event.user_id == current_user.id
-      if crop_params
-        if @event.update crop_params
-          redirect_to [@neighbourhood, @event], notice: 'Event updated'
-        end
-      else
-        if @event.user_id = current_user.id
-          return
-        end
+    if crop_params
+      if @event.update crop_params
+        redirect_to [@neighbourhood, @event], notice: 'Event updated'
       end
     else
       if Attendee.where(event_id: params[:event], user_id: current_user.id).empty?
@@ -62,8 +56,8 @@ class EventsController < ApplicationController
         redirect_to @neighbourhood, notice:"You have already Voted."
       end
     end
-
   end
+
 
   def destroy
     @neighbourhood = Neighbourhood.find users_building.neighbourhood_id
