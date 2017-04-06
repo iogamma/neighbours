@@ -251,6 +251,7 @@
   display: none;
 }
 
+
 .text-center {
   text-align: center;
 }
@@ -259,8 +260,7 @@
   @extend %white-box;
   border-width: 0.4em;
   padding: 1.25em;
-  
-  
+
   .modal-header {
     border-width: 0em;
   }
@@ -270,7 +270,7 @@
     font-size: 1.75em;
     font-weight: bold;
   }
-  
+
   .btn-primary {
     @extend %add-button;
     float: right;
@@ -283,7 +283,7 @@
   .form-control {
     border-radius:0em;
   }
-  
+
   .btn-file {
     @extend %modify-button;
     border-width:0.15em;

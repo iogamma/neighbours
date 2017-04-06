@@ -13,7 +13,7 @@ class Admin::UsersController < ApplicationController
     @user = User.find params[:id]
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to admin_root_path, notice: 'notice was successfully destroyed.' }
+      format.html { redirect_to admin_root_path, :flash => {:success => 'User was successfully destroyed.' } }
       format.json { head :no_content }
     end
   end

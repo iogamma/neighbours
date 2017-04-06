@@ -4,7 +4,17 @@
     <div class="jumbotron">
       <%= image_tag @event.image.url(:thumb), alt: @event.title, class:"event-image img-responsive"%>
       <h2 class='event-title'><%= @event.title %></h2>
-      <h6>Submitted <%= time_ago_in_words(@event.created_at) %> ago by <%= find_user(@event.user_id).first_name %> <%= find_user(@event.user_id).last_name %></h6>
+      <h6>Submitted <%= time_ago_in_words(@event.created_at) %> ago by <%= find_user(@event.user_id).first_name %> <%= find_user(@event.user_id).last_name %>
+        (
+          <i class="fa fa-home" aria-hidden="true"></i>
+          <% @posting_user = find_user(@event.user_id) %>
+          <% @res_info = Unit.find(@posting_user.unit_id) %>
+          <% @address = Building.find(@res_info.building_id) %>
+          <%= @res_info.unit_number %>
+          -
+          <%= @address.address %>
+        )
+      </h6>
       <hr>
       <article class="event-detail">
         <div class="row">
@@ -57,10 +67,12 @@
 
 
 <%#Comment Section%>
-<% if flash.alert %>
+<% if flash[:error] %>
   <div class="alert alert-dismissible alert-danger">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
-    <%= alert %>
+    <% flash[:error].each do |err| %>
+      <strong><%= err %></strong>
+    <% end %>
   </div>
 <% end %>
 <div class="event-comments">

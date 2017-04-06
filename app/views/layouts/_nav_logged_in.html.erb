@@ -4,7 +4,7 @@
     <li><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Create Event</button></li>
     <li><%= link_to "Assistance", neighbourhood_assistances_path(neighbourhood_id: users_building.neighbourhood_id) %></li>
     <li><%= link_to "Notices",  neighbourhood_notices_path(neighbourhood_id: users_building.neighbourhood_id) %></li>
-    <li><%= link_to "Minutes", neighbourhood_meetings_path(neighbourhood_id: users_building.neighbourhood_id) %></li>
+    <li><%= link_to "Meeting", neighbourhood_meetings_path(neighbourhood_id: users_building.neighbourhood_id) %></li>
   </ul>
   <ul class="nav navbar-nav navbar-right">
     <% if current_user.on_council %>
@@ -59,13 +59,13 @@
             <div class="col-sm-1">
               <%= form.label :Date, class: "control-label" %>
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-4">
               <%= form.date_field :date, class: "form-control" %>
             </div>
             <div class="col-sm-2">
               <%= form.label :Location, class: "control-label" %>
             </div>
-            <div class="col-sm-7">
+            <div class="col-sm-5">
               <%= form.text_field :location, class: "form-control" %>
             </div>
           </div>

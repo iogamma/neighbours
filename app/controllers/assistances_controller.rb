@@ -28,10 +28,10 @@ class AssistancesController < ApplicationController
     @assistances = Kaminari.paginate_array(Assistance.where(neighbourhood_id: @neighbourhood.id).sort_by(&:created_at).reverse).page(params[:page]).per(5)
     respond_to do |format|
       if @assistance.save
-        format.html { redirect_to neighbourhood_assistance_path(@assistance), :flash => { :success => 'Assistance was successfully created.'} }
+        format.html { redirect_to [@neighbourhood, @assistance], :flash => { :success => 'Assistance was successfully created.'} }
         format.json { render :show, status: :created, location: @assistance }
       else
-        format.html { redirect_to neighbourhood_assistances_path, alert: @assistance.errors.full_messages}
+        format.html { redirect_to neighbourhood_assistances_path, :flash => { :error => @assistance.errors.full_messages} }
         format.json { render json: @assistance.errors, status: :unprocessable_entity }
       end
     end
@@ -50,7 +50,7 @@ class AssistancesController < ApplicationController
         format.html { redirect_to neighbourhood_assistance_path(@assistance), :flash => { :success => 'Assistance was successfully updated.'} }
         format.json { render :show, status: :updated, location: @assistance }
       else
-        format.html { redirect_to neighbourhood_assistance_path(@assistance), alert: @assistance.errors.full_messages }
+        format.html { redirect_to neighbourhood_assistance_path(@assistance), :flash => { :error => @assistance.errors.full_messages } }
         format.json { render json: @assistance.errors, status: :unprocessable_entity }
       end
     end

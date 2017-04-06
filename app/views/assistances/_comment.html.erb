@@ -7,6 +7,15 @@
     <% end %>
     <dd class="comment-user">
       <%= AssistanceComment.find_user(comment.user_id) %>
+      (
+      <i class="fa fa-home" aria-hidden="true"></i>
+      <% @commenting_user = User.find(comment.user_id) %>
+      <% @res_info = Unit.find(@commenting_user.unit_id) %>
+      <% @address = Building.find(@res_info.building_id) %>
+      <%= @res_info.unit_number %>
+      -
+      <%= @address.address %>
+      )
     </dd>
   </div>
   <div class="panel-body">
