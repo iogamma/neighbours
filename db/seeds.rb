@@ -90,7 +90,6 @@ User.destroy_all
                                     last_name: Faker::Name.last_name,
                                     email: Faker::Internet.email,
                                     password: Faker::Internet.password(min_length = 8, max_length = 16),
-                                    password_digest: '12345678',
                                     resident_code: '111',
                                     on_council: true
                                   })
