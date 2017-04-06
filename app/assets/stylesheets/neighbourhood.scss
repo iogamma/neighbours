@@ -57,12 +57,13 @@
 }
 
 .neighbourhoods.index {
-  animation: panning 100s infinite linear;
+  // animation: panning 100s infinite linear;
   position: relative;
-  height: 100%;
+  height: auto;
   width: 100%;
-  background: black url(/Concert-Properties2.png);
-  background-size: 200%;
+  background-image: url(/Concert-Properties2.png);
+  background-size: cover;
+  background-repeat: no-repeat;
   margin: 0;
   padding: 0;
 }
