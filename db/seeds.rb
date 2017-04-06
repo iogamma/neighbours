@@ -23,8 +23,8 @@ end
 
 puts "Finding or Creating Neighbourhood ..."
 
-neigh1 = Neighbourhood.find_or_create_by! strata_title: 'Oasis'
-neigh2 = Neighbourhood.find_or_create_by! strata_title: 'Grand Central'
+neigh1 = Neighbourhood.find_or_create_by! strata_title: 'BCS4285S - Oasis'
+neigh2 = Neighbourhood.find_or_create_by! strata_title: 'BCS3948S - Grand Central'
 
 ## BUILDINGS
 
@@ -202,12 +202,6 @@ users2[rand(100)].assistances.create!({
   description: Faker::Lorem.paragraph(2)
 })
 
-users1[rand(100)].assistances.create!({
-  neighbourhood_id: 1,
-  title: Faker::Hipster.sentence,
-  description: Faker::Lorem.paragraph(2)
-})
-
 users2[rand(100)].assistances.create!({
   neighbourhood_id: 1,
   title: Faker::Hipster.sentence,
@@ -221,18 +215,6 @@ users1[rand(100)].assistances.create!({
 })
 
 users1[rand(100)].assistances.create!({
-  neighbourhood_id: 1,
-  title: Faker::Hipster.sentence,
-  description: Faker::Lorem.paragraph(2)
-})
-
-users2[rand(100)].assistances.create!({
-  neighbourhood_id: 1,
-  title: Faker::Hipster.sentence,
-  description: Faker::Lorem.paragraph(2)
-})
-
-users2[rand(100)].assistances.create!({
   neighbourhood_id: 1,
   title: Faker::Hipster.sentence,
   description: Faker::Lorem.paragraph(2)
@@ -245,75 +227,46 @@ puts "Re-creating Notices ..."
 Notice.destroy_all
 
 neigh1.notices.create!({
-  user_id: 1,
-  email: 'admin@test.com',
+  user_id: users1[70].id,
+  email: users1[70].email,
+  title: 'Mailbox Key Collection',
+  description: 'Please note that the new mail boxes have now been installed and the keys are available for collection from the onsite Building Managers, Joe or Jack. Please contact them at:
+                Jack – 778-555-5555 Joe – 778-777-8888
+                A new key will be issued upon presentation of a valid government ID e.g. drivers licence and/or passport. In addition, you will be required to sign-off as an acknowledgement of key receipt.
+                Thanking you in advance for your cooperation.',
+  date: "March 28, 2017"
+})
+
+users2[rand(100)].assistances.create!({
+  neighbourhood_id: 1,
   title: Faker::Hipster.sentence,
-  description: Faker::Lorem.paragraph(2),
-  date: Faker::Date.forward(60)
+  description: Faker::Lorem.paragraph(2)
 })
 
 neigh1.notices.create!({
-  user_id: 1,
-  email: 'admin@test.com',
+  user_id: users2[7].id,
+  email: users2[7].email,
+  title: "ELEVATOR REPAIRS",
+  description: "Please be advised that OTIS will be conducting repairs to elevator #2.
+                Therefore, this elevator will not be available for use until further notice.
+                Residents will be limited to one elevator during this period, please expect delays.
+                We appreciate your understanding and patience and assure you that Council and Management are aiming to conduct all repairs in a timely manner for your convenience.
+                Your anticipated cooperation is appreciated.",
+  date: "Wednesday, April 5th 2017"
+})
+
+users2[rand(100)].assistances.create!({
+  neighbourhood_id: 1,
   title: Faker::Hipster.sentence,
-  description: Faker::Lorem.paragraph(2),
-  date: Faker::Date.forward(60)
+  description: Faker::Lorem.paragraph(2)
 })
 
 neigh1.notices.create!({
-  user_id: 1,
-  email: 'admin@test.com',
-  title: Faker::Hipster.sentence,
-  description: Faker::Lorem.paragraph(2),
-  date: Faker::Date.forward(60)
-})
-
-neigh1.notices.create!({
-  user_id: 1,
-  email: 'admin@test.com',
-  title: Faker::Hipster.sentence,
-  description: Faker::Lorem.paragraph(2),
-  date: Faker::Date.forward(60)
-})
-
-neigh1.notices.create!({
-  user_id: 1,
-  email: 'admin@test.com',
-  title: Faker::Hipster.sentence,
-  description: Faker::Lorem.paragraph(2),
-  date: Faker::Date.forward(60)
-})
-
-neigh1.notices.create!({
-  user_id: 1,
-  email: 'admin@test.com',
-  title: Faker::Hipster.sentence,
-  description: Faker::Lorem.paragraph(2),
-  date: Faker::Date.forward(60)
-})
-
-neigh1.notices.create!({
-  user_id: 1,
-  email: 'admin@test.com',
-  title: Faker::Hipster.sentence,
-  description: Faker::Lorem.paragraph(2),
-  date: Faker::Date.forward(60)
-})
-
-neigh1.notices.create!({
-  user_id: 1,
-  email: 'admin@test.com',
-  title: Faker::Hipster.sentence,
-  description: Faker::Lorem.paragraph(2),
-  date: Faker::Date.forward(60)
-})
-
-neigh1.notices.create!({
-  user_id: 1,
-  email: 'admin@test.com',
-  title: Faker::Hipster.sentence,
-  description: Faker::Lorem.paragraph(2),
-  date: Faker::Date.forward(60)
+  user_id: users2[7].id,
+  email: users2[7],
+  title: "INTERCOM SYSTEM OPERATIONAL",
+  description: "Please be advised that the intercom system has been restored and is now fully operational. The Strata Council and Management wish to take this opportunity and thank you for your patience with this matter.",
+  date: "March 21, 2017"
 })
 
 ## MEETINGS
@@ -323,11 +276,11 @@ puts "Re-creating Meetings ..."
 Meeting.destroy_all
 
 meet1 = neigh1.meetings.create!({
-  user_id: 1,
-  email: 'admin@test.com',
-  date: Faker::Date.forward(60),
-  location: 'Basement',
-  title: 'First Meeting'
+  user_id: users1[70].id,
+  email: users1[70].email,
+  date: "March 28, 2017",
+  location: 'Level 5, Conference Room',
+  title: 'Council Meeting Minutes for BCS4285S - Oasis'
 })
 
 ## VIDEOS
@@ -382,11 +335,6 @@ puts "Re-creating Assistances Comments..."
 
 AssistanceComment.destroy_all
 
-users2[rand(100)].assistance_comments.create! ({
-  content: Faker::Hipster.sentence,
-  assistance_id: 1
-})
-
 users1[rand(100)].assistance_comments.create! ({
   content: Faker::Hipster.sentence,
   assistance_id: 1
@@ -408,20 +356,71 @@ puts "Re-creating Attendees ..."
 
 Attendee.destroy_all
 
-users2[rand(100)].attendees.create! ({
-  attend: "yes",
-  event_id: 1
-})
+for i in 0..10
+  users1[rand(100)].attendees.create! ({
+    attend: "yes",
+    event_id: 1
+  })
+  users2[rand(100)].attendees.create! ({
+    attend: "yes",
+    event_id: 1
+  })
+end
 
-users1[rand(100)].attendees.create! ({
-  attend: "no",
-  event_id: 1
-})
+for i in 0..1
+  users1[rand(100)].attendees.create! ({
+    attend: "no",
+    event_id: 1
+  })
+  users2[rand(100)].attendees.create! ({
+    attend: "no",
+    event_id: 1
+  })
+end
 
-users1[rand(100)].attendees.create! ({
-  attend: "yes",
-  event_id: 2
-})
+for i in 0..2
+  users1[rand(100)].attendees.create! ({
+    attend: "yes",
+    event_id: 2
+  })
+  users2[rand(100)].attendees.create! ({
+    attend: "yes",
+    event_id: 2
+  })
+end
+
+for i in 0..0
+  users1[rand(100)].attendees.create! ({
+    attend: "no",
+    event_id: 2
+  })
+  users2[rand(100)].attendees.create! ({
+    attend: "no",
+    event_id: 2
+  })
+end
+
+for i in 0..2
+  users1[rand(100)].attendees.create! ({
+    attend: "yes",
+    event_id: 3
+  })
+  users2[rand(100)].attendees.create! ({
+    attend: "yes",
+    event_id: 3
+  })
+end
+
+for i in 0..1
+  users1[rand(100)].attendees.create! ({
+    attend: "no",
+    event_id: 3
+  })
+  users2[rand(100)].attendees.create! ({
+    attend: "no",
+    event_id: 3
+  })
+end
 
 # VOTES
 
@@ -429,19 +428,70 @@ puts 'Re-creating Votes ...'
 
 Vote.destroy_all
 
-users1[rand(100)].votes.create! ({
-  vote: 'yes',
-  poll_id: 1
-})
+for i in 0..9
+  users1[rand(100)].votes.create! ({
+    vote: 'yes',
+    poll_id: 1
+  })
+  users2[rand(100)].votes.create! ({
+    vote: 'yes',
+    poll_id: 1
+  })
+end
 
-users1[rand(100)].votes.create! ({
-  vote: 'no',
-  poll_id: 1
-})
+for i in 0..17
+  users1[rand(100)].votes.create! ({
+    vote: 'no',
+    poll_id: 1
+  })
+  users2[rand(100)].votes.create! ({
+    vote: 'no',
+    poll_id: 1
+  })
+end
 
-users2[rand(100)].votes.create! ({
-  vote: 'yes',
-  poll_id: 2
-})
+for i in 0..27
+  users1[rand(100)].votes.create! ({
+    vote: 'yes',
+    poll_id: 2
+  })
+  users2[rand(100)].votes.create! ({
+    vote: 'yes',
+    poll_id: 2
+  })
+end
+
+for i in 0..9
+  users1[rand(100)].votes.create! ({
+    vote: 'no',
+    poll_id: 2
+  })
+  users2[rand(100)].votes.create! ({
+    vote: 'no',
+    poll_id: 2
+  })
+end
+
+for i in 0..15
+  users1[rand(100)].votes.create! ({
+    vote: 'yes',
+    poll_id: 3
+  })
+  users2[rand(100)].votes.create! ({
+    vote: 'yes',
+    poll_id: 3
+  })
+end
+
+for i in 0..12
+  users1[rand(100)].votes.create! ({
+    vote: 'no',
+    poll_id: 3
+  })
+  users2[rand(100)].votes.create! ({
+    vote: 'no',
+    poll_id: 3
+  })
+end
 
 puts 'DONE!'
