@@ -11,6 +11,12 @@
         <div class="col-sm-6">
           <div>
             <h5>Location: <%= meeting.location  %></h5>
+            <% if !meeting.documents.empty? %>
+              <i class="fa fa-file-text" aria-hidden="true"></i>
+            <% end %>
+            <% if !meeting.videos.empty? %>
+              <i class="fa fa-youtube" aria-hidden="true"></i>
+            <% end %>
           </div>
           <h6>
             Uploaded <%= time_ago_in_words(meeting.created_at) %> ago by <%= find_user(meeting.user_id).first_name %> <%= find_user(meeting.user_id).last_name %>
@@ -111,6 +117,7 @@
               <a class="document-name", href=" <%= document.location  %> ">
                   <%= "Download document: #{document.name}"  %>
               </a>
+              <i class="fa fa-file-text" aria-hidden="true"></i>
               <% if current_user %>
                 <% if meeting.user_id == current_user.id  %>
                 <button type="button" class="btn btn-sm btn-danger">
