@@ -5,7 +5,17 @@
         <%= link_to assistance.title,  [@neighbourhood, assistance] %>
       </h3>
       <hr>
-      <h6>Submitted <%= time_ago_in_words(assistance.created_at) %> ago by <%= find_user(assistance.user_id).first_name %> <%= find_user(assistance.user_id).last_name %></h6>
+      <h6>Submitted <%= time_ago_in_words(assistance.created_at) %> ago by <%= find_user(assistance.user_id).first_name %> <%= find_user(assistance.user_id).last_name %>
+        (
+          <i class="fa fa-home" aria-hidden="true"></i>
+          <% @posting_user = find_user(assistance.user_id) %>
+          <% @res_info = Unit.find(@posting_user.unit_id) %>
+          <% @address = Building.find(@res_info.building_id) %>
+          <%= @res_info.unit_number %>
+          -
+          <%= @address.address %>
+        )
+      </h6>
       <% if current_user %>
         <% if assistance.user_id == current_user.id  %>
           <button type="button" class="btn btn-sm btn-danger">
@@ -17,7 +27,7 @@
               &nbsp;Edit help request
           </button>
 
-                        <!-- Modal -->
+            <!-- Modal -->
             <div id="<%= assistance.id %>" class="modal fade in" role="dialog">
               <div class="modal-dialog">
               <div class="modal-content">

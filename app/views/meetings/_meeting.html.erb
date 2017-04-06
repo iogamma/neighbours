@@ -11,9 +11,24 @@
         <div class="col-sm-6">
           <div>
             <h5>Location: <%= meeting.location  %></h5>
+            <% if !meeting.documents.empty? %>
+              <i class="fa fa-file-text" aria-hidden="true"></i>
+            <% end %>
+            <% if !meeting.videos.empty? %>
+              <i class="fa fa-youtube" aria-hidden="true"></i>
+            <% end %>
           </div>
           <h6>
             Uploaded <%= time_ago_in_words(meeting.created_at) %> ago by <%= find_user(meeting.user_id).first_name %> <%= find_user(meeting.user_id).last_name %>
+            (
+              <i class="fa fa-home" aria-hidden="true"></i>
+              <% @posting_user = find_user(meeting.user_id) %>
+              <% @res_info = Unit.find(@posting_user.unit_id) %>
+              <% @address = Building.find(@res_info.building_id) %>
+              <%= @res_info.unit_number %>
+              -
+              <%= @address.address %>
+            )
           </h6>
           <% if current_user %>
             <% if meeting.user_id == current_user.id  %>
@@ -40,7 +55,7 @@
               <fieldset>
                 <div class="row">
                   <div class="form-group form-group-doc">
-                    <div class="col-sm-3 control-label">
+                    <div class="col-sm-3 upload-label">
                       <strong>Add New Document</strong>
                     </div>
                     <div class="col-sm-1">
@@ -75,7 +90,7 @@
               <fieldset>
                 <div class="row">
                   <div class="form-group form-group-vid">
-                    <div class="col-sm-2 control-label">
+                    <div class="col-sm-3 upload-label">
                       <strong>Add New Video</strong>
                     </div>
                     <div class="col-sm-1">
@@ -111,6 +126,7 @@
               <a class="document-name", href=" <%= document.location  %> ">
                   <%= "Download document: #{document.name}"  %>
               </a>
+              <i class="fa fa-file-text" aria-hidden="true"></i>
               <% if current_user %>
                 <% if meeting.user_id == current_user.id  %>
                 <button type="button" class="btn btn-sm btn-danger">

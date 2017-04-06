@@ -17,7 +17,17 @@
 <section class="notices-show">
   <header class="page-header">
     <h2 class="notice-title"><%= @notice.title %></h2>
-    <h6>Submitted <%= time_ago_in_words(@notice.created_at) %> ago by <%= find_user(@notice.user_id).first_name %> <%= find_user(@notice.user_id).last_name %></h6>
+    <h6>Submitted <%= time_ago_in_words(@notice.created_at) %> ago by <%= find_user(@notice.user_id).first_name %> <%= find_user(@notice.user_id).last_name %>
+    (
+      <i class="fa fa-home" aria-hidden="true"></i>
+      <% @posting_user = find_user(@notice.user_id) %>
+      <% @res_info = Unit.find(@posting_user.unit_id) %>
+      <% @address = Building.find(@res_info.building_id) %>
+      <%= @res_info.unit_number %>
+      -
+      <%= @address.address %>
+    )
+    </h6>
     <% if current_user %>
       <% if @notice.user_id == current_user.id  %>
         <%= link_to fa_icon('trash'), [@neighbourhood, :notice], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
