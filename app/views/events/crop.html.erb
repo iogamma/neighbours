@@ -1,6 +1,6 @@
 <h1 class="crop-image">Crop Image</h1>
 
-<%= image_tag @event.image.url(:large), id:"cropbox"%>
+<%= image_tag @event.image.url(:large), id:"cropbox" %>
 
 <%= form_for [@neighbourhood, @event] do |f| %>
   <% %w[x y w h].each do |attribute| %>

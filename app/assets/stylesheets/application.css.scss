@@ -36,6 +36,13 @@
 
 @import "extend";
 
+
+#content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .container{
   .jumbotron {
     background-color: #fff;
@@ -44,6 +51,7 @@
     border-radius: 0em;
     border-width: 0.35em;
     box-shadow: $box-shadow;
+    margin-top: 2%;
     padding: 0.5em;
 
     .carousel-caption {
@@ -171,7 +179,18 @@
   margin: 0;
 }
 
+.navbar-bottom {
+  margin-top: 5%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  text-align: center;
 
+  .footer-text{
+    font-family: $lato;
+  }
+}
 
 .message-box {
   @extend %white-box;
@@ -228,19 +247,8 @@
 }
 
 
-div:empty {
+.alerts-feed:empty {
   display: none;
-}
-
-.alerts-feed {
-  background: #f63602;
-  border-color: #c32b02;
-  border-width: 0.3em;
-  border-radius: 0em;
-  color: white;
-  font-weight: bold;
-  width: 100vw;
-  transform: translateX(-20.25vw);
 }
 
 .text-center {
@@ -290,14 +298,13 @@ div:empty {
   color:$secondary-color;
   border: $secondary-color;
   font-size: 1.1em;
-
-  transform: translateX(20em);
+  transform: translateX(50%);
 
   label {
     font-family: $lato;
     font-weight: initial;
   }
-  
+
   .join-header {
     color: black;
     font-family:$lato;
@@ -317,6 +324,14 @@ div:empty {
     border-color: $border-color;
     font-weight: bold;
   }
+}
+
+#content {
+  min-height: calc(100vh - 70px);
+}
+
+#footer {
+  height: 20px;
 }
 
 
