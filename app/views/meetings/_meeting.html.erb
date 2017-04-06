@@ -20,6 +20,15 @@
           </div>
           <h6>
             Uploaded <%= time_ago_in_words(meeting.created_at) %> ago by <%= find_user(meeting.user_id).first_name %> <%= find_user(meeting.user_id).last_name %>
+            (
+              <i class="fa fa-home" aria-hidden="true"></i>
+              <% @posting_user = find_user(meeting.user_id) %>
+              <% @res_info = Unit.find(@posting_user.unit_id) %>
+              <% @address = Building.find(@res_info.building_id) %>
+              <%= @res_info.unit_number %>
+              -
+              <%= @address.address %>
+            )
           </h6>
           <% if current_user %>
             <% if meeting.user_id == current_user.id  %>

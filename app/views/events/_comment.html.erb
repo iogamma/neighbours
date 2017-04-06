@@ -1,10 +1,20 @@
 <div class="panel panel-default comment-panel">
-  <div class="panel-heading"> 
+  <div class="panel-heading">
     <dd>
       <%= link_to fa_icon('times'), event_comment_path(event_id: @event.id, id:comment.id, type: 'event'), class: 'btn btn-sm btn-delete', method: :delete, data: { confirm: "Are you sure?" } %>
     </dd>
     <dd class="comment-user">
-      <%= EventComment.find_user(comment.user_id) %> 
+      <%= EventComment.find_user(comment.user_id) %>
+      (
+      <i class="fa fa-home" aria-hidden="true"></i>
+      <% @commenting_user = User.find(comment.user_id) %>
+      <% @res_info = Unit.find(@commenting_user.unit_id) %>
+      <% @address = Building.find(@res_info.building_id) %>
+      <%= @res_info.unit_number %>
+      -
+      <%= @address.address %>
+      )
+
     </dd>
   </div>
   <div class="panel-body">
