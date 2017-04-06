@@ -13,7 +13,6 @@
 
       function drawCharts() {
         pollsID.forEach(function(pollID) {
-          console.log(pollID);
           drawChart(pollID);
         });
       }

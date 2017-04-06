@@ -1,11 +1,11 @@
 class Admin::UsersController < ApplicationController
   def update
     @user = User.find params[:id]
-    @update_user = @user.update(user_params)
+    @update_user = @user.update(on_council: "t")
     if @update_user
       redirect_to admin_root_path
     else
-      redirect_to back
+      redirect_to admin_root_path
     end
   end
 
