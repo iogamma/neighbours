@@ -38,7 +38,7 @@ class EventsController < ApplicationController
     @neighbourhood = Neighbourhood.find users_building.neighbourhood_id
     @event = Event.find params[:id]
 
-    if params[:commit] === "Crop"
+    if params[:commit] === "Submit image"
       @event.update crop_params
       redirect_to [@neighbourhood, @event]
     else
