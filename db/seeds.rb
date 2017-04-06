@@ -19,8 +19,6 @@ unless Rails.env.development?
   exit 0
 end
 
-# Let's do this ...
-
 ## NEIGHBOURHOOD
 
 puts "Finding or Creating Neighbourhood ..."
@@ -85,6 +83,30 @@ unit4 = build4.units.create!({
 puts "Re-creating Users ..."
 
 User.destroy_all
+
+  for j in 0..20
+    user[j] =  unit1.users.create!({
+                                    first_name: Faker::Name.first_name,
+                                    last_name: Faker::Name.last_name,
+                                    email: Faker::Internet.email,
+                                    password: Faker::Internet.password(min_length = 8, max_length = 16),
+                                    password_digest: '12345678',
+                                    resident_code: '111',
+                                    on_council: true
+                                  })
+
+    user[j] = unit2.build2[i].create!({
+                              first_name: Faker::Name.first_name,
+                              last_name: Faker::Name.last_name,
+                              email: 'admin@test.com',
+                              password: '12345',
+                              password_digest: '12345678',
+                              resident_code: '111',
+                              on_council: true
+                            })
+  end
+
+byebug
 
 user1 = unit1.users.create!({
   first_name: Faker::Name.first_name,
