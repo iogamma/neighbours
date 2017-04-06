@@ -44,4 +44,6 @@ Rails.application.routes.draw do
     resources :users, only: [:update, :destroy]
   end
 
+  match "*path" => redirect { |p, req| req.flash[:error] = 'You are not authorized to access the page, please login'; 'neighbourhood'}, via: [:get]
+
 end
