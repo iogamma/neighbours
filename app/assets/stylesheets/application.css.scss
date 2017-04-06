@@ -154,6 +154,7 @@
   background-image: none;
   background-repeat: no-repeat;
   border-radius: 0px;
+  z-index: 1000;
 
   .navbar-nav{
     li{
@@ -302,7 +303,7 @@
 .main_register {
   @extend %white-box;
   background:rgba(255,255,255,0.75);
-  color:$secondary-color;
+  color:#434343;
   border: $secondary-color;
   font-size: 1.1em;
   transform: translateX(70%);
@@ -333,6 +334,15 @@
     border-color: $border-color;
     font-weight: bold;
   }
+}
+
+.registration-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.45);
 }
 
 #content {
