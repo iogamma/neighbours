@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
-  <header>
+  <head>
     <title>Neighbours</title>
       <%= csrf_meta_tags %>
       <%= stylesheet_link_tag "application", media: "all" %>
       <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
       <%= javascript_include_tag "application" %>
       <%= javascript_include_tag params[:controller] %>
-
-  </header>
+  </head>
   <body class="<%= controller_name %> <%= action_name %>"
     <% if @neighbourhood %>
       data-room_id="<%= @neighbourhood.uuid %>"
@@ -17,9 +16,12 @@
     <% end %>
   >
     <%= render "layouts/top_nav" %>
-    <main class="container main">
+    <main class="container main" id="content">
       <%= render "layouts/alerts_feed" %>
       <%= yield %>
     </main>
+    <footer id="footer">
+      <%= render "layouts/bottom_nav" %>
+    </footer>
   </body>
 </html>

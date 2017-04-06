@@ -36,6 +36,13 @@
 
 @import "extend";
 
+
+// #content {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+// }
+
 .container{
   .jumbotron {
     background-color: #fff;
@@ -44,6 +51,7 @@
     border-radius: 0em;
     border-width: 0.35em;
     box-shadow: $box-shadow;
+    margin-top: 2%;
     padding: 0.5em;
 
     .carousel-caption {
@@ -171,7 +179,18 @@
   margin: 0;
 }
 
+.navbar-bottom {
+  margin-top: 5%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  text-align: center;
 
+  .footer-text{
+    font-family: $lato;
+  }
+}
 
 .message-box {
   @extend %white-box;
@@ -228,12 +247,10 @@
 }
 
 
-div:empty {
+.alerts-feed:empty {
   display: none;
 }
 
-.alerts-feed {
-}
 
 .text-center {
   text-align: center;
@@ -241,6 +258,7 @@ div:empty {
 
 .modal-content{
   @extend %white-box;
+  border-width: 0.4em;
   padding: 1.25em;
 
   .modal-header {
@@ -262,7 +280,7 @@ div:empty {
     }
   }
 
-        .form-control {
+  .form-control {
     border-radius:0em;
   }
 
@@ -274,16 +292,21 @@ div:empty {
       @include button-color ($brand-color, #fff, #fff);
     }
   }
+
+  .upload-requirement {
+    margin-top: 1em;
+  }
+    
 }
 
 .main_register {
   @extend %white-box;
-  background: #e9ebee;
+  background:rgba(255,255,255,0.75);
   color:$secondary-color;
   border: $secondary-color;
   font-size: 1.1em;
-
-  transform: translateX(20em);
+  transform: translateX(70%);
+  width: 40%;
 
   label {
     font-family: $lato;
@@ -291,6 +314,7 @@ div:empty {
   }
 
   .join-header {
+    border-bottom: 0em;
     color: black;
     font-family:$lato;
     font-weight: bold;
@@ -309,6 +333,14 @@ div:empty {
     border-color: $border-color;
     font-weight: bold;
   }
+}
+
+#content {
+  min-height: calc(100vh - 70px);
+}
+
+#footer {
+  height: 20px;
 }
 
 

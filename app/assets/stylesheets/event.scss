@@ -21,8 +21,28 @@
   .message-box {
     margin-bottom: 5em;
   }
-}
 
+  .crop-image {
+    font-size: 2.5em;
+    color: $secondary-color;
+    margin-bottom: 1em;
+  }
+
+  .progress {
+    background-color: #d3d3d3;
+    margin-bottom: 3em;
+  }
+
+  .btn-primary {
+    @extend %add-button;
+    margin-top: 0em;
+    margin-left: 0em;
+
+      @include hover-state {
+      @include button-color ($secondary-color, #fff, #fff);
+    }
+  }
+}
 
 .events-show {
   .event-title{

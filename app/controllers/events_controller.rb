@@ -21,6 +21,7 @@ class EventsController < ApplicationController
 
     if @event.save
       if event_params[:image].present?
+        @event_id = @event.id
         render :crop
       else
         redirect_to [@neighbourhood, @event], notice: 'Event created'
@@ -37,11 +38,10 @@ class EventsController < ApplicationController
     @neighbourhood = Neighbourhood.find users_building.neighbourhood_id
     @event = Event.find params[:id]
 
-    if crop_params
-      if @event.update crop_params
-        redirect_to [@neighbourhood, @event], notice: 'Event updated'
-      end
-    else
+    if params[:commit] === "Crop"
+      @event.update crop_params
+      redirect_to [@neighbourhood, @event], notice: 'Event updated'
+    else 
       if Attendee.where(event_id: params[:event], user_id: current_user.id).empty?
         @neighbourhood = Neighbourhood.find params[:neighbourhood_id]
         @attendee = Attendee.create(attend: params[:attend])
@@ -53,7 +53,6 @@ class EventsController < ApplicationController
         else
           redirect_to @neighbourhood, notice:"attendance result failed to submit."
         end
-
       else
         redirect_to @neighbourhood, notice:"You have already Voted."
       end

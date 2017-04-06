@@ -76,14 +76,17 @@
         </div>
         <div class="form-group">
           <div class="row">
-            <div class="col-sm-7">
+            <div class="col-sm-3">
               <span class="btn btn-info btn-file">
                 Upload Image
                 <%= form.file_field :image %>
               </span>
             </div>
             <div class="col-sm-5">
-              <%= form.submit "Submit Request", class: "btn btn-primary" %>
+              <p class="upload-requirement">* Image is required </p>
+            </div>
+            <div class="col-sm-4">
+              <%= form.submit "Proceed to Crop Image", class: "btn btn-primary" %>
             </div>
           </div>
         </div>
