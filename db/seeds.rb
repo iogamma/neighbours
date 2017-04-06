@@ -177,13 +177,33 @@ users1[2].events.create!({
 puts "Re-creating Assistances ..."
 
 Assistance.destroy_all
+Notice.destroy_all
 
 users1[rand(100)].assistances.create!({
   neighbourhood_id: 1,
   title: Faker::Hipster.sentence,
   description: Faker::Lorem.paragraph(2)
 })
+users1[rand(100)].assistances.create!({
+ neighbourhood_id: 1,
+ title: "Can't get rid of this malware on my PC",
+ description: "Hi, I am looking for someone good with computers, and I am willing to pay. Long story short, my PC has something - malware, a virus, something. In my experience with others, a clean install/rebuild is about the only clear solution. I'd rather avoid that due to the Windows 10 install no longer being free.
 
+I have McAfee Multi Access Total Protection (PC) that is free from Cox's Security Suite. Not only did it not prevent the issue from loading, a full scan still shows that there are no issues. I also grabbed Malwarebytes and it, too, states no issues. Both are fully up to date, so this is the most perplexing thing to me. On occasion, Malwarebytes will detect something, but the overall issue still exists.
+
+If I open IE11, the main page is hijacked. It seemingly changes just about every time. MS Edge seems to be functioning normally (meaning I can navigate to other sites and the homepage is not hijacked), but IE is the issue.
+
+The initial site seems to be web-start.org, but the random pages it reroutes me to can be (but not limited to) the following:
+* support.techonline.com-security.site
+* www.uber.com
+* smartnewtab.com
+* satisfaction-surveys.org
+* ridmiffed.xyz (this site prompts for a Flash Player Update, but it's clearly not from Adobe.)
+
+Now interestingly enough, about 1 out of 5 attempts to open IE will prompt me with McAfee's "Whoa! Are you sure you want to go there?" It's their www.siteadvisor.com site. The latest one it recognized was web-start.org, however it doesn't ALWAYS prompt.
+
+Clearly there's an issue. I'd rather not rebuild for a number of reasons. Any assistance would be greatly appreciated."
+})
 users1[rand(100)].assistances.create!({
   neighbourhood_id: 1,
   title: Faker::Hipster.sentence,
@@ -201,7 +221,39 @@ users2[rand(100)].assistances.create!({
   title: Faker::Hipster.sentence,
   description: Faker::Lorem.paragraph(2)
 })
+users1[rand(100)].assistances.create!({
+ neighbourhood_id: 1,
+ title: "Yahoo Fantasy Hockey Help",
+ description: "Forward/Defencemen Stat Categories
+Goals- 2points, Assists-2points, +/- = 0.5 points, PPG- 1points, PPA- 1points, SHG- 1points, SHA- 1points, SOG- 0.1points, Hits-0.1points, Blocks- 0.1points
 
+Goaltender Stat Categories
+Wins- 3points, Saves- 0.05points, Shutouts- 2points
+
+My Team
+
+J.Benn- E.Kuznetsov- J.Neal
+B.Saad- J.Pavelski- K.Palmieri
+L.Eriksson- S.Monahan- D.Backes
+
+J.Carlson- D.Byfuglien
+R.McDonagh- T.Brodie
+OEL- R.Ellis
+
+Luongo
+Fleury
+Bishop
+
+Bench
+Zuccarello
+N. Backstrom
+R. O'Reilly
+D. Pasternak
+
+This is my first time doing a proper fantasy league, with 6 other people, and just wanted some input from everyone on what type of players to pick up, drop, or even trade.
+
+Thankyou "
+})
 users2[rand(100)].assistances.create!({
   neighbourhood_id: 1,
   title: Faker::Hipster.sentence,
@@ -224,7 +276,6 @@ users1[rand(100)].assistances.create!({
 
 puts "Re-creating Notices ..."
 
-Notice.destroy_all
 
 neigh1.notices.create!({
   user_id: users1[70].id,
@@ -261,6 +312,19 @@ users2[rand(100)].assistances.create!({
   description: Faker::Lorem.paragraph(2)
 })
 
+users1[rand(100)].assistances.create!({
+  neighbourhood_id: 1,
+  title: "I just want to be together - Relationship help",
+  description: "Myself and my ex have gone through a lot, we dated for quite some time but towards the end things kept getting in the way and we couldn't be together.
+  The decision was his and not mine. For a little while we weren't friends or anything, but after a few months we went back to acting just who we used to when we were together and it was great.
+  The thing is because of something I have done in the past is the reason we can't be together, because it causes him to feel bad upon himself and puts in him bad mind sets.
+  It is nothing to do with cheating or anything it was around a time I hardly even knew him but it still effects it.
+  We dated again but it only lasted for about a month before he couldn't handle it anymore.
+  We are still so inlove and I would do anything for us to be together. I often feel guilt and regret.
+  The only reason we can't be together is because of my past and it has also messed with his mind.
+  I just want to be together but I'm so scared we might never be together again. Any suggestions?"
+})
+
 neigh1.notices.create!({
   user_id: users2[7].id,
   email: users2[7],
@@ -268,7 +332,11 @@ neigh1.notices.create!({
   description: "Please be advised that the intercom system has been restored and is now fully operational. The Strata Council and Management wish to take this opportunity and thank you for your patience with this matter.",
   date: "March 21, 2017"
 })
-
+users1[rand(100)].assistances.create!({
+ neighbourhood_id: 1,
+ title: "Anyone with interior design experience?",
+ description: "Hi everyone, we are looking to do a reno for our house and would like to get some consulting on nice designs. Please contact me!"
+})
 ## MEETINGS
 
 puts "Re-creating Meetings ..."
@@ -348,6 +416,23 @@ users2[rand(100)].assistance_comments.create! ({
 users1[rand(100)].assistance_comments.create! ({
   content: Faker::Hipster.sentence,
   assistance_id: 2
+})
+
+# MORE ASSISTANCES
+
+puts "Additional assistances"
+
+users1[rand(100)].assistances.create!({
+ neighbourhood_id: 1,
+ title: "fund raising",
+ description: "Hi everyone, my brother recently suffer an odd disease and need to urgently remove this tumor.
+  The surgery however cost around 100k, please help our family!!!"
+})
+
+users1[rand(100)].assistances.create!({
+ neighbourhood_id: 1,
+ title: "How do I uninstall the latest Samsung software update?",
+ description: "How do I uninstall latest software update. I hate it. Thanks"
 })
 
 ## ATTENDEES
