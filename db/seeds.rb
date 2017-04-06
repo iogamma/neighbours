@@ -200,7 +200,7 @@ The initial site seems to be web-start.org, but the random pages it reroutes me 
 * satisfaction-surveys.org
 * ridmiffed.xyz (this site prompts for a Flash Player Update, but it's clearly not from Adobe.)
 
-Now interestingly enough, about 1 out of 5 attempts to open IE will prompt me with McAfee's "Whoa! Are you sure you want to go there?" It's their www.siteadvisor.com site. The latest one it recognized was web-start.org, however it doesn't ALWAYS prompt.
+Now interestingly enough, about 1 out of 5 attempts to open IE will prompt me with McAfee's It's their www.siteadvisor.com site. The latest one it recognized was web-start.org, however it doesn't ALWAYS prompt.
 
 Clearly there's an issue. I'd rather not rebuild for a number of reasons. Any assistance would be greatly appreciated."
 })
