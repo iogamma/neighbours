@@ -40,8 +40,8 @@ class EventsController < ApplicationController
 
     if params[:commit] === "Crop"
       @event.update crop_params
-      redirect_to [@neighbourhood, @event], notice: 'Event updated'
-    else 
+      redirect_to [@neighbourhood, @event]
+    else
       if Attendee.where(event_id: params[:event], user_id: current_user.id).empty?
         @neighbourhood = Neighbourhood.find params[:neighbourhood_id]
         @attendee = Attendee.create(attend: params[:attend])
@@ -49,16 +49,15 @@ class EventsController < ApplicationController
         @attendee.event_id = params[:id]
 
         if @attendee.save
-          redirect_to @neighbourhood
+          redirect_to [@neighbourhood, @event]
         else
-          redirect_to @neighbourhood, notice:"attendance result failed to submit."
+          redirect_to [@neighbourhood, @event], notice: "attendance result failed to submit."
         end
       else
-        redirect_to @neighbourhood, notice:"You have already Voted."
+        redirect_to [@neighbourhood, @event], notice: "You have already Voted."
       end
     end
   end
-
 
   def destroy
     @neighbourhood = Neighbourhood.find users_building.neighbourhood_id
