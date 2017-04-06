@@ -1,22 +1,23 @@
 <table class="table table-striped table-hover search-table">
   <tr>
-    <th>User id</th>
-    <th>Email</th>
+    <th>Building ID</th>
+    <th>Unit</th>
     <th>Resident Code</th>
     <th>First Name</th>
     <th>Last Name</th>
-    <th>Unit id</th>
+    <th>Email</th>
     <th>On Council?</th>
     <th>Delete</th>
   </tr>
   <% for user in @users %>
+    <% @res_info = Unit.find(user.unit_id) %>
     <tr class="text-center">
-      <td><%= user.id  %></td>
-      <td><%= user.email %></td>
+      <td><%= @res_info.building_id  %></td>
+      <td><%= @res_info.unit_number %></td>
       <td><%= user.resident_code  %></td>
       <td><%= user.first_name %></td>
       <td><%= user.last_name %></td>
-      <td><%= user.unit_id %></td>
+      <td><%= user.email %></td>
       <% if user.id == current_user.id %>
         <td><%= user.on_council %></td>
         <td>N/A</td>
