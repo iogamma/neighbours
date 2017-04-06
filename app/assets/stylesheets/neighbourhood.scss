@@ -5,13 +5,6 @@
 @import "variables";
 @import "extend";
 
-
-#content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
 .dashboard-polls {
   float: right;
   width: 32.5%;

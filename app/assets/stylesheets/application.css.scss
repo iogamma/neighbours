@@ -37,11 +37,11 @@
 @import "extend";
 
 
-#content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
+// #content {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+// }
 
 .container{
   .jumbotron {
@@ -257,7 +257,9 @@
 
 .modal-content{
   @extend %white-box;
+  border-width: 0.4em;
   padding: 1.25em;
+  
   
   .modal-header {
     border-width: 0em;
@@ -278,7 +280,7 @@
     }
   }
 
-        .form-control {
+  .form-control {
     border-radius:0em;
   }
   
@@ -290,15 +292,21 @@
       @include button-color ($brand-color, #fff, #fff);
     }
   }
+
+  .upload-requirement {
+    margin-top: 1em;
+  }
+    
 }
 
 .main_register {
   @extend %white-box;
-  background: #e9ebee;
+  background:rgba(255,255,255,0.75);
   color:$secondary-color;
   border: $secondary-color;
   font-size: 1.1em;
-  transform: translateX(50%);
+  transform: translateX(70%);
+  width: 40%;
 
   label {
     font-family: $lato;
@@ -306,6 +314,7 @@
   }
 
   .join-header {
+    border-bottom: 0em;
     color: black;
     font-family:$lato;
     font-weight: bold;

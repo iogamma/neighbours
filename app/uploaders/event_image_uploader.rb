@@ -34,8 +34,8 @@ class EventImageUploader < CarrierWave::Uploader::Base
   #   process resize_to_fit: [50, 50]
   # end
 
-  version :large do
-    process resize_to_limit: [1366, 768]
+  version :small do
+    process resize_to_limit: [1138, 428]
   end
 
   version :thumb do

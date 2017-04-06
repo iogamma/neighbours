@@ -7,6 +7,18 @@
       <h6>Submitted <%= time_ago_in_words(@event.created_at) %> ago by <%= find_user(@event.user_id).first_name %> <%= find_user(@event.user_id).last_name %></h6>
       <hr>
       <article class="event-detail">
+        <div class="row">
+          <div class="col-sm-1">
+            <h4><%= "Date:" %></h4>
+            <%= @event.date %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-1">
+            <h4><%= "Location:" %></h4>
+            <%= @event.location %>
+          </div>
+        </div>
         <h4><%= "Event Description:" %></h4>
         <%= @event.description %>
       </article>
