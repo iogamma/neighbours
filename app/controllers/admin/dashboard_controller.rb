@@ -46,11 +46,15 @@ class Admin::DashboardController < ApplicationController
     building = Building.find(params[:building_id])
     unit = building.units.find_by_unit_number(params[:unit_number])
     current_res_code = unit.resident_code
-    new_res_code = Unit.generate_code(6)
+    @new_res_code = Unit.generate_code(6)
     # Update all users with current resident code to 0
     User.where(resident_code: current_res_code).update_all(resident_code: 0)
     # Update to new resident code for building's unit
-    Unit.find(unit.id).update(resident_code: new_res_code)
+    if Unit.find(unit.id).update(resident_code: @new_res_code)
+      respond_to do |format|
+        format.js {}
+      end
+    end
   end
 
   def search
